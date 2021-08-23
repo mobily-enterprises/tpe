@@ -1,0 +1,36 @@
+{
+  "root": true,
+  "extends": ["eslint:recommended", "standard", "plugin:lit/recommended"],
+  "parser": "babel-eslint",
+  "globals": {
+    "chai": "readonly"
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2017
+  },
+  "env": {
+    "browser": true,
+    "mocha": true
+  },
+  "plugins": [
+    "html",
+    "lit"
+  ],
+  "rules": {
+    "brace-style": "off",
+    "new-cap": ["error", { "capIsNewExceptions": ["Polymer", "LabelsMixin", "NativeReflectorMixin","FormElementMixin", "SyntheticValidatorMixin", "NativeValidatorMixin", "StyleableMixin", "InputMixin", "ThemeableMixin", "AddHasValueAttributeMixin","LitBits"] }],
+    "no-var": "error",
+    "require-jsdoc": "off",
+    "lit/no-legacy-template-syntax": "off",
+    "indent": ["error", 2, { "ignoreComments": true }]
+  },
+  "overrides": [
+    {
+      "files": ["rollup.config.js", "web-test-runner.config.js"],
+      "env": {
+        "node": true
+      }
+    }
+  ]
+}
