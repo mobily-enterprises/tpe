@@ -1,5 +1,5 @@
 
-import { inputElement } from '../htmlApi.js'
+import { inputElement } from '../lib/htmlApi.js'
 
 export const InputMixin = (base) => {
   return class Base extends base {

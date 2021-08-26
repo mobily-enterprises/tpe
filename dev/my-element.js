@@ -71,7 +71,7 @@ export class MyElement extends LitElement {
       <h1>Drag them!</h1>
       <!-- Emulating our nested lists scenario -->
       <div class="lists">
-        ${repeat(this.lists, () => Math.random(), (list, index) => {
+        ${repeat(this.lists, l => l, (list, index) => {
             return html`
               <list-element name=${index} .data=${list}
                 @dnd-moving=${this._updateMoving}
@@ -108,8 +108,6 @@ export class MyElement extends LitElement {
     this.targetList.splice(this.target.dataset.index, 0, movingData)
     const removeIndex = this.originList.findIndex(i => i === marker)
     this.originList.splice(removeIndex, 1)
-    this.originList = this.targetList
-    this.moving = this.target
     this.requestUpdate('lists')
   }
 

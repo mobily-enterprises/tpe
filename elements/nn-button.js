@@ -1,12 +1,12 @@
 import { LitElement, html, css } from 'lit'
 import { NativeReflectorMixin } from '../mixins/NativeReflectorMixin.js'
-// import { FormElementMixin } from './mixins/FormElementMixin.js'
-// import { NativeValidatorMixin } from './mixins/NativeValidatorMixin.js'
-// import { StyleableMixin } from './mixins/StyleableMixin.js'
-// import { ThemeableMixin } from './mixins/ThemeableMixin.js'
+import { FormElementMixin } from '../mixins/FormElementMixin.js'
+import { NativeValidatorMixin } from '../mixins/NativeValidatorMixin.js'
+import { StyleableMixin } from '../mixins/StyleableMixin.js'
+import { ThemeableMixin } from '../mixins/ThemeableMixin.js'
 import { buttonElement } from '../lib/htmlApi.js'
 
-  class NnButton extends NativeReflectorMixin(LitElement) {
+  class NnButton extends ThemeableMixin('nn-button')(FormElementMixin(NativeValidatorMixin(StyleableMixin(NativeReflectorMixin(LitElement))))) {
   get skipAttributes () {
     return [...super.skipAttributes, 'form']
   }
