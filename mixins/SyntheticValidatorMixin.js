@@ -16,7 +16,7 @@ export const SyntheticValidatorMixin = (base) => {
           type: Object,
           attribute: false
         },
-        validator: { type: Function }
+        validator: { type: Object }
       }
     }
 

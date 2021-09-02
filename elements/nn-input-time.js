@@ -1,7 +1,7 @@
 import { html } from 'lit'
 import { NnInputText } from './nn-input-text'
 
-class NnInputTime extends NnInputText {
+export class NnInputTime extends NnInputText {
   render () {
     if (this.themeRender) return this.themeRender()
     return html`
@@ -13,4 +13,4 @@ class NnInputTime extends NnInputText {
     `
   }
 }
-window.customElements.define('nn-input-time', NnInputTime)
+// window.customElements.define('nn-input-time', NnInputTime)

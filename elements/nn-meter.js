@@ -1,11 +1,10 @@
 import { LitElement, html } from 'lit'
 import { NativeReflectorMixin } from '../mixins/NativeReflectorMixin.js'
-import { ThemeableMixin } from '../mixins/ThemeableMixin.js'
 import { StyleableMixin } from '../mixins/StyleableMixin.js'
 import { LabelsMixin } from '../mixins/LabelsMixin.js'
 import { meterElement } from '../lib/htmlApi'
 
-export class NnMeter extends ThemeableMixin('nn-meter')(StyleableMixin(LabelsMixin(NativeReflectorMixin(LitElement)))) {
+export class NnMeter extends StyleableMixin(LabelsMixin(NativeReflectorMixin(LitElement))) {
   get reflectProperties () {
     return [...super.reflectProperties, ...meterElement]
   }
@@ -21,4 +20,4 @@ export class NnMeter extends ThemeableMixin('nn-meter')(StyleableMixin(LabelsMix
     `
   }
 }
-customElements.define('nn-meter', NnMeter)
+// customElements.define('nn-meter', NnMeter)

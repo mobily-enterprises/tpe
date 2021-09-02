@@ -1,10 +1,9 @@
 import { LitElement, html, css } from 'lit'
 import { StyleableMixin } from '../mixins/StyleableMixin'
-import { ThemeableMixin } from '../mixins/ThemeableMixin'
 
 const chevronLeft = html`<svg class="icon" height="24" viewBox="0 0 24 24" width="24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>`
 
-export class EeDrawer extends ThemeableMixin('ee-drawer')(StyleableMixin(LitElement)) {
+export class EeDrawer extends StyleableMixin(LitElement) {
   static get styles () {
     return [
       css`
@@ -111,14 +110,13 @@ export class EeDrawer extends ThemeableMixin('ee-drawer')(StyleableMixin(LitElem
           color: var(--ee-drawer-background-color);
           fill: var(--ee-drawer-background-color);
           position: absolute;
-          top: 5px;
           right: 5px;
           z-index: 10;
           background-color: var(--ee-drawer-background-color);
           border: none;
           cursor: pointer;
           right: 0;
-          height: 99%;
+          height: 100%;
           box-sizing: border-box;
           padding: 0 2px;
         }
@@ -289,4 +287,4 @@ export class EeDrawer extends ThemeableMixin('ee-drawer')(StyleableMixin(LitElem
     })
   }
 }
-customElements.define('ee-drawer', EeDrawer)
+// customElements.define('ee-drawer', EeDrawer)

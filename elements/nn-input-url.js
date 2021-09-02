@@ -1,7 +1,7 @@
 import { html } from 'lit'
 import { NnInputText } from './nn-input-text'
 
-class NnInputUrl extends NnInputText {
+export class NnInputUrl extends NnInputText {
   render () {
     if (this.themeRender) return this.themeRender()
     return html`
@@ -13,4 +13,4 @@ class NnInputUrl extends NnInputText {
     `
   }
 }
-window.customElements.define('nn-input-url', NnInputUrl)
+// window.customElements.define('nn-input-url', NnInputUrl)

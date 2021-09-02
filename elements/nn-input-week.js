@@ -1,7 +1,7 @@
 import { html } from 'lit'
 import { NnInputText } from './nn-input-text'
 
-class NnInputWeek extends NnInputText {
+export class NnInputWeek extends NnInputText {
   render () {
     if (this.themeRender) return this.themeRender()
     return html`
@@ -13,4 +13,4 @@ class NnInputWeek extends NnInputText {
     `
   }
 }
-window.customElements.define('nn-input-week', NnInputWeek)
+// window.customElements.define('nn-input-week', NnInputWeek)

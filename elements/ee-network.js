@@ -1,8 +1,7 @@
 import { LitElement, html, css } from 'lit'
 import { StyleableMixin } from '../mixins/StyleableMixin.js'
-import { ThemeableMixin } from '../mixins/ThemeableMixin.js'
 
-export class EeNetwork extends ThemeableMixin('ee-network')(StyleableMixin(LitElement)) {
+export class EeNetwork extends StyleableMixin(LitElement) {
   static get styles () {
     return [
       super.styles,
@@ -39,9 +38,6 @@ export class EeNetwork extends ThemeableMixin('ee-network')(StyleableMixin(LitEl
           color: var(--ee-network-overlay-loading-color, #666);
           background-color: var(--ee-network-overlay-loading-background-color, rgba(190, 190, 190, 0.75));
           z-index: 10;
-        }
-
-        #overlay.clear {
         }
 
         #overlay.overlay-error {
@@ -263,4 +259,4 @@ export class EeNetwork extends ThemeableMixin('ee-network')(StyleableMixin(LitEl
     }
   }
 }
-customElements.define('ee-network', EeNetwork)
+// customElements.define('ee-network', EeNetwork)

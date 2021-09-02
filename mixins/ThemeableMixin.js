@@ -31,12 +31,13 @@
 // parameter. If they are present, they will be applied to the target element,
 // along with two mixins defined below, CustomThemeMixin and LitBits.
 
-import { LitElement, css, html, unsafeCSS } from 'lit'
+import { unsafeCSS } from 'lit'
 
-export const ThemeableMixin = (name) => (base) => {
-  const shared = (window.TP_THEME && window.TP_THEME.shared) || (p => p)
-  const elementTheme = (window.TP_THEME && window.TP_THEME[name]) || (p => p)
-  return elementTheme(shared(CustomThemeMixin(LitBits(base))))
+export const ThemeableMixin = (name, theme) => (base) => {
+  if (!base) console.log(name, base)
+  const shared = (theme && theme.shared) || (p => p)
+  const elementTheme = (theme && theme[name]) || (p => p)
+  return elementTheme(shared(CustomThemeMixin(base)))
 }
 
 // In addition to applying the imported theme, ThemeableMixin adds a
@@ -57,40 +58,12 @@ export const CustomThemeMixin = (base) => {
     set customStyles (cssTemplate) {
       if (!cssTemplate) return
       if (typeof cssTemplate === 'string') {
-        cssTemplate = super.lit.unsafeCSS`${cssTemplate}`
+        cssTemplate = unsafeCSS`${cssTemplate}`
       }
       this._customStyles = cssTemplate
       this.constructor._styles = [...this.constructor._styles, this._customStyles]
       this.adoptStyles()
       this.requestUpdate()
-    }
-  }
-}
-
-// LitBits is a workaround developed to address this
-// [issue](https://github.com/Polymer/lit-html/issues/1015#issuecomment-577903812).
-// This makes sure the same instance of lit-html is used in the entire mixin
-// chain. That issue should be revolved by lit-html's next [version
-// update](https://www.polymer-project.org/blog/2020-09-22-lit-element-and-lit-html-next-preview).
-
-export const LitBits = (base) => {
-  return class Base extends base {
-    static get lit () {
-      return {
-        LitElement,
-        css,
-        unsafeCSS,
-        html
-      }
-    }
-
-    get lit () {
-      return {
-        LitElement,
-        css,
-        unsafeCSS,
-        html
-      }
     }
   }
 }

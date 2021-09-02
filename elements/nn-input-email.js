@@ -1,7 +1,7 @@
 import { html } from 'lit'
 import { NnInputText } from './nn-input-text'
 
-class NnInputEmail extends NnInputText {
+export class NnInputEmail extends NnInputText {
   render () {
     if (this.themeRender) return this.themeRender()
     return html`
@@ -13,4 +13,4 @@ class NnInputEmail extends NnInputText {
     `
   }
 }
-window.customElements.define('nn-input-email', NnInputEmail)
+// window.customElements.define('nn-input-email', NnInputEmail)

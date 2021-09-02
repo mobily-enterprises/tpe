@@ -1,8 +1,7 @@
 import { LitElement, html, css } from 'lit'
 import { StyleableMixin } from '../mixins/StyleableMixin'
-import { ThemeableMixin } from '../mixins/ThemeableMixin'
 
-export class EeNavBar extends ThemeableMixin('ee-nav-bar')(StyleableMixin(LitElement)) {
+export class EeNavBar extends StyleableMixin(LitElement) {
   static get styles () {
     return [
       super.styles,
@@ -110,4 +109,4 @@ export class EeNavBar extends ThemeableMixin('ee-nav-bar')(StyleableMixin(LitEle
     this.selected = e.detail.selected
   }
 }
-customElements.define('ee-nav-bar', EeNavBar)
+// customElements.define('ee-nav-bar', EeNavBar)

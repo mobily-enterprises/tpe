@@ -3,9 +3,8 @@ import { NativeReflectorMixin } from '../mixins/NativeReflectorMixin.js'
 import { InputMixin } from '../mixins/InputMixin.js'
 import { FormElementMixin } from '../mixins/FormElementMixin.js'
 import { NativeValidatorMixin } from '../mixins/NativeValidatorMixin.js'
-import { ThemeableMixin } from '../mixins/ThemeableMixin.js'
 
-class NnInputSubmit extends ThemeableMixin('nn-input-submit')(FormElementMixin(NativeValidatorMixin(InputMixin(NativeReflectorMixin(LitElement))))) {
+export class NnInputSubmit extends FormElementMixin(NativeValidatorMixin(InputMixin(NativeReflectorMixin(LitElement)))) {
   render () {
     if (this.themeRender) return this.themeRender()
     return html`
@@ -19,4 +18,4 @@ class NnInputSubmit extends ThemeableMixin('nn-input-submit')(FormElementMixin(N
     }
   }
 }
-customElements.define('nn-input-submit', NnInputSubmit)
+// customElements.define('nn-input-submit', NnInputSubmit)

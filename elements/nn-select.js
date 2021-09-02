@@ -4,10 +4,9 @@ import { InputMixin } from '../mixins/InputMixin.js'
 import { FormElementMixin } from '../mixins/FormElementMixin.js'
 import { NativeValidatorMixin } from '../mixins/NativeValidatorMixin.js'
 import { LabelsMixin } from '../mixins/LabelsMixin.js'
-import { ThemeableMixin } from '../mixins/ThemeableMixin.js'
 import { selectElement } from '../lib/htmlApi.js'
 
-export class NnSelect extends ThemeableMixin('nn-select')(FormElementMixin(NativeValidatorMixin(LabelsMixin(InputMixin(NativeReflectorMixin(LitElement)))))) {
+export class NnSelect extends FormElementMixin(NativeValidatorMixin(LabelsMixin(InputMixin(NativeReflectorMixin(LitElement))))) {
   get reflectProperties () {
     return [...super.reflectProperties, ...selectElement]
   }
@@ -51,4 +50,4 @@ export class NnSelect extends ThemeableMixin('nn-select')(FormElementMixin(Nativ
     this.value = this.value // eslint-disable-line
   }
 }
-customElements.define('nn-select', NnSelect)
+// customElements.define('nn-select', NnSelect)

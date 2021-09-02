@@ -5,10 +5,9 @@ import { FormElementMixin } from '../mixins/FormElementMixin.js'
 import { NativeValidatorMixin } from '../mixins/NativeValidatorMixin.js'
 import { LabelsMixin } from '../mixins/LabelsMixin.js'
 import { StyleableMixin } from '../mixins/StyleableMixin.js'
-import { ThemeableMixin } from '../mixins/ThemeableMixin.js'
 import { textAreaElement } from '../lib/htmlApi.js'
 
-export class NnTextArea extends ThemeableMixin('nn-textarea')(StyleableMixin(FormElementMixin(NativeValidatorMixin(LabelsMixin(InputMixin(NativeReflectorMixin(LitElement))))))) {
+export class NnTextarea extends StyleableMixin(FormElementMixin(NativeValidatorMixin(LabelsMixin(InputMixin(NativeReflectorMixin(LitElement)))))) {
   get reflectProperties () {
     return [...super.reflectProperties, ...textAreaElement]
   }
@@ -24,4 +23,4 @@ export class NnTextArea extends ThemeableMixin('nn-textarea')(StyleableMixin(For
     `
   }
 }
-customElements.define('nn-textarea', NnTextArea)
+// customElements.define('nn-textarea', NnTextArea)

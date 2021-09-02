@@ -1,8 +1,7 @@
 import { LitElement, html, css } from 'lit'
 import { StyleableMixin } from '../mixins/StyleableMixin'
-import { ThemeableMixin } from '../mixins/ThemeableMixin'
 
-export class EeCell extends ThemeableMixin('ee-cell')(StyleableMixin(LitElement)) {
+export class EeCell extends StyleableMixin(LitElement) {
   static get styles () {
     return [
       css`
@@ -79,4 +78,4 @@ export class EeCell extends ThemeableMixin('ee-cell')(StyleableMixin(LitElement)
     `
   }
 }
-customElements.define('ee-cell', EeCell)
+// customElements.define('ee-cell', EeCell)

@@ -1,8 +1,7 @@
 import { html } from 'lit'
 import { NnInputText } from './nn-input-text'
-import { ThemeableMixin } from '../mixins/ThemeableMixin'
 
-class NnInputDate extends ThemeableMixin('nn-input-date')(NnInputText) {
+export class NnInputDate extends NnInputText {
   render () {
     if (this.themeRender) return this.themeRender()
     return html`
@@ -14,4 +13,4 @@ class NnInputDate extends ThemeableMixin('nn-input-date')(NnInputText) {
     `
   }
 }
-window.customElements.define('nn-input-date', NnInputDate)
+// window.customElements.define('nn-input-date', NnInputDate)

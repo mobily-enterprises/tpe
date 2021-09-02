@@ -6,7 +6,7 @@ import { NativeValidatorMixin } from '../mixins/NativeValidatorMixin.js'
 import { LabelsMixin } from '../mixins/LabelsMixin.js'
 import { StyleableMixin } from '../mixins/StyleableMixin.js'
 import { ThemeableMixin } from '../mixins/ThemeableMixin.js'
-class NnInputColor extends ThemeableMixin('nn-input-color')(FormElementMixin(NativeValidatorMixin(StyleableMixin(LabelsMixin(InputMixin(NativeReflectorMixin(LitElement))))))) {
+export class NnInputColor extends FormElementMixin(NativeValidatorMixin(StyleableMixin(LabelsMixin(InputMixin(NativeReflectorMixin(LitElement)))))) {
   render () {
     if (this.themeRender) return this.themeRender()
     return html`
@@ -18,4 +18,4 @@ class NnInputColor extends ThemeableMixin('nn-input-color')(FormElementMixin(Nat
     `
   }
 }
-window.customElements.define('nn-input-color', NnInputColor)
+// window.customElements.define('nn-input-color', NnInputColor)

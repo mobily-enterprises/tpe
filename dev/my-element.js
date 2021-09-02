@@ -4,9 +4,12 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
+// import { tpe } from '../tpe.js'
+// await tpe.importer()
 import {LitElement, html, css} from '../node_modules/lit';
 import { repeat } from '../node_modules/lit/directives/repeat.js';
 import  './list-element.js'
+
 
 // import { flip } from '@lit-labs/motion';
 
@@ -69,6 +72,7 @@ export class MyElement extends LitElement {
   render() {
     return html`
       <h1>Drag them!</h1>
+      <nn-button></nn-button>
       <!-- Emulating our nested lists scenario -->
       <div class="lists">
         ${repeat(this.lists, l => l, (list, index) => {

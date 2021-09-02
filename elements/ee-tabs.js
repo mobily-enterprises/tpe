@@ -1,8 +1,7 @@
 import { LitElement, html, css } from 'lit'
 import { StyleableMixin } from '../mixins/StyleableMixin'
-import { ThemeableMixin } from '../mixins/ThemeableMixin'
 
-export class EeTabs extends ThemeableMixin('ee-tabs')(StyleableMixin(LitElement)) {
+export class EeTabs extends StyleableMixin(LitElement) {
   static get styles () {
     return [
       super.styles,
@@ -13,13 +12,13 @@ export class EeTabs extends ThemeableMixin('ee-tabs')(StyleableMixin(LitElement)
         }
 
         :host nav {
+        display: flex; 
           position: var(--ee-tabs-nav-position, sticky);
           top:0;
           width: 100%;
           border-bottom: 1px solid var(--ee-tabs-lines-color, #bbb);
-          display: flex;
           height: var(--ee-tabs-height, 32px);
-          z-index: var(--ee-tabs-z-index);
+          z-index: var(--ee-tabs-z-index, 1);
           overflow: var(--ee-tabs-nav-overflow);
         }
 
@@ -27,24 +26,23 @@ export class EeTabs extends ThemeableMixin('ee-tabs')(StyleableMixin(LitElement)
           height: 100%;
         }
 
-        /* TODO: Why don't these selectors work? */
-        :host #contentContainer ::slotted(*) {
+        #contentContainer ::slotted(*) {
           display: none;
         }
 
-        :host #contentContainer ::slotted(*[active]) {
-          display: initial;
+        #contentContainer ::slotted([active]) {
+          display: block;
         }
 
-        :host nav ::slotted(*) .icon {
-          fill: var(--ee-tabs-color);
+        nav ::slotted(*) .icon {
+          fill: var(--ee-tabs-color, black);
         }
 
-        :host nav > ::slotted(*[active]) .icon {
+        nav > ::slotted(*[active]) .icon {
           fill: var(--ee-tabs-active-color, black);
         }
 
-        :host nav > ::slotted(*) {
+        nav > ::slotted(*) {
           color: var(--ee-tabs-color, black);
           text-decoration: none;
           line-height: var(--ee-tabs-height, 20px);
@@ -65,23 +63,23 @@ export class EeTabs extends ThemeableMixin('ee-tabs')(StyleableMixin(LitElement)
           max-width: max-content;
         }
 
-        :host nav > ::slotted(*:last-child) {
+        nav > ::slotted(:last-child) {
           border-right-color: var(--ee-tabs-background-color, #bbb)
         }
 
-        :host nav > ::slotted(*:first-child) {
+        nav > ::slotted(:first-child) {
           border-left-color: var(--ee-tabs-background-color, #bbb)
         }
 
-        :host nav > ::slotted(*[active]) {
+        nav > ::slotted([active]) {
           color: var(--ee-tabs-active-color);
           border-bottom: 4px solid var(--ee-tabs-active-color, black);
           background-color: var(--ee-tabs-active-background-color, white);
-          font-size: bold;
+          font-weight: bold;
         }
 
-        :host nav > ::slotted(*:focus),
-        :host nav > ::slotted(*:hover) {
+        nav > ::slotted(:focus),
+        nav > ::slotted(:hover) {
           /* outline:0 ; */
           border-left: 0.5px solid var(--ee-tabs-lines-color, #bbb);
           border-right: 0.5px solid var(--ee-tabs-lines-color, #bbb);
@@ -89,23 +87,23 @@ export class EeTabs extends ThemeableMixin('ee-tabs')(StyleableMixin(LitElement)
           filter: brightness(115%)
         }
 
-        :host nav > ::slotted(*:active) {
+        nav > ::slotted(:active) {
           background: #cccccc;
           border-bottom: 4px solid #bdbdbd;
           box-shadow: none;
         }
 
-        :host nav > ::slotted(*[disabled]) {
+        nav > ::slotted([disabled]) {
           box-shadow: none
         }
 
-        :host nav > ::slotted(*.icon:active) {
+        nav > ::slotted(.icon:active) {
           background: #cccccc;
           border: unset;
           border-radius: 50%;
         }
 
-        :host nav > ::slotted(*.icon:hover) svg, :host > ::slotted(*:hover) svg {
+        nav > ::slotted(.icon:hover) svg, :host > ::slotted(:hover) svg {
           fill: var(--ee-tabs-color, black);
         }
       `
@@ -242,4 +240,4 @@ export class EeTabs extends ThemeableMixin('ee-tabs')(StyleableMixin(LitElement)
     }
   }
 }
-customElements.define('ee-tabs', EeTabs)
+// customElements.define('ee-tabs', EeTabs)

@@ -1,13 +1,12 @@
 import { LitElement, html, css } from 'lit'
 import { StyleableMixin } from '../mixins/StyleableMixin'
-import { ThemeableMixin } from '../mixins/ThemeableMixin'
 
 import './ee-toolbar'
 
 const arrowback = html`<svg class="icon" height="24" viewBox="0 0 24 24" width="24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path></svg>`
 const menu = html`<svg class="icon" height="24" viewBox="0 0 24 24" width="24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg>`
 
-export class EeHeader extends ThemeableMixin('ee-header')(StyleableMixin(LitElement)) {
+export class EeHeader extends StyleableMixin(LitElement) {
   static get styles () {
     return [
       super.styles,
@@ -28,26 +27,26 @@ export class EeHeader extends ThemeableMixin('ee-header')(StyleableMixin(LitElem
           text-align: center;
         }
 
-        :host([menu]) div[title],
-        :host([back]) div[title] {
+        :host([menu]) div[header-title],
+        :host([back]) div[header-title] {
           padding-right: 46px;
         }
 
-        :host([menu][back]) div[title]{
+        :host([menu][back]) div[header-title]{
           padding-right: 92px;
         }
 
-        div[title], div[middle] {
+        div[header-title], div[middle] {
           display: block;
         }
 
-        div[title] h3,
-        div[title] h5 {
+        div[header-title] h3,
+        div[header-title] h5 {
           margin-block-start: 0.2em;
           margin-block-end: 0.2em;
         }
 
-        div[title] h5 {
+        div[header-title] h5 {
           text-align: start;
           display: flex;
         }
@@ -128,8 +127,8 @@ export class EeHeader extends ThemeableMixin('ee-header')(StyleableMixin(LitElem
       // Otherwise, they can user their own with slot="controls" and slot="header-title"
       back: { type: Boolean, reflect: true },
       menu: { type: Boolean, reflect: true },
-      backEvent: { type: Object, attribute: 'back-event' },
-      menuEvent: { type: Object, attribute: 'menu-event' },
+      backEvent: { type: Function, attribute: 'back-event' },
+      menuEvent: { type: Function, attribute: 'menu-event' },
       headerTitle: { type: String, attribute: 'header-title' },
       headerSubtitle: { type: String, attribute: 'header-subtitle' }
     }
@@ -154,7 +153,7 @@ export class EeHeader extends ThemeableMixin('ee-header')(StyleableMixin(LitElem
             ${this.back ? html`<button class="icon" title="Back" @click="${this._backEvent}">${arrowback}</button>` : ''}
             <slot name="controls"></slot>
           </div>
-          <div title>
+          <div header-title>
           ${this.headerTitle
             ? html`
                 <h3>${this.headerTitle}</h3>
@@ -187,4 +186,4 @@ export class EeHeader extends ThemeableMixin('ee-header')(StyleableMixin(LitElem
     this.backEvent()
   }
 }
-customElements.define('ee-header', EeHeader)
+// customElements.define('ee-header', EeHeader)

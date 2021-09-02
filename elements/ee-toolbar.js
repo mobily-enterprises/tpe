@@ -1,8 +1,7 @@
 import { LitElement, html, css } from 'lit'
 import { StyleableMixin } from '../mixins/StyleableMixin'
-import { ThemeableMixin } from '../mixins/ThemeableMixin'
 
-export class EeToolbar extends ThemeableMixin('ee-toolbar')(StyleableMixin(LitElement)) {
+export class EeToolbar extends StyleableMixin(LitElement) {
   static get styles () {
     return [
       super.styles,
@@ -63,4 +62,4 @@ export class EeToolbar extends ThemeableMixin('ee-toolbar')(StyleableMixin(LitEl
     `
   }
 }
-customElements.define('ee-toolbar', EeToolbar)
+// customElements.define('ee-toolbar', EeToolbar)

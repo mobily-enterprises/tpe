@@ -1,8 +1,7 @@
 import { LitElement, html, css } from 'lit'
 import { StyleableMixin } from '../mixins/StyleableMixin'
-import { ThemeableMixin } from '../mixins/ThemeableMixin'
 
-export class EeFadeIn extends ThemeableMixin('ee-fade-in')(StyleableMixin(LitElement)) {
+export class EeFadeIn extends StyleableMixin(LitElement) {
   static get styles () {
     return [
       super.styles,
@@ -44,4 +43,4 @@ export class EeFadeIn extends ThemeableMixin('ee-fade-in')(StyleableMixin(LitEle
     `
   }
 }
-customElements.define('ee-fade-in', EeFadeIn)
+// customElements.define('ee-fade-in', EeFadeIn)

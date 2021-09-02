@@ -7,7 +7,7 @@ import { LabelsMixin } from '../mixins/LabelsMixin.js'
 import { StyleableMixin } from '../mixins/StyleableMixin.js'
 import { ThemeableMixin } from '../mixins/ThemeableMixin.js'
 
-class NnInputRange extends ThemeableMixin('nn-input-range')(FormElementMixin(NativeValidatorMixin(StyleableMixin(LabelsMixin(InputMixin(NativeReflectorMixin(LitElement))))))) {
+export class NnInputRange extends FormElementMixin(NativeValidatorMixin(StyleableMixin(LabelsMixin(InputMixin(NativeReflectorMixin(LitElement)))))) {
   render () {
     if (this.themeRender) return this.themeRender()
     return html`
@@ -19,4 +19,4 @@ class NnInputRange extends ThemeableMixin('nn-input-range')(FormElementMixin(Nat
     `
   }
 }
-window.customElements.define('nn-input-range', NnInputRange)
+// window.customElements.define('nn-input-range', NnInputRange)

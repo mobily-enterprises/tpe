@@ -119,19 +119,7 @@ export const NativeReflectorMixin = (base) => {
       this._setSubAttr(attr, null)
     }
 
-    toggleAttribute (attr, force) {
-      // Call the base class toggleAttribute
-      super.toggleAttribute(attr, force)
-
-      if (this.skipAttributes.indexOf(attr) !== -1) return
-
-      // Assign the same attribute to the contained native
-      // element, taking care of the 'nn' syntax,
-      // and use internal `toggle` instead of `set` method
-      this._setSubAttr(attr, force, true)
-    }
-
-    _setSubAttr (subAttr, attrValue, toggle) {
+    _setSubAttr (subAttr, attrValue) {
       const tokens = subAttr.split('::')
 
       // Safeguard: if this.native is not yet set, it means that
@@ -144,9 +132,7 @@ export const NativeReflectorMixin = (base) => {
       if (tokens.length === 1) {
         (attrValue === null)
           ? this.native.removeAttribute(subAttr)
-          : toggle 
-            ? this.native.toggleAttribute(subAttr, attrValue) 
-            : this.native.setAttribute(subAttr, attrValue)
+          : this.native.setAttribute(subAttr, attrValue)
 
       // Yes, :: is there: assign the attribute to the element with the
       // corresponding ID
@@ -155,9 +141,7 @@ export const NativeReflectorMixin = (base) => {
         if (dstElement) {
           attrValue === null
             ? dstElement.removeAttribute(tokens[1])
-            : toggle 
-              ? dstElement.toggleAttribute(tokens[1], attrValue)
-              : dstElement.setAttribute(tokens[1], attrValue)
+            : dstElement.setAttribute(tokens[1], attrValue)
         }
       }
     }

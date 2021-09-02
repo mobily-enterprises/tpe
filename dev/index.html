@@ -6,7 +6,11 @@
     <title>&lt;my-element> Demo</title>
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../node_modules/lit/polyfill-support.js"></script>
-    <script type="module" src="../tpe.js"></script>
+    <!-- <script type="module" src="../tpe.js"></script> -->
+    <script type="module">
+      import { tpe } from '../tpe-class.js'
+      await tpe.importer()
+    </script>
     <script type="module" src="/dev/my-element.js"></script>
   </head>
   <body>
@@ -35,14 +39,6 @@
   
     </style>
     <body>
-      <ee-drawer backdrop>
-        <a href="/demo">Demo</a>
-        <a href="/demo#tab1">Tab 1</a>
-        <a href="/demo#tab2">Tab 2</a>
-        <a href="/demo#tab3">Tab 3</a>
-        <a href="/demo#tab4">Tab 4</a>
-  
-      </ee-drawer>
       <ee-header menu header-title="TPE demo"></ee-header>
   
       <ee-tabs default="tab2" >
@@ -142,11 +138,20 @@
           <h3>With Drag and Drop in a LitElement</h3>
           <dnd-example></dnd-example>
         </div>
-        <div name="tab3" slot="content"></div>
+        <div name="tab3" slot="content">
+          <my-element></my-element>
+        </div>
         <div name="tab4" slot="content"></div>
       </ee-tabs>
       <nn-button> Button</nn-button>
       <nn-input-text label="Input"></nn-input-text>
+      <ee-drawer backdrop>
+        <a href="/demo">Demo</a>
+        <a href="/demo#tab1">Tab 1</a>
+        <a href="/demo#tab2">Tab 2</a>
+        <a href="/demo#tab3">Tab 3</a>
+        <a href="/demo#tab4">Tab 4</a>
+      </ee-drawer>
     </body>
     <script>
       function toggleDrawer () {

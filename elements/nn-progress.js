@@ -2,10 +2,9 @@ import { LitElement, html, css } from 'lit'
 import { NativeReflectorMixin } from '../mixins/NativeReflectorMixin.js'
 import { StyleableMixin } from '../mixins/StyleableMixin.js'
 import { LabelsMixin } from '../mixins/LabelsMixin.js'
-import { ThemeableMixin } from '../mixins/ThemeableMixin.js'
 import { progressElement } from '../lib/htmlApi'
 
-export class NnProgress extends ThemeableMixin('nn-progress')(StyleableMixin(LabelsMixin(NativeReflectorMixin(LitElement)))) {
+export class NnProgress extends StyleableMixin(LabelsMixin(NativeReflectorMixin(LitElement))) {
   static get properties () {
     return {
     }
@@ -63,4 +62,4 @@ export class NnProgress extends ThemeableMixin('nn-progress')(StyleableMixin(Lab
     `
   }
 }
-customElements.define('nn-progress', NnProgress)
+// customElements.define('nn-progress', NnProgress)

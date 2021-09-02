@@ -1,7 +1,7 @@
 import { html } from 'lit'
 import { NnInputText } from './nn-input-text'
 
-class NnInputPassword extends NnInputText {
+export class NnInputPassword extends NnInputText {
   render () {
     if (this.themeRender) return this.themeRender()
     return html`
@@ -13,4 +13,4 @@ class NnInputPassword extends NnInputText {
     `
   }
 }
-window.customElements.define('nn-input-password', NnInputPassword)
+// window.customElements.define('nn-input-password', NnInputPassword)

@@ -1,9 +1,7 @@
 import { LitElement, html, css } from 'lit'
 import { StyleableMixin } from '../mixins/StyleableMixin'
-import { ThemeableMixin } from '../mixins/ThemeableMixin'
-import { DraggableElementMixin } from '../mixins/DraggableElementMixin'
 
-export class EeRow extends DraggableElementMixin(ThemeableMixin('ee-row')(StyleableMixin(LitElement))) {
+export class EeRow extends StyleableMixin(LitElement) {
   
   static get styles () {
     return [
@@ -106,4 +104,4 @@ export class EeRow extends DraggableElementMixin(ThemeableMixin('ee-row')(Stylea
     `
   }
 }
-customElements.define('ee-row', EeRow)
+// customElements.define('ee-row', EeRow)
