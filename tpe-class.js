@@ -50,9 +50,6 @@ const _config = {
 
 export class TPE {
 
-  constructor () {
-  }
-
   set imported (v) {
     if (_imported) return
     _imported = v
@@ -74,12 +71,12 @@ export class TPE {
     return _config
   }
 
-  async applyTheme (themeConfig) {
+  async importTheme (themeConfig) {
     if (this.imported) throw new Error('Elements already imported. Themes need to be applied before importing.')
     this.theme = { ...themeConfig }
   }
 
-  async importer (config) {
+  async importer () {
 
     const define = (name, module) => {
       customElements.define(name, ThemeableMixin(name, this.theme)(module))
