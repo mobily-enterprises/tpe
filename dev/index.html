@@ -43,9 +43,6 @@
   
       <ee-tabs default="tab2" >
         <span name="tab1">Form</span>
-        <span name="tab2">Table</span>
-        <span name="tab3">Tab 3</span>
-        <span name="tab4">Tab 4</span>
         <div name="tab1" slot="content">
           <nn-form>
             <h2>Meter</h2>
@@ -86,6 +83,8 @@
             <nn-button id="button" me1="me" me2="me2">Button</nn-button>
           </nn-form>
         </div>
+
+        <span name="tab2">Table</span>
         <div name="tab2" slot="content">
           <h3>Simple table</h3>
           <ee-table>
@@ -111,46 +110,24 @@
             </ee-row>
           </ee-table>
   
-          <h3>With Drag and Drop</h3>
-          <ee-table id="drag-example-table" drag-drop manipulate-dom>
-            <ee-row header no-drop>
-              <ee-cell header>Content</ee-cell>
-              <ee-cell header>Content</ee-cell>
-              <ee-cell header>Content</ee-cell>
-            </ee-row>
-            <ee-row mark>
-              <ee-cell>Content 1</ee-cell>
-              <ee-cell>Content 1</ee-cell>
-              <ee-cell>Content 1</ee-cell>
-            </ee-row>
-            <ee-row drag-data='{"id": 1, "name": "test 2" }'>
-              <ee-cell>Content 2</ee-cell>
-              <ee-cell>Content 2</ee-cell>
-              <ee-cell>Content 2</ee-cell>
-            </ee-row>
-            <ee-row>
-              <ee-cell>Content 3</ee-cell>
-              <ee-cell>Content 3</ee-cell>
-              <ee-cell>Content 3</ee-cell>
-            </ee-row>
-          </ee-table>
-  
-          <h3>With Drag and Drop in a LitElement</h3>
-          <dnd-example></dnd-example>
         </div>
+
+        <span name="tab3">Drag and drop</span>
         <div name="tab3" slot="content">
           <my-element></my-element>
         </div>
-        <div name="tab4" slot="content"></div>
+
+        <span name="tab4">Tab 4</span>
+        <div name="tab4" slot="content">
+
+        </div>
       </ee-tabs>
-      <nn-button> Button</nn-button>
-      <nn-input-text label="Input"></nn-input-text>
       <ee-drawer backdrop>
-        <a href="/demo">Demo</a>
-        <a href="/demo#tab1">Tab 1</a>
-        <a href="/demo#tab2">Tab 2</a>
-        <a href="/demo#tab3">Tab 3</a>
-        <a href="/demo#tab4">Tab 4</a>
+        <a href="/dev">Home</a>
+        <a href="/dev#tab1">Tab 1</a>
+        <a href="/dev#tab2">Tab 2</a>
+        <a href="/dev#tab3">Tab 3</a>
+        <a href="/dev#tab4">Tab 4</a>
       </ee-drawer>
     </body>
     <script>
