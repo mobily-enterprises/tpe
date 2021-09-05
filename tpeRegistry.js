@@ -9,11 +9,6 @@ class TpeRegistry {
     this.elements[tagName] = cls
   }
 
-  registerAndDefine (tagName, cls) {
-    this.register(tagName, cls)    
-    this.define(tagName)
-  }
-
   defineAll () {
     for (const k in this.elements) {
       this.define(k)
