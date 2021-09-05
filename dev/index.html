@@ -4,13 +4,15 @@
   <head>
     <meta charset="utf-8" />
     <title>&lt;my-element> Demo</title>
-    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-    <script src="../node_modules/lit/polyfill-support.js"></script>
-    <!-- <script type="module" src="../tpe.js"></script> -->
+    <script type="module" src="../tpe.js"></script>
+    <!--
     <script type="module">
-      import { tpe } from '../tpe-class.js'
-      await tpe.importer()
+      import '../tpe.js'
+      import tpeRegistry from '../tpeRegistry.js'
+      debugger
+      await tpeRegistry.defineElements()
     </script>
+    -->
     <script type="module" src="/dev/my-element.js"></script>
   </head>
   <body>
@@ -140,6 +142,7 @@
       document.addEventListener('DOMContentLoaded', (event) => {
         console.log('ready')
       
+        /*
         const header = document.querySelector('ee-header')
         header.addEventListener('menu-clicked', toggleDrawer)
   
@@ -156,6 +159,7 @@
           { id: 2, name: 'content 2' },
           { id: 3, name: 'content 3' }
         ]
+        */
       })
       // const table = document.getElementById('drag-example-table')
     </script>

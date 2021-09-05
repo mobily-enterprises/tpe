@@ -9,7 +9,7 @@
 import {LitElement, html, css} from '../node_modules/lit';
 import { repeat } from '../node_modules/lit/directives/repeat.js';
 import  './list-element.js'
-
+import tpeRegistry from '../tpeRegistry'
 
 // import { flip } from '@lit-labs/motion';
 
@@ -123,4 +123,4 @@ export class MyElement extends LitElement {
   }
 }
 
-window.customElements.define('my-element', MyElement);
+tpeRegistry.register('my-element', MyElement);

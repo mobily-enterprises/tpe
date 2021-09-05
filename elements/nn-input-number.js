@@ -1,16 +1,4 @@
-import { html } from 'lit'
-import { NnInputText } from './nn-input-text'
+import tpeRegistry from '../tpeRegistry'
+import { NnInputNumber } from './nn-input-number-class'
 
-export class NnInputNumber extends NnInputText {
-  render () {
-    if (this.themeRender) return this.themeRender()
-    return html`
-      ${this.ifLabelBefore}
-      ${this.ifValidationMessageBefore}
-      <input type="number" id="native">
-      ${this.ifValidationMessageAfter}
-      ${this.ifLabelAfter}
-    `
-  }
-}
-// window.customElements.define('nn-input-number', NnInputNumber)
+tpeRegistry.define('nn-input-number', NnInputNumber)

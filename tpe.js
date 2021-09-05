@@ -1,5 +1,5 @@
-import { tpe } from "./tpe-class";
+// Importing this file will import tpe AND will define all elements
 
-// Default export is an IIFE which runs the default tpe importer, for use with
-// type="module" script imports in HTML files
-export default (function () { tpe.importer() })()
+import tpeRegistry from './tpeRegistry.js'
+import './tpe-classes.js'
+tpeRegistry.defineAll()

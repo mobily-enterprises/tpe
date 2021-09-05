@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { repeat } from 'lit/directives/repeat'
+import tpeRegistry from '../tpeRegistry'
 
 class ListElement  extends LitElement {
 
@@ -195,4 +196,4 @@ class ListElement  extends LitElement {
   }
 }
 
-customElements.define('list-element', ListElement);
+tpeRegistry.register('list-element', ListElement);

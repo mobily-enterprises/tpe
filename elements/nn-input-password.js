@@ -1,16 +1,4 @@
-import { html } from 'lit'
-import { NnInputText } from './nn-input-text'
+import tpeRegistry from '../tpeRegistry'
+import { NnInputPassword } from './nn-input-password-class'
 
-export class NnInputPassword extends NnInputText {
-  render () {
-    if (this.themeRender) return this.themeRender()
-    return html`
-      ${this.ifLabelBefore}
-      ${this.ifValidationMessageBefore}
-      <input type="password" id="native">
-      ${this.ifValidationMessageAfter}
-      ${this.ifLabelAfter}
-    `
-  }
-}
-// window.customElements.define('nn-input-password', NnInputPassword)
+tpeRegistry.define(assword', NnInputPassword)

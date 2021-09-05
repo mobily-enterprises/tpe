@@ -1,16 +1,4 @@
-import { html } from 'lit'
-import { NnInputText } from './nn-input-text'
+import tpeRegistry from '../tpeRegistry'
+import { NnInputDateTimeLocal } from './nn-input-date-time-local-class'
 
-export class NnInputDateTimeLocal extends NnInputText {
-  render () {
-    if (this.themeRender) return this.themeRender()
-    return html`
-      ${this.ifLabelBefore}
-      ${this.ifValidationMessageBefore}
-      <input type="datetime-local" id="native">
-      ${this.ifValidationMessageAfter}
-      ${this.ifLabelAfter}
-    `
-  }
-}
-// window.customElements.define('nn-input-datetime-local', NnInputDateTimeLocal)
+tpeRegistry.define('nn-input-date-time-local', NnInputDateTimeLocal)

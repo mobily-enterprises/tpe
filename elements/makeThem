@@ -1,0 +1,11 @@
+#!/bin/bash
+for elName in `cat CAZ | cut -d ' ' -f 1`;do
+  className=`cat CAZ | grep $elName | cut -d ' ' -f 2`
+
+  echo $elName --- $className
+  echo import tpeRegistry from \'../tpeRegistry\' > ${elName}.js
+  echo import { $className } from \'./${elName}-class\' >> ${elName}.js
+  echo >> ${elName}.js
+  echo tpeRegistry.registerAndDefine\(\'$elName\', $className\) >> ${elName}.js
+  
+done
