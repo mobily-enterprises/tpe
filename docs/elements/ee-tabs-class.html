@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>ee-tabs-class.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="../tpe.css" />
+</head>
+<body>
+  <div class="container">
+      <div class="header">
+        <div class="topbar">
+          <div id="logo" alt="TPE">
+          </div>
+          <h3>ee-tabs-class.js</h3>
+          <!-- <img id="logo" src="/images/TPE_logo_white.png" height="60px" alt="TPE" > -->
+          <div class="links">
+            <a href="https://github.com/mobily-enterprises/tpe" target="_blank" title="View on GitHub">
+              <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub icon</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            </a>
+          </div>
+        </div>
+        ee-tabs-class.js
+      </div>
+      <div class="main">
+        
+          <div class="toc">
+            <ul>
+              
+                
+                
+                  <li>
+                      <a class="source " href="../index.html">
+                          index
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../quickstart-designers.html">
+                          quickstart designers
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../tutorials-designers.html">
+                          tutorials designers
+                      </a>
+                  </li>
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../quickstart-developers.html">
+                          quickstart developers
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../tutorials-developers.html">
+                          tutorials developers
+                      </a>
+                  </li>
+                
+              
+                
+                
+              
+                
+                
+                  <li>
+                      <a class="source  current " href="../elements.html">
+                          elements
+                      </a>
+                  </li>
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../mixins.html">
+                          mixins
+                      </a>
+                  </li>
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../appendices.html">
+                          appendices
+                      </a>
+                  </li>
+                
+              
+                
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../material-theme.html">
+                          material theme
+                      </a>
+                  </li>
+                
+              
+            </ul>
+          </div>
+        
+        <div class="contentPage">
+          
+            
+            
+            
+              <div class='highlight'><pre><span class="hljs-keyword">import</span> { <span class="hljs-title class_">LitElement</span>, html, css } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;lit&#x27;</span>
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">StyleableMixin</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../mixins/StyleableMixin&#x27;</span>
+<span class="hljs-keyword">import</span> tpeRegistry <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../tpeRegistry&#x27;</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">EeTabs</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">StyleableMixin</span>(<span class="hljs-title class_">LitElement</span>) {
+  <span class="hljs-keyword">static</span> get styles () {
+    <span class="hljs-keyword">return</span> [
+      <span class="hljs-variable language_">super</span>.<span class="hljs-property">styles</span>,
+      css`<span class="language-css">
+        <span class="hljs-selector-pseudo">:host</span> {
+          <span class="hljs-attribute">position</span>: relative;
+          <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">1px</span> solid <span class="hljs-built_in">var</span>(<span class="hljs-built_in">var</span>(--ee-tabs-lines-color, <span class="hljs-number">#bbb</span>));
+        }
+
+        <span class="hljs-selector-pseudo">:host</span> <span class="hljs-selector-tag">nav</span> {
+        <span class="hljs-attribute">display</span>: flex; 
+          <span class="hljs-attribute">position</span>: <span class="hljs-built_in">var</span>(--ee-tabs-nav-position, sticky);
+          <span class="hljs-attribute">top</span>:<span class="hljs-number">0</span>;
+          <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+          <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">1px</span> solid <span class="hljs-built_in">var</span>(--ee-tabs-lines-color, <span class="hljs-number">#bbb</span>);
+          <span class="hljs-attribute">height</span>: <span class="hljs-built_in">var</span>(--ee-tabs-height, <span class="hljs-number">32px</span>);
+          <span class="hljs-attribute">z-index</span>: <span class="hljs-built_in">var</span>(--ee-tabs-z-index, <span class="hljs-number">1</span>);
+          <span class="hljs-attribute">overflow</span>: <span class="hljs-built_in">var</span>(--ee-tabs-nav-overflow);
+        }
+
+        <span class="hljs-selector-pseudo">:host</span> <span class="hljs-selector-id">#contentContainer</span> {
+          <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+        }
+
+        <span class="hljs-selector-id">#contentContainer</span> <span class="hljs-selector-pseudo">::slotted</span>(*) {
+          <span class="hljs-attribute">display</span>: none;
+        }
+
+        <span class="hljs-selector-id">#contentContainer</span> <span class="hljs-selector-pseudo">::slotted</span>(<span class="hljs-selector-attr">[active]</span>) {
+          <span class="hljs-attribute">display</span>: block;
+        }
+
+        <span class="hljs-selector-tag">nav</span> <span class="hljs-selector-pseudo">::slotted</span>(*) <span class="hljs-selector-class">.icon</span> {
+          fill: <span class="hljs-built_in">var</span>(--ee-tabs-color, black);
+        }
+
+        <span class="hljs-selector-tag">nav</span> &gt; <span class="hljs-selector-pseudo">::slotted</span>(*<span class="hljs-selector-attr">[active]</span>) <span class="hljs-selector-class">.icon</span> {
+          fill: <span class="hljs-built_in">var</span>(--ee-tabs-active-color, black);
+        }
+
+        <span class="hljs-selector-tag">nav</span> &gt; <span class="hljs-selector-pseudo">::slotted</span>(*) {
+          <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--ee-tabs-color, black);
+          <span class="hljs-attribute">text-decoration</span>: none;
+          <span class="hljs-attribute">line-height</span>: <span class="hljs-built_in">var</span>(--ee-tabs-height, <span class="hljs-number">20px</span>);
+          <span class="hljs-attribute">padding</span>: <span class="hljs-number">4px</span> <span class="hljs-number">12px</span>;
+          <span class="hljs-attribute">border</span>: unset;
+          <span class="hljs-attribute">border-left</span>: <span class="hljs-number">0.5px</span> solid <span class="hljs-built_in">var</span>(--ee-tabs-lines-color, <span class="hljs-number">#bbb</span>);
+          <span class="hljs-attribute">border-right</span>: <span class="hljs-number">0.5px</span> solid <span class="hljs-built_in">var</span>(--ee-tabs-lines-color, <span class="hljs-number">#bbb</span>);
+          <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">4px</span> solid <span class="hljs-built_in">var</span>(--ee-tabs-background-color, <span class="hljs-number">#bbb</span>);
+          <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0.9em</span>;
+          <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">0</span>;
+          <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+          <span class="hljs-attribute">text-align</span>: center;
+          <span class="hljs-attribute">background-color</span>:  <span class="hljs-built_in">var</span>(--ee-tabs-background-color, whitesmoke);
+          <span class="hljs-attribute">cursor</span>: default;
+        }
+
+        <span class="hljs-selector-pseudo">:host</span>(<span class="hljs-selector-attr">[min-width-tabs]</span>) <span class="hljs-selector-tag">nav</span> &gt; <span class="hljs-selector-pseudo">::slotted</span>(*) {
+          <span class="hljs-attribute">max-width</span>: max-content;
+        }
+
+        <span class="hljs-selector-tag">nav</span> &gt; <span class="hljs-selector-pseudo">::slotted</span>(<span class="hljs-selector-pseudo">:last-child</span>) {
+          <span class="hljs-attribute">border-right-color</span>: <span class="hljs-built_in">var</span>(--ee-tabs-background-color, <span class="hljs-number">#bbb</span>)
+        }
+
+        <span class="hljs-selector-tag">nav</span> &gt; <span class="hljs-selector-pseudo">::slotted</span>(<span class="hljs-selector-pseudo">:first</span>-child) {
+          <span class="hljs-attribute">border-left-color</span>: <span class="hljs-built_in">var</span>(--ee-tabs-background-color, <span class="hljs-number">#bbb</span>)
+        }
+
+        <span class="hljs-selector-tag">nav</span> &gt; <span class="hljs-selector-pseudo">::slotted</span>(<span class="hljs-selector-attr">[active]</span>) {
+          <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--ee-tabs-active-color);
+          <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">4px</span> solid <span class="hljs-built_in">var</span>(--ee-tabs-active-color, black);
+          <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">var</span>(--ee-tabs-active-background-color, white);
+          <span class="hljs-attribute">font-weight</span>: bold;
+        }
+
+        <span class="hljs-selector-tag">nav</span> &gt; <span class="hljs-selector-pseudo">::slotted</span>(<span class="hljs-selector-pseudo">:focus</span>),
+        <span class="hljs-selector-tag">nav</span> &gt; <span class="hljs-selector-pseudo">::slotted</span>(<span class="hljs-selector-pseudo">:hover</span>) {
+          <span class="hljs-comment">/* outline:0 ; */</span>
+          <span class="hljs-attribute">border-left</span>: <span class="hljs-number">0.5px</span> solid <span class="hljs-built_in">var</span>(--ee-tabs-lines-color, <span class="hljs-number">#bbb</span>);
+          <span class="hljs-attribute">border-right</span>: <span class="hljs-number">0.5px</span> solid <span class="hljs-built_in">var</span>(--ee-tabs-lines-color, <span class="hljs-number">#bbb</span>);
+          <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">4px</span> solid <span class="hljs-built_in">var</span>(--ee-tabs-active-color, black);
+          <span class="hljs-attribute">filter</span>: <span class="hljs-built_in">brightness</span>(<span class="hljs-number">115%</span>)
+        }
+
+        <span class="hljs-selector-tag">nav</span> &gt; <span class="hljs-selector-pseudo">::slotted</span>(<span class="hljs-selector-pseudo">:active</span>) {
+          <span class="hljs-attribute">background</span>: <span class="hljs-number">#cccccc</span>;
+          <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">4px</span> solid <span class="hljs-number">#bdbdbd</span>;
+          <span class="hljs-attribute">box-shadow</span>: none;
+        }
+
+        <span class="hljs-selector-tag">nav</span> &gt; <span class="hljs-selector-pseudo">::slotted</span>(<span class="hljs-selector-attr">[disabled]</span>) {
+          <span class="hljs-attribute">box-shadow</span>: none
+        }
+
+        <span class="hljs-selector-tag">nav</span> &gt; <span class="hljs-selector-pseudo">::slotted</span>(<span class="hljs-selector-class">.icon</span><span class="hljs-selector-pseudo">:active</span>) {
+          <span class="hljs-attribute">background</span>: <span class="hljs-number">#cccccc</span>;
+          <span class="hljs-attribute">border</span>: unset;
+          <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50%</span>;
+        }
+
+        <span class="hljs-selector-tag">nav</span> &gt; <span class="hljs-selector-pseudo">::slotted</span>(<span class="hljs-selector-class">.icon</span><span class="hljs-selector-pseudo">:hover</span>) svg, <span class="hljs-selector-pseudo">:host</span> &gt; <span class="hljs-selector-pseudo">::slotted</span>(<span class="hljs-selector-pseudo">:hover</span>) svg {
+          fill: <span class="hljs-built_in">var</span>(--ee-tabs-color, black);
+        }
+      `</span>
+    ]
+  }
+
+  <span class="hljs-keyword">static</span> get properties () {
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-attr">useHash</span>: { <span class="hljs-attr">type</span>: <span class="hljs-title class_">Boolean</span>, <span class="hljs-attr">attribute</span>: <span class="hljs-string">&#x27;use-hash&#x27;</span> },
+      <span class="hljs-attr">passive</span>: { <span class="hljs-attr">type</span>: <span class="hljs-title class_">Boolean</span> },
+      <span class="hljs-attr">default</span>: { <span class="hljs-attr">type</span>: <span class="hljs-title class_">String</span> },
+      <span class="hljs-attr">nameAttribute</span>: { <span class="hljs-attr">type</span>: <span class="hljs-title class_">String</span>, <span class="hljs-attr">attribute</span>: <span class="hljs-string">&#x27;name-attribute&#x27;</span> },
+      <span class="hljs-attr">minWidthTabs</span>: { <span class="hljs-attr">type</span>: <span class="hljs-title class_">Boolean</span>, <span class="hljs-attr">reflect</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">attribute</span>: <span class="hljs-string">&#x27;min-width-tabs&#x27;</span> }
+    }
+  }
+
+  <span class="hljs-title function_">constructor</span> () {
+    <span class="hljs-variable language_">super</span>()
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">nameAttribute</span> = <span class="hljs-string">&#x27;name&#x27;</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">useHash</span> = <span class="hljs-literal">false</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">passive</span> = <span class="hljs-literal">false</span>
+  }
+
+  <span class="hljs-comment">/** Tabs usage
+   * add elements within the ee-tabs tags to create tabs.
+   * Tab elements must have an name attribute, or you can set a custom value to &#x27;active-attribute&#x27;. Index support will be added soon
+   */</span>
+  render () {
+    
+    <span class="hljs-keyword">return</span> html`<span class="language-xml">
+    <span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">slot</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;tabs&quot;</span> @<span class="hljs-attr">slotchange</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-subst">${<span class="hljs-variable language_">this</span>._manageSlottedTabs}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;contentContainer&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">slot</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;content&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    `</span>
+  }
+
+  _allTabs () {
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">shadowRoot</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;slot#tabs&#x27;</span>).<span class="hljs-title function_">assignedElements</span>()
+  }
+
+  _workoutHash () {
+    <span class="hljs-keyword">let</span> tab
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">useHash</span>) {
+      <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">window</span>.<span class="hljs-property">location</span>.<span class="hljs-property">hash</span>) tab = <span class="hljs-variable language_">window</span>.<span class="hljs-property">location</span>.<span class="hljs-property">hash</span>.<span class="hljs-title function_">substr</span>(<span class="hljs-number">1</span>)
+      <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">default</span>) tab = <span class="hljs-variable language_">this</span>.<span class="hljs-property">default</span>
+      <span class="hljs-keyword">else</span> tab = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_allTabs</span>()[<span class="hljs-number">0</span>]
+    }
+    <span class="hljs-keyword">return</span> tab
+  }
+
+  firstUpdated () {
+    <span class="hljs-variable language_">super</span>.<span class="hljs-title function_">firstUpdated</span>()
+
+    <span class="hljs-keyword">const</span> tab = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_workoutHash</span>()
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">select</span>(tab, <span class="hljs-literal">false</span>)
+
+    <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;popstate&#x27;</span>, <span class="hljs-function"><span class="hljs-params">e</span> =&gt;</span> {
+      <span class="hljs-keyword">const</span> tab = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_workoutHash</span>()
+      <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">useHash</span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">select</span>(tab, <span class="hljs-literal">true</span>)
+      }
+    })
+  }
+
+  _isActive (el) {
+    <span class="hljs-keyword">return</span> el.<span class="hljs-title function_">hasAttribute</span>(<span class="hljs-string">&#x27;active&#x27;</span>)
+  }
+
+  select (tab, clearAll = <span class="hljs-literal">true</span>) {
+    <span class="hljs-keyword">let</span> pages</pre></div>
+            
+          
+            
+            <p>Find the tab. If it can’t be found, end of story</p>
+
+            
+              <div class='highlight'><pre>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> tab === <span class="hljs-string">&#x27;string&#x27;</span>) {
+      tab = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_allTabs</span>().<span class="hljs-title function_">find</span>(<span class="hljs-function"><span class="hljs-params">i</span> =&gt;</span> i.<span class="hljs-title function_">getAttribute</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">nameAttribute</span>) === tab)
+    }
+    <span class="hljs-keyword">if</span> (!tab) <span class="hljs-keyword">return</span></pre></div>
+            
+          
+            
+            <p>If clearAll was passed, clear selection of tabs and (if !passive) pages</p>
+
+            
+              <div class='highlight'><pre>    <span class="hljs-keyword">if</span> (clearAll) {
+      pages = <span class="hljs-variable language_">this</span>.<span class="hljs-property">shadowRoot</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;slot[name=&quot;content&quot;]&#x27;</span>).<span class="hljs-title function_">assignedElements</span>()
+
+      <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">passive</span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_clearAll</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_allTabs</span>(), pages)
+      } <span class="hljs-keyword">else</span> {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_clearAll</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_allTabs</span>())
+      }
+    }</pre></div>
+            
+          
+            
+            <p>Activate the tab</p>
+
+            
+              <div class='highlight'><pre>    tab.<span class="hljs-title function_">toggleAttribute</span>(<span class="hljs-string">&#x27;active&#x27;</span>, <span class="hljs-literal">true</span>)
+    tab.<span class="hljs-property">active</span> = <span class="hljs-literal">true</span></pre></div>
+            
+          
+            
+            <p>If !passive, activate the corresponding page</p>
+
+            
+              <div class='highlight'><pre>    <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">passive</span>) {
+      <span class="hljs-keyword">const</span> name = tab.<span class="hljs-title function_">getAttribute</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">nameAttribute</span>)
+      <span class="hljs-keyword">const</span> activePage = pages.<span class="hljs-title function_">find</span>(<span class="hljs-function"><span class="hljs-params">el</span> =&gt;</span> el.<span class="hljs-title function_">getAttribute</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">nameAttribute</span>) === name)
+      <span class="hljs-keyword">if</span> (activePage) {
+        activePage.<span class="hljs-title function_">toggleAttribute</span>(<span class="hljs-string">&#x27;active&#x27;</span>, <span class="hljs-literal">true</span>)
+        activePage.<span class="hljs-property">active</span> = <span class="hljs-literal">true</span>
+      }
+    }
+  }</pre></div>
+            
+          
+            
+            <p>Clear the seletecAttribute from the current active tab and page</p>
+
+            
+              <div class='highlight'><pre>  _clearAll (tabs, pages) {</pre></div>
+            
+          
+            
+            
+            
+              <div class='highlight'><pre>    <span class="hljs-keyword">const</span> currentTab = tabs.<span class="hljs-title function_">find</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">_isActive</span>.<span class="hljs-title function_">bind</span>(<span class="hljs-variable language_">this</span>))
+    <span class="hljs-keyword">if</span> (currentTab) {
+      currentTab.<span class="hljs-title function_">toggleAttribute</span>(<span class="hljs-string">&#x27;active&#x27;</span>, <span class="hljs-literal">false</span>)
+      currentTab.<span class="hljs-property">active</span> = <span class="hljs-literal">false</span>
+    }
+
+    <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">passive</span>) {
+      <span class="hljs-keyword">const</span> currentPage = pages.<span class="hljs-title function_">find</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">_isActive</span>.<span class="hljs-title function_">bind</span>(<span class="hljs-variable language_">this</span>))
+      <span class="hljs-keyword">if</span> (currentPage) {
+        currentPage.<span class="hljs-title function_">toggleAttribute</span>(<span class="hljs-string">&#x27;active&#x27;</span>, <span class="hljs-literal">false</span>)
+        currentPage.<span class="hljs-property">active</span> = <span class="hljs-literal">false</span>
+      }
+    }
+  }</pre></div>
+            
+          
+            
+            <p>This adds a click event listener to all slotted children (the tabs)</p>
+
+            
+              <div class='highlight'><pre>  _manageSlottedTabs (e) {
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> element <span class="hljs-keyword">of</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_allTabs</span>()) {
+      element.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">e</span>) =&gt;</span> { <span class="hljs-variable language_">this</span>.<span class="hljs-property">select</span>.<span class="hljs-title function_">bind</span>(<span class="hljs-variable language_">this</span>)(e.<span class="hljs-property">currentTarget</span>) })
+      element.<span class="hljs-title function_">setAttribute</span>(<span class="hljs-string">&#x27;tabindex&#x27;</span>, <span class="hljs-number">1</span>)
+    }
+
+    <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">passive</span> &amp;&amp; <span class="hljs-variable language_">this</span>.<span class="hljs-property">default</span>) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">select</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">default</span>, <span class="hljs-literal">true</span>)
+    }
+  }
+}
+tpeRegistry.<span class="hljs-title function_">register</span>(<span class="hljs-string">&#x27;ee-tabs&#x27;</span>, <span class="hljs-title class_">EeTabs</span>)</pre></div>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="bottombar">
+
+    </div>
+  </div>
+</body>
+</html>

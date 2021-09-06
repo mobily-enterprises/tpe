@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>DraggableListMixin</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="../tpe.css" />
+</head>
+<body>
+  <div class="container">
+      <div class="header">
+        <div class="topbar">
+          <div id="logo" alt="TPE">
+          </div>
+          <h3>DraggableListMixin</h3>
+          <!-- <img id="logo" src="/images/TPE_logo_white.png" height="60px" alt="TPE" > -->
+          <div class="links">
+            <a href="https://github.com/mobily-enterprises/tpe" target="_blank" title="View on GitHub">
+              <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub icon</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            </a>
+          </div>
+        </div>
+        DraggableListMixin
+      </div>
+      <div class="main">
+        
+          <div class="toc">
+            <ul>
+              
+                
+                
+                  <li>
+                      <a class="source " href="../index.html">
+                          index
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../quickstart-designers.html">
+                          quickstart designers
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../tutorials-designers.html">
+                          tutorials designers
+                      </a>
+                  </li>
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../quickstart-developers.html">
+                          quickstart developers
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../tutorials-developers.html">
+                          tutorials developers
+                      </a>
+                  </li>
+                
+              
+                
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../elements.html">
+                          elements
+                      </a>
+                  </li>
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+                  <li>
+                      <a class="source  current " href="../mixins.html">
+                          mixins
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="AddHasValueAttributeMixin.html">
+                          AddHasValueAttributeMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="DraggableElementMixin.html">
+                          DraggableElementMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented  current " href="DraggableListMixin.html">
+                          DraggableListMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="FormElementMixin.html">
+                          FormElementMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="InputMixin.html">
+                          InputMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="LabelsMixin.html">
+                          LabelsMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="NativeReflectorMixin.html">
+                          NativeReflectorMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="NativeValidatorMixin.html">
+                          NativeValidatorMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="StyleableMixin.html">
+                          StyleableMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="SyntheticValidatorMixin.html">
+                          SyntheticValidatorMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="ThemeableMixin.html">
+                          ThemeableMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../appendices.html">
+                          appendices
+                      </a>
+                  </li>
+                
+              
+                
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../material-theme.html">
+                          material theme
+                      </a>
+                  </li>
+                
+              
+            </ul>
+          </div>
+        
+        <div class="contentPage">
+          
+            
+            <p>This mixin adds a Drag and Drop API basic implementation to any element.
+The base element (the one to which the Mixin is added) needs to have slotted children,
+for which the mixin will add drag events listeners.
+These capabilities are applied solely to the direct slotted children, and not their children.</p>
+<p>For now, the children also need to abide to a few rules:</p>
+<ol>
+<li>A child element needs CSS to provide the correct visual state as draggable or not:</li>
+</ol>
+<p>  /* Drag and Drop Styles */
+  #handle {
+    display: none;
+    max-width: 18px;
+    height: 18px;
+  }</p>
+<p>  :host([header]) .handle,
+  :host([header]) ::slotted(.handle) {
+    pointer-events: none;
+    visibility: hidden;
+  }</p>
+<p>  :host([draggable]) .handle,
+  :host([draggable]) ::slotted(.handle) {
+    display: block;
+    cursor: move;
+  }</p>
+<ol start="2">
+<li>It needs to have a “no-drag” and/or “no-drop” attribute if the first child is used as a table header and will not be draggable and/or droppable.</li>
+<li>It needs as “drag-data” attribute and/or “dragData” property if any usable data is necessary for the DnD operation. More on that later.</li>
+</ol>
+<p>This is the DraggabeListMixin declaration:</p>
+
+            
+              <div class='highlight'><pre><span class="hljs-keyword">import</span> { css } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;lit&#x27;</span></pre></div>
+            
+          
+            
+            <p>These are declared outside the mixin to make sure different instances access the same data.
+This is important in order to support dragging items between separate lists.</p>
+
+            
+              <div class='highlight'><pre><span class="hljs-variable language_">window</span>.<span class="hljs-property">moving</span> = <span class="hljs-literal">null</span>
+<span class="hljs-variable language_">window</span>.<span class="hljs-property">originContainer</span> = <span class="hljs-literal">null</span>
+<span class="hljs-variable language_">window</span>.<span class="hljs-property">targetContainer</span> = <span class="hljs-literal">null</span>
+<span class="hljs-keyword">const</span> targetRows = []
+<span class="hljs-variable language_">window</span>.<span class="hljs-property">lastEntered</span> = <span class="hljs-literal">null</span>
+
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">debounce</span> = (<span class="hljs-params">callback, wait, immediate = <span class="hljs-literal">false</span></span>) =&gt; {
+  <span class="hljs-keyword">let</span> timeout = <span class="hljs-literal">null</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> callNow = immediate &amp;&amp; !timeout
+    <span class="hljs-keyword">const</span> <span class="hljs-title function_">next</span> = (<span class="hljs-params"></span>) =&gt; callback.<span class="hljs-title function_">apply</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-variable language_">arguments</span>)
+    <span class="hljs-built_in">clearTimeout</span>(timeout)
+    timeout = <span class="hljs-built_in">setTimeout</span>(next, wait)
+    <span class="hljs-keyword">if</span> (callNow) {
+      <span class="hljs-title function_">next</span>()
+    }
+  }
+}
+
+<span class="hljs-keyword">const</span> debouncedPortionOfDragenterListener = <span class="hljs-title function_">debounce</span>(<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Debounced dragenter&#x27;</span>)
+  <span class="hljs-title function_">requestAnimationFrame</span>(<span class="hljs-function">() =&gt;</span> {</pre></div>
+            
+          
+            
+            <p>The targetRows array might have previous targets in it. Remove the target class from them</p>
+
+            
+              <div class='highlight'><pre>    targetRows.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">element</span> =&gt;</span> {
+      element.<span class="hljs-property">classList</span>.<span class="hljs-title function_">remove</span>(<span class="hljs-string">&#x27;target&#x27;</span>)
+    })
+    targetRows.<span class="hljs-title function_">splice</span>(<span class="hljs-number">0</span>, targetRows.<span class="hljs-property">length</span>)</pre></div>
+            
+          
+            
+            <p>Add target class and push the current target to the targetRows array</p>
+
+            
+              <div class='highlight'><pre>    <span class="hljs-variable language_">window</span>.<span class="hljs-property">lastEntered</span>.<span class="hljs-property">classList</span>.<span class="hljs-title function_">add</span>(<span class="hljs-string">&#x27;target&#x27;</span>)
+    targetRows.<span class="hljs-title function_">push</span>(<span class="hljs-variable language_">this</span>)
+  })
+  <span class="hljs-keyword">await</span> <span class="hljs-variable language_">window</span>.<span class="hljs-property">targetContainer</span>.<span class="hljs-title function_">dragenterHook</span>(e, <span class="hljs-variable language_">window</span>.<span class="hljs-property">moving</span>, <span class="hljs-variable language_">this</span>)
+}, <span class="hljs-number">100</span>, <span class="hljs-literal">true</span>)
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title function_">DraggableListMixin</span> = (<span class="hljs-params">base</span>) =&gt; {
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Base</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">base</span> {</pre></div>
+            
+          
+            
+            <p>Necessary styles to be added to the litElement based target element:</p>
+
+            
+              <div class='highlight'><pre>    <span class="hljs-keyword">static</span> get styles () {
+      <span class="hljs-keyword">return</span> [
+        <span class="hljs-variable language_">super</span>.<span class="hljs-property">styles</span>,
+        css`<span class="language-css">
+          <span class="hljs-keyword">@-webkit-keyframes</span> fadeIn {
+            <span class="hljs-number">0%</span>   { <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>; }
+            <span class="hljs-number">100%</span> { <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>; }
+          }
+          <span class="hljs-keyword">@-moz-keyframes</span> fadeIn {
+            <span class="hljs-number">0%</span>   { <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>; }
+            <span class="hljs-number">100%</span> { <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>; }
+          }
+          <span class="hljs-keyword">@-o-keyframes</span> fadeIn {
+            <span class="hljs-number">0%</span>   { <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>; }
+            <span class="hljs-number">100%</span> { <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>; }
+          }
+          <span class="hljs-keyword">@keyframes</span> fadeIn {
+            <span class="hljs-number">0%</span>   { <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>; }
+            <span class="hljs-number">100%</span> { <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>; }
+          }
+
+          <span class="hljs-keyword">@-webkit-keyframes</span> flash {
+            <span class="hljs-number">0%</span>   {<span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>}
+            <span class="hljs-number">70%</span> {<span class="hljs-attribute">opacity</span>: <span class="hljs-number">0.5</span>;}
+            <span class="hljs-number">100%</span> {<span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;}
+          }
+
+          <span class="hljs-keyword">@-moz-keyframes</span> flash {
+            <span class="hljs-number">0%</span>   {<span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>}
+            <span class="hljs-number">70%</span> {<span class="hljs-attribute">opacity</span>: <span class="hljs-number">0.5</span>;}
+            <span class="hljs-number">100%</span> {<span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;}
+          }
+
+          <span class="hljs-keyword">@-o-keyframes</span> flash {
+            <span class="hljs-number">0%</span>   {<span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>}
+            <span class="hljs-number">70%</span> {<span class="hljs-attribute">opacity</span>: <span class="hljs-number">0.5</span>;}
+            <span class="hljs-number">100%</span> {<span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;}
+          }
+
+          <span class="hljs-keyword">@keyframes</span> flash {
+            <span class="hljs-number">0%</span>   {<span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>}
+            <span class="hljs-number">70%</span> {<span class="hljs-attribute">opacity</span>: <span class="hljs-number">0.5</span>;}
+            <span class="hljs-number">100%</span> {<span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;}
+          }
+
+          <span class="hljs-selector-pseudo">::slotted</span>(<span class="hljs-selector-class">.success-overlay</span>), <span class="hljs-selector-pseudo">::slotted</span>(<span class="hljs-selector-class">.error-overlay</span>) {
+            <span class="hljs-attribute">position</span>: relative;
+          }
+
+          <span class="hljs-selector-pseudo">::slotted</span>(<span class="hljs-selector-class">.success-overlay</span>)<span class="hljs-selector-pseudo">::after</span>, <span class="hljs-selector-pseudo">::slotted</span>(<span class="hljs-selector-class">.error-overlay</span>)<span class="hljs-selector-pseudo">::after</span> {
+            <span class="hljs-attribute">content</span>: <span class="hljs-string">&#x27;&#x27;</span>;
+            <span class="hljs-attribute">position</span>: absolute;
+            <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+            <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+            <span class="hljs-attribute">background-color</span>: green;
+            <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;
+            <span class="hljs-attribute">animation</span>: flash <span class="hljs-number">0.3s</span> ease;
+          }
+
+          <span class="hljs-selector-pseudo">::slotted</span>(<span class="hljs-selector-class">.error-overlay</span>)<span class="hljs-selector-pseudo">::after</span> {
+            <span class="hljs-attribute">background-color</span>: red;
+          }
+
+          <span class="hljs-selector-pseudo">::slotted</span>(<span class="hljs-selector-class">.target</span>), <span class="hljs-selector-pseudo">::slotted</span>(<span class="hljs-selector-class">.moving</span>) {
+            <span class="hljs-attribute">box-sizing</span>: border-box;
+            <span class="hljs-attribute">outline</span>: <span class="hljs-number">6px</span> solid orange;
+            <span class="hljs-attribute">background-color</span>: papayawhip;
+            <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0.2</span>;
+          }
+
+          <span class="hljs-selector-pseudo">::slotted</span>(<span class="hljs-selector-class">.target</span>) {
+            <span class="hljs-attribute">position</span>: relative;
+            <span class="hljs-attribute">box-sizing</span>: border-box;
+            <span class="hljs-attribute">background-color</span>: white;
+          }
+        `</span>
+      ]
+    }
+
+    <span class="hljs-keyword">static</span> get properties () {
+      <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">dragDrop</span>: { <span class="hljs-attr">type</span>: <span class="hljs-title class_">Boolean</span>, <span class="hljs-attr">attribute</span>: <span class="hljs-string">&#x27;drag-drop&#x27;</span> }
+      }
+    }
+
+    <span class="hljs-title function_">constructor</span> () {
+      <span class="hljs-variable language_">super</span>()
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;enable-dnd&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">_enableDndForElement</span>)
+    }
+
+    _enableDndForElement (e) {
+      <span class="hljs-keyword">const</span> el = e.<span class="hljs-property">srcElement</span></pre></div>
+            
+          
+            
+            <p>Do not enable if drag-drop attribute is not present in the list element, if</p>
+
+            
+              <div class='highlight'><pre>      <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">dragDrop</span>) <span class="hljs-keyword">return</span>
+      e.<span class="hljs-title function_">stopPropagation</span>()
+      <span class="hljs-keyword">const</span> dndHandle = el.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;#dnd-handle&#x27;</span>)</pre></div>
+            
+          
+            
+            <p>el.dndContainerElement = this // NOT USED ANYWHERE</p>
+<p>If element is marked as no-drag, skip this block</p>
+
+            
+              <div class='highlight'><pre>      <span class="hljs-keyword">if</span> (!el.<span class="hljs-title function_">hasAttribute</span>(<span class="hljs-string">&#x27;no-drag&#x27;</span>)) {</pre></div>
+            
+          
+            
+            <p>If a DND handle is defined (element with ID dnd-handle), then
+use THAT as the only option to move elements around</p>
+
+            
+              <div class='highlight'><pre>        <span class="hljs-keyword">if</span> (dndHandle) {</pre></div>
+            
+          
+            
+            <p>Hovering the handle will enable dragging the element</p>
+
+            
+              <div class='highlight'><pre>          dndHandle.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;mouseover&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+            el.<span class="hljs-title function_">setAttribute</span>(<span class="hljs-string">&#x27;draggable&#x27;</span>, <span class="hljs-string">&#x27;true&#x27;</span>)
+            el.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;dragstart&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">_dragstartListener</span>, <span class="hljs-literal">false</span>)
+          })
+          dndHandle.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;mouseout&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+            el.<span class="hljs-title function_">removeAttribute</span>(<span class="hljs-string">&#x27;draggable&#x27;</span>)
+            el.<span class="hljs-title function_">removeEventListener</span>(<span class="hljs-string">&#x27;dragstart&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">_dragstartListener</span>)
+          })
+        } <span class="hljs-keyword">else</span> {
+          el.<span class="hljs-title function_">setAttribute</span>(<span class="hljs-string">&#x27;draggable&#x27;</span>, <span class="hljs-string">&#x27;true&#x27;</span>)
+          el.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;dragstart&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">_dragstartListener</span>, <span class="hljs-literal">false</span>)
+        }
+      }</pre></div>
+            
+          
+            
+            <p>Enables drop event, in the element is not marked as no-drop</p>
+
+            
+              <div class='highlight'><pre>      <span class="hljs-keyword">if</span> (!el.<span class="hljs-title function_">hasAttribute</span>(<span class="hljs-string">&#x27;no-drop&#x27;</span>)) {</pre></div>
+            
+          
+            
+            <p>Add event listeners to element</p>
+
+            
+              <div class='highlight'><pre>        el.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;dragenter&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">_dragenterListener</span>, <span class="hljs-literal">false</span>)
+        el.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;dragend&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">_dragendListener</span>, <span class="hljs-literal">false</span>)
+        el.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;drop&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">_dropListener</span>, <span class="hljs-literal">false</span>)
+
+        el.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;dragleave&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">_dragleaveListener</span>, <span class="hljs-literal">false</span>)
+        el.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;dragexit&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">_dragexitListener</span>, <span class="hljs-literal">false</span>)
+        el.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;dragover&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">_dragoverListener</span>, <span class="hljs-literal">false</span>)
+      }
+    }</pre></div>
+            
+          
+            
+            <p>HOOKS to be redefined by the mixing class</p>
+
+            
+              <div class='highlight'><pre>    <span class="hljs-keyword">async</span> dragstartHook (e, moving) { <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span> }
+    <span class="hljs-keyword">async</span> dragenterHook (e, moving, target) { <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span> }
+    <span class="hljs-keyword">async</span> dragendHook (e, moving, target) { <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span> }
+    <span class="hljs-keyword">async</span> dropHook (e, moving, target) { <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span> }
+
+    <span class="hljs-keyword">async</span> dragexitHook (e, moving) { <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span> }
+    <span class="hljs-keyword">async</span> dragleaveHook (e, moving, target) { <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span> }
+    <span class="hljs-keyword">async</span> dragoverHook (e, moving, target) { <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span> }
+    validDropHook (e, moving, target) { <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span> }</pre></div>
+            
+          
+            
+            <h1 id="drag-and-drop-handlers-and-hooks">Drag and Drop Handlers and hooks</h1>
+
+            
+          
+            
+            <p>All the logic used during DnD is defined in these handlers, which are registered as listeners during instantiation.
+All listeners are private and not supposed to be modified. They call a hook for each type of event.
+The hooks should be redefined to handle any work that’s needed during of in response to the drag event.</p>
+
+            
+              <div class='highlight'><pre>    _dragstartListener (e) {
+      <span class="hljs-variable language_">window</span>.<span class="hljs-property">lastEntered</span> = <span class="hljs-literal">null</span></pre></div>
+            
+          
+            
+            <p>Start out by assuming the user is moving, and that moving is allowed. This can be changed in the hook.</p>
+
+            
+              <div class='highlight'><pre>      e.<span class="hljs-property">dataTransfer</span>.<span class="hljs-property">effectAllowed</span> = <span class="hljs-string">&#x27;move&#x27;</span>
+      e.<span class="hljs-property">dataTransfer</span>.<span class="hljs-property">dropEffect</span> = <span class="hljs-string">&#x27;move&#x27;</span></pre></div>
+            
+          
+            
+            <p>The proper way to ‘move’ data around while dragging is to use the dataTransfer interface. However, webKit based browsers
+only make that data accessible in the drop event, so getting anything in dragenter or dragover is impossible.
+To make it simpler and fully intereoperable, we store a reference to the parent of the moving item and the item itself
+in the Mixin’s outer scope</p>
+
+            
+              <div class='highlight'><pre>      <span class="hljs-variable language_">window</span>.<span class="hljs-property">originContainer</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">parentElement</span>
+      <span class="hljs-variable language_">window</span>.<span class="hljs-property">moving</span> = <span class="hljs-variable language_">this</span></pre></div>
+            
+          
+            
+            <p>Use requestAnimationFrame API to update styles, toa void performance issues</p>
+
+            
+              <div class='highlight'><pre>      <span class="hljs-title function_">requestAnimationFrame</span>(<span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-variable language_">window</span>.<span class="hljs-property">moving</span>.<span class="hljs-property">classList</span>.<span class="hljs-title function_">add</span>(<span class="hljs-string">&#x27;moving&#x27;</span>)
+      })</pre></div>
+            
+          
+            
+            <p>All handler hooks are called from the list parent, which must implement them.</p>
+
+            
+              <div class='highlight'><pre>      <span class="hljs-variable language_">window</span>.<span class="hljs-property">originContainer</span>.<span class="hljs-title function_">dragstartHook</span>(e, <span class="hljs-variable language_">window</span>.<span class="hljs-property">moving</span>)
+    }
+
+    _dragenterListener (e) {
+      <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span> === <span class="hljs-variable language_">window</span>.<span class="hljs-property">lastEntered</span>) <span class="hljs-keyword">return</span></pre></div>
+            
+          
+            
+            <p>Like in dragstart with the moving item, we store the target’s parent reference for later use</p>
+
+            
+              <div class='highlight'><pre>      <span class="hljs-variable language_">window</span>.<span class="hljs-property">targetContainer</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">parentElement</span>
+      <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">window</span>.<span class="hljs-property">targetContainer</span>.<span class="hljs-title function_">validDropHook</span>(e, <span class="hljs-variable language_">window</span>.<span class="hljs-property">moving</span>, <span class="hljs-variable language_">this</span>)) {
+        <span class="hljs-keyword">return</span>
+      }</pre></div>
+            
+          
+            
+            <p>preventDefault is necessary to ALLOW custom dragenter handling</p>
+
+            
+              <div class='highlight'><pre>      e.<span class="hljs-title function_">preventDefault</span>()
+      <span class="hljs-variable language_">window</span>.<span class="hljs-property">previousLastEntered</span> = <span class="hljs-variable language_">window</span>.<span class="hljs-property">lastEntered</span>
+      <span class="hljs-variable language_">window</span>.<span class="hljs-property">lastEntered</span> = <span class="hljs-variable language_">this</span>
+
+      debouncedPortionOfDragenterListener.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">this</span>, e)
+    }</pre></div>
+            
+          
+            
+            <p>dragover, dragleave and dragexit listeners are setup and hooks are available, but no work is done here by default</p>
+
+            
+              <div class='highlight'><pre>    _dragoverListener (e) {</pre></div>
+            
+          
+            
+            <p>preventDefault is necessary to ALLOW custom dragover and dropping handling</p>
+
+            
+              <div class='highlight'><pre>      e.<span class="hljs-title function_">preventDefault</span>()
+      e.<span class="hljs-property">dataTransfer</span>.<span class="hljs-property">dropEffect</span> = <span class="hljs-string">&#x27;move&#x27;</span>
+
+      <span class="hljs-variable language_">window</span>.<span class="hljs-property">targetContainer</span>.<span class="hljs-title function_">dragoverHook</span>(e, <span class="hljs-variable language_">window</span>.<span class="hljs-property">moving</span>, <span class="hljs-variable language_">this</span>)
+    }
+
+    _dragleaveListener (e) {
+      <span class="hljs-variable language_">window</span>.<span class="hljs-property">targetContainer</span>.<span class="hljs-title function_">dragleaveHook</span>(e, <span class="hljs-variable language_">window</span>.<span class="hljs-property">moving</span>, <span class="hljs-variable language_">this</span>)
+    }
+
+    _dragexitListener (e) {
+      <span class="hljs-variable language_">window</span>.<span class="hljs-property">targetContainer</span>.<span class="hljs-title function_">dragexitHook</span>(e, <span class="hljs-variable language_">window</span>.<span class="hljs-property">moving</span>, <span class="hljs-variable language_">this</span>)
+    }
+
+    _dragendListener (e) {</pre></div>
+            
+          
+            
+            <p>some niche cases might result in this method running when references are empty. Bail to avoid errors</p>
+
+            
+              <div class='highlight'><pre>      <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">window</span>.<span class="hljs-property">originContainer</span> || !<span class="hljs-variable language_">window</span>.<span class="hljs-property">targetContainer</span>) <span class="hljs-keyword">return</span>
+
+      <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">window</span>.<span class="hljs-property">originContainer</span>.<span class="hljs-title function_">validDropHook</span>(e, <span class="hljs-variable language_">window</span>.<span class="hljs-property">moving</span>, <span class="hljs-variable language_">window</span>.<span class="hljs-property">lastEntered</span>)) <span class="hljs-keyword">return</span></pre></div>
+            
+          
+            
+            <p>This hook needs to be a promise, so references are not cleared before the hook is done</p>
+
+            
+              <div class='highlight'><pre>      <span class="hljs-variable language_">window</span>.<span class="hljs-property">originContainer</span>.<span class="hljs-title function_">dragendHook</span>(e, <span class="hljs-variable language_">window</span>.<span class="hljs-property">moving</span>).<span class="hljs-title function_">then</span>(<span class="hljs-function">() =&gt;</span> {</pre></div>
+            
+          
+            
+            <p>only clear styles and references if dropEffect is none, which should be set while validating the target in the hooks
+if (e.dataTransfer.dropEffect === ‘none’) {</p>
+
+            
+              <div class='highlight'><pre>        <span class="hljs-title function_">requestAnimationFrame</span>(<span class="hljs-function">() =&gt;</span> {
+          <span class="hljs-variable language_">this</span>.<span class="hljs-property">classList</span>.<span class="hljs-title function_">remove</span>(<span class="hljs-string">&#x27;moving&#x27;</span>)
+          <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(targetRows)
+          targetRows.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">element</span> =&gt;</span> {
+            element.<span class="hljs-property">classList</span>.<span class="hljs-title function_">remove</span>(<span class="hljs-string">&#x27;target&#x27;</span>)
+          })
+          targetRows.<span class="hljs-title function_">splice</span>(<span class="hljs-number">0</span>, targetRows.<span class="hljs-property">length</span>)
+          <span class="hljs-variable language_">window</span>.<span class="hljs-property">moving</span> = <span class="hljs-literal">null</span>
+          <span class="hljs-variable language_">window</span>.<span class="hljs-property">originContainer</span> = <span class="hljs-literal">null</span>
+          <span class="hljs-variable language_">window</span>.<span class="hljs-property">targetContainer</span> = <span class="hljs-literal">null</span>
+          <span class="hljs-variable language_">window</span>.<span class="hljs-property">lastEntered</span> = <span class="hljs-literal">null</span>
+        })</pre></div>
+            
+          
+            
+            <p>}</p>
+
+            
+              <div class='highlight'><pre>      })
+    }
+
+    _dropListener (e) {
+      e.<span class="hljs-title function_">preventDefault</span>()</pre></div>
+            
+          
+            
+            <p>Like with dragend, the hook needs to return a promise to avoid timing issues.</p>
+
+            
+              <div class='highlight'><pre>      <span class="hljs-variable language_">window</span>.<span class="hljs-property">targetContainer</span>.<span class="hljs-title function_">dropHook</span>(e, <span class="hljs-variable language_">window</span>.<span class="hljs-property">moving</span>, <span class="hljs-variable language_">this</span>)
+    }
+  }
+}</pre></div>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="bottombar">
+
+    </div>
+  </div>
+</body>
+</html>

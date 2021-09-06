@@ -1,0 +1,1 @@
+* [FormElementMixin](../mixins/FormElementMixin.html) - Assigns the correct `form` property to form elements; `form` is a reference to the containing form element. This needs to be done artificially since HTML will only assign the `form` property automatically if both `form` and `element` are in the same shadow DOM.

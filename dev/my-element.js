@@ -6,8 +6,8 @@
 
 // import { tpe } from '../tpe.js'
 // await tpe.importer()
-import {LitElement, html, css} from '../node_modules/lit';
-import { repeat } from '../node_modules/lit/directives/repeat.js';
+import {LitElement, html, css} from 'lit';
+import { repeat } from 'lit-html/directives/repeat.js';
 import  './list-element.js'
 import tpeRegistry from '../tpeRegistry'
 

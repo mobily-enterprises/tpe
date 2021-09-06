@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>nn-input-text-class.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="../tpe.css" />
+</head>
+<body>
+  <div class="container">
+      <div class="header">
+        <div class="topbar">
+          <div id="logo" alt="TPE">
+          </div>
+          <h3>nn-input-text-class.js</h3>
+          <!-- <img id="logo" src="/images/TPE_logo_white.png" height="60px" alt="TPE" > -->
+          <div class="links">
+            <a href="https://github.com/mobily-enterprises/tpe" target="_blank" title="View on GitHub">
+              <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub icon</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            </a>
+          </div>
+        </div>
+        nn-input-text-class.js
+      </div>
+      <div class="main">
+        
+          <div class="toc">
+            <ul>
+              
+                
+                
+                  <li>
+                      <a class="source " href="../index.html">
+                          index
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../quickstart-designers.html">
+                          quickstart designers
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../tutorials-designers.html">
+                          tutorials designers
+                      </a>
+                  </li>
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../quickstart-developers.html">
+                          quickstart developers
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../tutorials-developers.html">
+                          tutorials developers
+                      </a>
+                  </li>
+                
+              
+                
+                
+              
+                
+                
+                  <li>
+                      <a class="source  current " href="../elements.html">
+                          elements
+                      </a>
+                  </li>
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../mixins.html">
+                          mixins
+                      </a>
+                  </li>
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../appendices.html">
+                          appendices
+                      </a>
+                  </li>
+                
+              
+                
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../material-theme.html">
+                          material theme
+                      </a>
+                  </li>
+                
+              
+            </ul>
+          </div>
+        
+        <div class="contentPage">
+          
+            
+            <p>This element is a thin wrap to <code>&lt;input type=text</code>&gt;.</p>
+<h2 id="designers">Designers</h2>
+
+            
+          
+            
+            <p>This is a simple text input element. Use it instead of <code>&lt;input type=&quot;text&quot;&gt;</code>.</p>
+<p> This element implements the validation API, extending it. It allows you to
+ set custom validators, as well as custom error messages for native regexp-based
+ validation.</p>
+<p> For example:</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nn-input-text</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;group&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;group&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nn-input-text</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+  group.<span class="hljs-property">validator</span> = <span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-keyword">const</span> value = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;#group&#x27;</span>).<span class="hljs-property">value</span>
+    <span class="hljs-keyword">if</span> (group.<span class="hljs-property">value</span>.<span class="hljs-title function_">startsWith</span>(<span class="hljs-string">&#x27;a&#x27;</span>)) <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;No group can start with &quot;a&quot;&#x27;</span>
+  }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<p>This will ensure that upon validation the field will display the error
+<code>No group can start with &quot;a&quot;</code> if the field starts with “a”.</p>
+<p>Note that validation will happen before form submission.</p>
+<p>Default themes:</p>
+<ul>
+<li><a href="../material-theme/nn-input-text.html">Material</a></li>
+</ul>
+<h2 id="developers">Developers</h2>
+
+            
+          
+            
+            <h3 id="mixins">Mixins</h3>
+
+            
+          
+            
+            <ul>
+<li><p><a href="../mixins/NativeReflectorMixin.html">NativeReflectorMixin</a> - It reflects every attribute and every API property/method from the native element to the outer element.</p>
+</li>
+<li><p><a href="../mixins/InputMixin.html">InputMixin</a> - Will skip reflection for the <code>type</code> attribute (since <code>type</code> is <em>always</em> <code>text</code>), and will reflect all of the properties and methods of <code>&lt;input&gt;</code> elements according to the <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement">HTMLInputElement API</a></p>
+</li>
+<li><p><a href="../mixins/LabelsMixin.html">LabelsMixin</a> - Implements labels for form elements.</p>
+</li>
+<li><p><a href="../mixins/StyleableMixin.html">StyleableMixin</a> - Allows designers to add custom styles to the element by having a <code>&lt;style slot=&quot;style&quot;&gt;</code> defined in the element’ light DOM.</p>
+</li>
+<li><p><a href="../mixins/NativeValidatorMixin.html">NativeValidatorMixin</a> - Implements the full <a href="https://developer.mozilla.org/en-US/docs/Web/API/Constraint_validation">Contraint Validation API</a>.</p>
+</li>
+<li><p><a href="../mixins/FormElementMixin.html">FormElementMixin</a> - Assigns the correct <code>form</code> property to form elements; <code>form</code> is a reference to the containing form element. This needs to be done artificially since HTML will only assign the <code>form</code> property automatically if both <code>form</code> and <code>element</code> are in the same shadow DOM.</p>
+</li>
+</ul>
+
+            
+              <div class='highlight'><pre><span class="hljs-keyword">import</span> { <span class="hljs-title class_">LitElement</span>, html } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;lit&#x27;</span>
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NativeReflectorMixin</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../mixins/NativeReflectorMixin.js&#x27;</span>
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">InputMixin</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../mixins/InputMixin.js&#x27;</span>
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FormElementMixin</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../mixins/FormElementMixin.js&#x27;</span>
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NativeValidatorMixin</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../mixins/NativeValidatorMixin.js&#x27;</span>
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">LabelsMixin</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../mixins/LabelsMixin.js&#x27;</span>
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">StyleableMixin</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../mixins/StyleableMixin.js&#x27;</span>
+<span class="hljs-keyword">import</span> tpeRegistry <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../tpeRegistry&#x27;</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">NnInputText</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">FormElementMixin</span>(<span class="hljs-title class_">NativeValidatorMixin</span>(<span class="hljs-title class_">StyleableMixin</span>(<span class="hljs-title class_">LabelsMixin</span>(<span class="hljs-title class_">InputMixin</span>(<span class="hljs-title class_">NativeReflectorMixin</span>(<span class="hljs-title class_">LitElement</span>)))))) {
+  render () {
+    
+    <span class="hljs-keyword">return</span> html`<span class="language-xml">
+      </span><span class="hljs-subst">${<span class="hljs-variable language_">this</span>.ifLabelBefore}</span><span class="language-xml">
+      </span><span class="hljs-subst">${<span class="hljs-variable language_">this</span>.ifValidationMessageBefore}</span><span class="language-xml">
+      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;native&quot;</span> <span class="hljs-attr">real-time-event</span>=<span class="hljs-string">&quot;input&quot;</span> &gt;</span>
+      </span><span class="hljs-subst">${<span class="hljs-variable language_">this</span>.ifValidationMessageAfter}</span><span class="language-xml">
+      </span><span class="hljs-subst">${<span class="hljs-variable language_">this</span>.ifLabelAfter}</span><span class="language-xml">
+      <span class="hljs-tag">&lt;<span class="hljs-name">slot</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;datalist-slot&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;datalist&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span>
+    `</span>
+  }
+
+  <span class="hljs-title function_">constructor</span> () {
+    <span class="hljs-variable language_">super</span>()
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">_boundKeyEventListener</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">_eventListener</span>.<span class="hljs-title function_">bind</span>(<span class="hljs-variable language_">this</span>)
+  }
+
+  <span class="hljs-keyword">static</span> get properties () {
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-attr">submitOnEnter</span>: { <span class="hljs-attr">type</span>: <span class="hljs-title class_">Boolean</span>, <span class="hljs-attr">attribute</span>: <span class="hljs-string">&#x27;submit-on-enter&#x27;</span> }
+    }
+  }</pre></div>
+            
+          
+            
+            <p>Submit on enter with forms with only one element</p>
+
+            
+              <div class='highlight'><pre>  _eventListener (e) {
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">form</span> &amp;&amp; e.<span class="hljs-property">keyCode</span> === <span class="hljs-number">13</span> &amp;&amp; (<span class="hljs-variable language_">this</span>.<span class="hljs-property">form</span>.<span class="hljs-property">elements</span>.<span class="hljs-property">length</span> === <span class="hljs-number">1</span> || <span class="hljs-variable language_">this</span>.<span class="hljs-property">submitOnEnter</span>)) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">form</span>.<span class="hljs-title function_">submit</span>()
+    }
+  }
+
+  afterSettingProperty (prop, newValue) {
+    <span class="hljs-variable language_">super</span>.<span class="hljs-title function_">afterSettingProperty</span>(prop, newValue)</pre></div>
+            
+          
+            
+            <p>Update the form parent value if <code>prop</code> is <code>value</code></p>
+
+            
+              <div class='highlight'><pre>    <span class="hljs-keyword">if</span> (prop === <span class="hljs-string">&#x27;value&#x27;</span> &amp;&amp; <span class="hljs-variable language_">this</span>.<span class="hljs-property">internals</span>) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">internals</span>.<span class="hljs-title function_">setFormValue</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">value</span>)
+    }
+  }
+
+  firstUpdated () {
+    <span class="hljs-variable language_">super</span>.<span class="hljs-title function_">firstUpdated</span>()
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;keydown&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">_boundKeyEventListener</span>)
+
+    <span class="hljs-keyword">const</span> slot = <span class="hljs-variable language_">this</span>.<span class="hljs-property">shadowRoot</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;#datalist-slot&#x27;</span>)
+    <span class="hljs-keyword">const</span> slotFirstAssignedElement = slot &amp;&amp; slot.<span class="hljs-title function_">assignedElements</span>()[<span class="hljs-number">0</span>]
+    <span class="hljs-keyword">const</span> datalistOptions = slotFirstAssignedElement &amp;&amp; slotFirstAssignedElement.<span class="hljs-property">children</span>
+    <span class="hljs-keyword">if</span> (datalistOptions &amp;&amp; datalistOptions.<span class="hljs-property">length</span>) {
+      <span class="hljs-keyword">const</span> datalistElement = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;datalist&#x27;</span>)
+      datalistElement.<span class="hljs-title function_">setAttribute</span>(<span class="hljs-string">&#x27;id&#x27;</span>, <span class="hljs-string">&#x27;_datalist&#x27;</span>)
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setAttribute</span>(<span class="hljs-string">&#x27;list&#x27;</span>, <span class="hljs-string">&#x27;_datalist&#x27;</span>)
+      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> el <span class="hljs-keyword">of</span> datalistOptions) {
+        <span class="hljs-keyword">const</span> optionElement = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;option&#x27;</span>)
+        optionElement.<span class="hljs-title function_">setAttribute</span>(<span class="hljs-string">&#x27;value&#x27;</span>, el.<span class="hljs-title function_">getAttribute</span>(<span class="hljs-string">&#x27;value&#x27;</span>))
+        datalistElement.<span class="hljs-title function_">appendChild</span>(optionElement)
+      }
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">shadowRoot</span>.<span class="hljs-title function_">appendChild</span>(datalistElement)
+    }
+  }
+}
+tpeRegistry.<span class="hljs-title function_">register</span>(<span class="hljs-string">&#x27;nn-input-text&#x27;</span>, <span class="hljs-title class_">NnInputText</span>)</pre></div>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="bottombar">
+
+    </div>
+  </div>
+</body>
+</html>

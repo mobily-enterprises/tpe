@@ -1,0 +1,1 @@
+* [InputMixin](../mixins/InputMixin.html) - Will skip reflection for the `type` attribute (since `type` is _always_ `text`), and will reflect all of the properties and methods of `<input>` elements according to the [HTMLInputElement API](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement)

@@ -1,75 +1,528 @@
+<!DOCTYPE html>
 
-<!doctype html>
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><my-element> ⌲ Home</title>
-    <link rel="stylesheet" href="docs.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600|Roboto+Mono">
-    <link href="prism-okaidia.css" rel="stylesheet" />
-    <script src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-    <script src="/node_modules/lit/polyfill-support.js"></script>
-    <script type="module" src="tpe.bundled.js"></script>
-  </head>
-  <body>
-    
-<header>
-  <h1>&lt;my-element></h1>
-  <h2>Powerful, themeable, enhanced native elements</h2>
-</header>
-    
-<nav>
-  <a href="">Home</a>
-  <a href="examples/">Examples</a>
-  <a href="api/">API</a>
-  <a href="install/">Install</a>
-</nav>
-    <div id="main-wrapper">
-      <main>
-        <h1>&lt;my-element&gt;</h1>
-<p><code>&lt;my-element&gt;</code> is an awesome element. It's a great introduction to building web components with LitElement, with nice documentation site as well.</p>
-<h2>As easy as HTML</h2>
-<section class="columns">
-  <div>
-<p><code>&lt;my-element&gt;</code> is just an HTML element. You can it anywhere you can use HTML!</p>
-<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>my-element</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>my-element</span><span class="token punctuation">></span></span></code></pre>
-  </div>
-  <div>
-<p><my-element></my-element></p>
-  </div>
-</section>
-<h2>Configure with attributes</h2>
-<section class="columns">
-  <div>
-<p><code>&lt;my-element&gt;</code> can be configured with attributed in plain HTML.</p>
-<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>my-element</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>HTML<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>my-element</span><span class="token punctuation">></span></span></code></pre>
-  </div>
-  <div>
-<p><my-element name="HTML"></my-element></p>
-  </div>
-</section>
-<h2>Declarative rendering</h2>
-<section class="columns">
-  <div>
-<p><code>&lt;my-element&gt;</code> can be used with declarative rendering libraries like Angular, React, Vue, and lit-html</p>
-<pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>html<span class="token punctuation">,</span> render<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'lit-html'</span><span class="token punctuation">;</span><br><br><span class="token keyword">const</span> name <span class="token operator">=</span> <span class="token string">'lit-html'</span><span class="token punctuation">;</span><br><br><span class="token function">render</span><span class="token punctuation">(</span><br>  html<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string"><br>    &lt;h2>This is a &amp;lt;my-element&amp;gt;&lt;/h2><br>    &lt;my-element .name=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">>&lt;/my-element><br>  </span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span><br>  document<span class="token punctuation">.</span>body<br><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-  </div>
-  <div>
-<h2>This is a &lt;my-element&gt;</h2>
-<my-element name="lit-html"></my-element>
-  </div>
-</section>
+<html>
+<head>
+  <title>LitElement JavaScript starter</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="tpe.css" />
+</head>
+<body>
+  <div class="container">
+      <div class="header">
+        <div class="topbar">
+          <div id="logo" alt="TPE">
+          </div>
+          <h3>LitElement JavaScript starter</h3>
+          <!-- <img id="logo" src="/images/TPE_logo_white.png" height="60px" alt="TPE" > -->
+          <div class="links">
+            <a href="https://github.com/mobily-enterprises/tpe" target="_blank" title="View on GitHub">
+              <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub icon</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            </a>
+          </div>
+        </div>
+        LitElement JavaScript starter
+      </div>
+      <div class="main">
+        
+          <div class="toc">
+            <ul>
+              
+                
+                
+                  <li>
+                      <a class="source  current " href="index.html">
+                          index
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="quickstart-designers.html">
+                          quickstart designers
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="tutorials-designers.html">
+                          tutorials designers
+                      </a>
+                  </li>
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="quickstart-developers.html">
+                          quickstart developers
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="tutorials-developers.html">
+                          tutorials developers
+                      </a>
+                  </li>
+                
+              
+                
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="elements.html">
+                          elements
+                      </a>
+                  </li>
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="mixins.html">
+                          mixins
+                      </a>
+                  </li>
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="appendices.html">
+                          appendices
+                      </a>
+                  </li>
+                
+              
+                
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="material-theme.html">
+                          material theme
+                      </a>
+                  </li>
+                
+              
+            </ul>
+          </div>
+        
+        <div class="contentPage">
+          
+            
+            <p>This project includes a sample component using LitElement with JavaScript.</p>
+<h2 id="setup">Setup</h2>
 
-      </main>
+            
+          
+            
+            <p>Install dependencies:</p>
+<pre><code class="language-bash">npm i
+</code></pre>
+<h2 id="testing">Testing</h2>
+
+            
+          
+            
+            <p>This sample modern-web.dev’s
+<a href="https://www.npmjs.com/package/@web/test-runner">@web/test-runner</a> along with
+Mocha, Chai, and some related helpers for testing. See the
+<a href="https://modern-web.dev/docs/test-runner/overview">modern-web.dev testing documentation</a> for
+more information.</p>
+<p>Tests can be run with the <code>test</code> script:</p>
+<pre><code class="language-bash">npm <span class="hljs-built_in">test</span>
+</code></pre>
+<h2 id="dev-server">Dev Server</h2>
+
+            
+          
+            
+            <p>This sample uses modern-web.dev’s <a href="https://www.npmjs.com/package/@web/dev-server">@web/dev-server</a> for previewing the project without additional build steps. Web Dev Server handles resolving Node-style “bare” import specifiers, which aren’t supported in browsers. It also automatically transpiles JavaScript and adds polyfills to support older browsers. See <a href="https://modern-web.dev/docs/dev-server/overview/">modern-web.dev’s Web Dev Server documentation</a> for more information.</p>
+<p>To run the dev server and open the project in a new browser tab:</p>
+<pre><code class="language-bash">npm run serve
+</code></pre>
+<p>There is a development HTML file located at <code>/dev/index.html</code> that you can view at <a href="http://localhost:8000/dev/index.html">http://localhost:8000/dev/index.html</a>.</p>
+<h2 id="editing">Editing</h2>
+
+            
+          
+            
+            <p>If you use VS Code, we highly reccomend the <a href="https://marketplace.visualstudio.com/items?itemName=runem.lit-plugin">lit-plugin extension</a>, which enables some extremely useful features for lit-html templates:</p>
+<ul>
+<li>Syntax highlighting</li>
+<li>Type-checking</li>
+<li>Code completion</li>
+<li>Hover-over docs</li>
+<li>Jump to definition</li>
+<li>Linting</li>
+<li>Quick Fixes</li>
+</ul>
+<p>The project is setup to reccomend lit-plugin to VS Code users if they don’t already have it installed.</p>
+<h2 id="linting">Linting</h2>
+
+            
+          
+            
+            <p>Linting of JavaScript files is provided by <a href="eslint.org">ESLint</a>. In addition, <a href="https://www.npmjs.com/package/lit-analyzer">lit-analyzer</a> is used to type-check and lint lit-html templates with the same engine and rules as lit-plugin.</p>
+<p>The rules are mostly the recommended rules from each project, but some have been turned off to make LitElement usage easier. The recommended rules are pretty strict, so you may want to relax them by editing <code>.eslintrc.json</code>.</p>
+<p>To lint the project run:</p>
+<pre><code class="language-bash">npm run lint
+</code></pre>
+<h2 id="formatting">Formatting</h2>
+
+            
+          
+            
+            <p><a href="https://prettier.io/">Prettier</a> is used for code formatting. It has been pre-configured according to the Polymer Project’s style. You can change this in <code>.prettierrc.json</code>.</p>
+<p>Prettier has not been configured to run when commiting files, but this can be added with Husky and and <code>pretty-quick</code>. See the <a href="https://prettier.io/">prettier.io</a> site for instructions.</p>
+<h2 id="static-site">Static Site</h2>
+
+            
+          
+            
+            <p>This project includes a simple website generated with the <a href="11ty.dev">eleventy</a> static site generator and the templates and pages in <code>/docs-src</code>. The site is generated to <code>/docs</code> and intended to be checked in so that GitHub pages can serve the site <a href="https://help.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site">from <code>/docs</code> on the master branch</a>.</p>
+<p>To enable the site go to the GitHub settings and change the GitHub Pages &quot;Source&quot; setting to &quot;master branch /docs folder&quot;.</p></p>
+<p>To build the site, run:</p>
+<pre><code class="language-bash">npm run docs
+</code></pre>
+<p>To serve the site locally, run:</p>
+<pre><code class="language-bash">npm run docs:serve
+</code></pre>
+<p>To watch the site files, and re-build automatically, run:</p>
+<pre><code class="language-bash">npm run docs:watch
+</code></pre>
+<p>The site will usually be served at <a href="http://localhost:8000">http://localhost:8000</a>.</p>
+<h2 id="bundling-and-minification">Bundling and minification</h2>
+
+            
+          
+            
+            <p>This starter project doesn’t include any build-time optimizations like bundling or minification. We recommend publishing components as unoptimized JavaScript modules, and performing build-time optimizations at the application level. This gives build tools the best chance to deduplicate code, remove dead code, and so on.</p>
+<p>For information on building application projects that include LitElement components, see <a href="https://lit-element.polymer-project.org/guide/build">Build for production</a> on the LitElement site.</p>
+<h2 id="more-information">More information</h2>
+
+            
+          
+            
+            <p>See <a href="https://lit-element.polymer-project.org/guide/start">Get started</a> on the LitElement site for more information.</p>
+
+            
+          
+        </div>
+      </div>
     </div>
-    
-<footer>
-  <p>
-    Made with
-    <a href="https://github.com/PolymerLabs/lit-starter-js">lit-starter-js</a>
-  </p>
-</footer>
-  </body>
+    <div class="bottombar">
+
+    </div>
+  </div>
+</body>
 </html>

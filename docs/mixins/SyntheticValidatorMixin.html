@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>SyntheticValidatorMixin.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="../tpe.css" />
+</head>
+<body>
+  <div class="container">
+      <div class="header">
+        <div class="topbar">
+          <div id="logo" alt="TPE">
+          </div>
+          <h3>SyntheticValidatorMixin.js</h3>
+          <!-- <img id="logo" src="/images/TPE_logo_white.png" height="60px" alt="TPE" > -->
+          <div class="links">
+            <a href="https://github.com/mobily-enterprises/tpe" target="_blank" title="View on GitHub">
+              <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub icon</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            </a>
+          </div>
+        </div>
+        SyntheticValidatorMixin.js
+      </div>
+      <div class="main">
+        
+          <div class="toc">
+            <ul>
+              
+                
+                
+                  <li>
+                      <a class="source " href="../index.html">
+                          index
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../quickstart-designers.html">
+                          quickstart designers
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../tutorials-designers.html">
+                          tutorials designers
+                      </a>
+                  </li>
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../quickstart-developers.html">
+                          quickstart developers
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../tutorials-developers.html">
+                          tutorials developers
+                      </a>
+                  </li>
+                
+              
+                
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../elements.html">
+                          elements
+                      </a>
+                  </li>
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+                  <li>
+                      <a class="source  current " href="../mixins.html">
+                          mixins
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="AddHasValueAttributeMixin.html">
+                          AddHasValueAttributeMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="DraggableElementMixin.html">
+                          DraggableElementMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="DraggableListMixin.html">
+                          DraggableListMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="FormElementMixin.html">
+                          FormElementMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="InputMixin.html">
+                          InputMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="LabelsMixin.html">
+                          LabelsMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="NativeReflectorMixin.html">
+                          NativeReflectorMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="NativeValidatorMixin.html">
+                          NativeValidatorMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="StyleableMixin.html">
+                          StyleableMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented  current " href="SyntheticValidatorMixin.html">
+                          SyntheticValidatorMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="ThemeableMixin.html">
+                          ThemeableMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../appendices.html">
+                          appendices
+                      </a>
+                  </li>
+                
+              
+                
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../material-theme.html">
+                          material theme
+                      </a>
+                  </li>
+                
+              
+            </ul>
+          </div>
+        
+        <div class="contentPage">
+          
+            
+            
+            
+              <div class='highlight'><pre><span class="hljs-keyword">import</span> { html } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;lit&#x27;</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title function_">SyntheticValidatorMixin</span> = (<span class="hljs-params">base</span>) =&gt; {
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Base</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">base</span> {
+    <span class="hljs-keyword">static</span> get properties () {
+      <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">validationMessagePosition</span>: {
+          <span class="hljs-attr">type</span>: <span class="hljs-title class_">String</span>,
+          <span class="hljs-attr">attribute</span>: <span class="hljs-string">&#x27;validation-message-position&#x27;</span>
+        },
+        <span class="hljs-attr">shownValidationMessage</span>: {
+          <span class="hljs-attr">type</span>: <span class="hljs-title class_">String</span>,
+          <span class="hljs-attr">attribute</span>: <span class="hljs-literal">false</span>
+        },
+        <span class="hljs-attr">validity</span>: {
+          <span class="hljs-attr">type</span>: <span class="hljs-title class_">Object</span>,
+          <span class="hljs-attr">attribute</span>: <span class="hljs-literal">false</span>
+        },
+        <span class="hljs-attr">validator</span>: { <span class="hljs-attr">type</span>: <span class="hljs-title class_">Object</span> }
+      }
+    }
+
+    <span class="hljs-title function_">constructor</span> () {
+      <span class="hljs-variable language_">super</span>()
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">shownValidationMessage</span> = <span class="hljs-string">&#x27;&#x27;</span>
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">validator</span> = <span class="hljs-function">() =&gt;</span> <span class="hljs-string">&#x27;&#x27;</span>
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">validationMessagePosition</span> = <span class="hljs-string">&#x27;before&#x27;</span>
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">validity</span> = { <span class="hljs-attr">valid</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">_customValidationMessage</span>: <span class="hljs-string">&#x27;&#x27;</span> }
+    }
+
+    setCustomValidity (m) {
+      <span class="hljs-keyword">if</span> (m === <span class="hljs-string">&#x27;&#x27;</span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">validity</span> = {
+          <span class="hljs-attr">valid</span>: <span class="hljs-literal">true</span>,
+          <span class="hljs-attr">_customValidationMessage</span>: <span class="hljs-string">&#x27;&#x27;</span>
+        }
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">toggleAttribute</span>(<span class="hljs-string">&#x27;valid&#x27;</span>, <span class="hljs-literal">true</span>)
+        <span class="hljs-keyword">if</span> (m === <span class="hljs-string">&#x27;&#x27;</span>) <span class="hljs-variable language_">this</span>.<span class="hljs-property">shownValidationMessage</span> = <span class="hljs-string">&#x27;&#x27;</span>
+      } <span class="hljs-keyword">else</span> {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">validity</span> = {
+          <span class="hljs-attr">valid</span>: <span class="hljs-literal">false</span>,
+          <span class="hljs-attr">customError</span>: <span class="hljs-literal">true</span>,
+          <span class="hljs-attr">_customValidationMessage</span>: m
+        }
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">toggleAttribute</span>(<span class="hljs-string">&#x27;valid&#x27;</span>, <span class="hljs-literal">false</span>)
+      }
+    }
+
+    reportValidity () {</pre></div>
+            
+          
+            
+            <p>Run custom validator. Note that custom validator
+will only ever run on filed without an existing customError.</p>
+
+            
+              <div class='highlight'><pre>      <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">validity</span>.<span class="hljs-property">customError</span>) {
+        <span class="hljs-keyword">const</span> ownErrorMessage = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_runValidator</span>()
+        <span class="hljs-keyword">if</span> (ownErrorMessage) <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setCustomValidity</span>(ownErrorMessage)
+      }</pre></div>
+            
+          
+            
+            <p>Hide the error message by default</p>
+
+            
+              <div class='highlight'><pre>      <span class="hljs-variable language_">this</span>.<span class="hljs-property">shownValidationMessage</span> = <span class="hljs-string">&#x27;&#x27;</span>
+
+      <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">validity</span>.<span class="hljs-property">valid</span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">toggleAttribute</span>(<span class="hljs-string">&#x27;valid&#x27;</span>, <span class="hljs-literal">false</span>)
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">shownValidationMessage</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">validity</span>.<span class="hljs-property">_customValidationMessage</span>
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">dispatchEvent</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">CustomEvent</span>(<span class="hljs-string">&#x27;invalid&#x27;</span>, {
+          <span class="hljs-attr">cancelable</span>: <span class="hljs-literal">true</span>,
+          <span class="hljs-attr">bubbles</span>: <span class="hljs-literal">false</span>,
+          <span class="hljs-attr">composed</span>: <span class="hljs-literal">true</span>
+        }))
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+      } <span class="hljs-keyword">else</span> {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">toggleAttribute</span>(<span class="hljs-string">&#x27;valid&#x27;</span>, <span class="hljs-literal">true</span>)
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+      }
+    }
+
+    _runValidator () {</pre></div>
+            
+          
+            
+            <p>Call the validator with a value. Here an element could be a checkbox,
+a select, an simple text input, etc.
+If the containing form has _getElementValueSource, that is used to
+figure out what to pass to the validato (as well as _submitObject)</p>
+
+            
+              <div class='highlight'><pre>      <span class="hljs-keyword">let</span> value
+      <span class="hljs-keyword">let</span> submitObject
+      <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">form</span> &amp;&amp; <span class="hljs-variable language_">this</span>.<span class="hljs-property">form</span>.<span class="hljs-property">_getElementValueSource</span>) {
+        value = <span class="hljs-variable language_">this</span>[<span class="hljs-variable language_">this</span>.<span class="hljs-property">form</span>.<span class="hljs-title function_">_getElementValueSource</span>(<span class="hljs-variable language_">this</span>)]
+        submitObject = <span class="hljs-variable language_">this</span>.<span class="hljs-property">form</span>.<span class="hljs-property">submitObject</span>
+      }
+      <span class="hljs-keyword">const</span> ownErrorMessage = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">validator</span>(value, submitObject)
+      <span class="hljs-keyword">if</span> (ownErrorMessage) <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setCustomValidity</span>(ownErrorMessage)
+    }
+
+    checkValidity () {
+      <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">validity</span>.<span class="hljs-property">customError</span>) {
+        <span class="hljs-keyword">const</span> ownErrorMessage = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_runValidator</span>()
+        <span class="hljs-keyword">if</span> (ownErrorMessage) <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setCustomValidity</span>(ownErrorMessage)
+      }
+
+      <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">validity</span>.<span class="hljs-property">valid</span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">dispatchEvent</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">CustomEvent</span>(<span class="hljs-string">&#x27;invalid&#x27;</span>, {
+          <span class="hljs-attr">cancelable</span>: <span class="hljs-literal">true</span>,
+          <span class="hljs-attr">bubbles</span>: <span class="hljs-literal">false</span>,
+          <span class="hljs-attr">composed</span>: <span class="hljs-literal">true</span>
+        }))
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+      }
+      <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+    }
+
+    get ifValidationMessageBefore () {
+      <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">validationMessagePosition</span> === <span class="hljs-string">&#x27;after&#x27;</span>) <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&#x27;</span>
+      <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">validationMessageTemplate</span>
+    }
+
+    get ifValidationMessageAfter () {
+      <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">validationMessagePosition</span> === <span class="hljs-string">&#x27;before&#x27;</span>) <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&#x27;</span>
+      <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">validationMessageTemplate</span>
+    }
+
+    get validationMessageTemplate () {
+      <span class="hljs-keyword">return</span> html`<span class="language-xml">
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;error-message&quot;</span>&gt;</span>
+          </span><span class="hljs-subst">${<span class="hljs-variable language_">this</span>.shownValidationMessage}</span><span class="language-xml">
+        <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      `</span>
+    }
+  }
+}</pre></div>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="bottombar">
+
+    </div>
+  </div>
+</body>
+</html>

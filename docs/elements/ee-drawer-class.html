@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>ee-drawer-class.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="../tpe.css" />
+</head>
+<body>
+  <div class="container">
+      <div class="header">
+        <div class="topbar">
+          <div id="logo" alt="TPE">
+          </div>
+          <h3>ee-drawer-class.js</h3>
+          <!-- <img id="logo" src="/images/TPE_logo_white.png" height="60px" alt="TPE" > -->
+          <div class="links">
+            <a href="https://github.com/mobily-enterprises/tpe" target="_blank" title="View on GitHub">
+              <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub icon</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            </a>
+          </div>
+        </div>
+        ee-drawer-class.js
+      </div>
+      <div class="main">
+        
+          <div class="toc">
+            <ul>
+              
+                
+                
+                  <li>
+                      <a class="source " href="../index.html">
+                          index
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../quickstart-designers.html">
+                          quickstart designers
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../tutorials-designers.html">
+                          tutorials designers
+                      </a>
+                  </li>
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../quickstart-developers.html">
+                          quickstart developers
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../tutorials-developers.html">
+                          tutorials developers
+                      </a>
+                  </li>
+                
+              
+                
+                
+              
+                
+                
+                  <li>
+                      <a class="source  current " href="../elements.html">
+                          elements
+                      </a>
+                  </li>
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../mixins.html">
+                          mixins
+                      </a>
+                  </li>
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../appendices.html">
+                          appendices
+                      </a>
+                  </li>
+                
+              
+                
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../material-theme.html">
+                          material theme
+                      </a>
+                  </li>
+                
+              
+            </ul>
+          </div>
+        
+        <div class="contentPage">
+          
+            
+            
+            
+              <div class='highlight'><pre><span class="hljs-keyword">import</span> { <span class="hljs-title class_">LitElement</span>, html, css } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;lit&#x27;</span>
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">StyleableMixin</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../mixins/StyleableMixin&#x27;</span>
+<span class="hljs-keyword">import</span> tpeRegistry <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../tpeRegistry&#x27;</span>
+
+<span class="hljs-keyword">const</span> chevronLeft = html`<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;icon&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;24&quot;</span> <span class="hljs-attr">viewBox</span>=<span class="hljs-string">&quot;0 0 24 24&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;24&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">path</span> <span class="hljs-attr">d</span>=<span class="hljs-string">&quot;M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">path</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>`</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">EeDrawer</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">StyleableMixin</span>(<span class="hljs-title class_">LitElement</span>) {
+  <span class="hljs-keyword">static</span> get styles () {
+    <span class="hljs-keyword">return</span> [
+      css`<span class="language-css">
+        <span class="hljs-comment">/* The base style for the ee-drawer element.*/</span>
+       <span class="hljs-selector-pseudo">:host</span> {
+          <span class="hljs-attr">--ee-drawer-width</span>: <span class="hljs-number">300px</span>;
+          <span class="hljs-attr">--ee-drawer-background-color</span>: <span class="hljs-number">#393939</span>;
+          <span class="hljs-attr">--ee-drawer-selected-color</span>: white;
+          <span class="hljs-attribute">display</span>: block;
+          <span class="hljs-attribute">position</span>: fixed;
+          <span class="hljs-attribute">box-sizing</span>: border-box;
+          <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+          <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+          <span class="hljs-attribute">z-index</span>: <span class="hljs-number">1</span>; <span class="hljs-comment">/* z-index is 1 by default, which should fit most scenarios. But it can be adjust by the ee-drawer parent&#x27;s CSS, is needed */</span> 
+          <span class="hljs-attribute">width</span>: <span class="hljs-number">20px</span>; <span class="hljs-comment">/* It is reduced to 20px width, which is enough to provide a target are for dragging on the viewport&#x27;s left edge  */</span>
+          <span class="hljs-attribute">height</span>: <span class="hljs-number">100vh</span>;
+          user-select: none;
+        }
+
+        <span class="hljs-comment">/* Take entire viewport when opened */</span>
+        <span class="hljs-selector-pseudo">:host</span>(<span class="hljs-selector-attr">[opened]</span>) {
+          <span class="hljs-attribute">width</span>: <span class="hljs-number">100vw</span>;
+          <span class="hljs-attribute">height</span>: <span class="hljs-number">100vh</span>;
+        }
+
+        <span class="hljs-comment">/* This class contains the actual drawer UI. It is full height and aligned to the :host edges, but moved horizontally -100% (left) of it&#x27;s width */</span>
+        <span class="hljs-selector-id">#container</span> {
+          <span class="hljs-attribute">height</span>: <span class="hljs-number">100vh</span>;
+          <span class="hljs-attribute">position</span>: absolute;
+          <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+          <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+          <span class="hljs-attribute">overflow-x</span>: hidden;
+          <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">var</span>(--ee-drawer-background-color);
+          will-change: transform;
+          <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateX</span>(-<span class="hljs-number">100%</span>);
+          <span class="hljs-attribute">transition</span>: transform <span class="hljs-number">0.3s</span> ease-out;
+        }
+
+        <span class="hljs-comment">/* Reposition the drawer content to the original left edge alignment when opened */</span>
+        <span class="hljs-selector-pseudo">:host</span>(<span class="hljs-selector-attr">[opened]</span>) <span class="hljs-selector-id">#container</span> {
+          will-change: transform;
+          <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateX</span>(<span class="hljs-number">0</span>);
+        }
+
+        <span class="hljs-comment">/* Only add the container shadow when opened */</span>
+        <span class="hljs-selector-pseudo">:host</span>(<span class="hljs-selector-attr">[backdrop]</span><span class="hljs-selector-attr">[opened]</span>) <span class="hljs-selector-id">#container</span> {
+          <span class="hljs-attribute">box-shadow</span>: <span class="hljs-built_in">var</span>(--ee-drawer-shadow, <span class="hljs-number">0</span> <span class="hljs-number">20px</span> <span class="hljs-number">25px</span> -<span class="hljs-number">5px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.3</span>), <span class="hljs-number">0</span> <span class="hljs-number">10px</span> <span class="hljs-number">10px</span> -<span class="hljs-number">5px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.14</span>), <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">100vw</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.15</span>))
+        }
+
+        <span class="hljs-comment">/* The nav element styles.*/</span>
+
+        <span class="hljs-selector-id">#nav</span>  {
+          <span class="hljs-attribute">box-sizing</span>: border-box;
+          <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+          <span class="hljs-attribute">min-width</span>: <span class="hljs-built_in">var</span>(--ee-drawer-width);
+          <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+          <span class="hljs-attribute">padding</span>: <span class="hljs-number">30px</span> <span class="hljs-number">24px</span>;
+          <span class="hljs-attribute">background</span>: <span class="hljs-built_in">var</span>(--ee-drawer-background-color);
+          <span class="hljs-attribute">position</span>: relative;
+          <span class="hljs-attribute">overflow</span>: auto;
+          <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">64px</span>;
+        }
+
+        <span class="hljs-comment">/* This will style the drawer items. If the developer decides not to use an &lt;a&gt; tag, the item must have class=&quot;drawer-item&quot;  */</span>
+        <span class="hljs-selector-id">#nav</span> <span class="hljs-selector-pseudo">::slotted</span>(<span class="hljs-selector-tag">a</span>),
+        <span class="hljs-selector-id">#nav</span> <span class="hljs-selector-pseudo">::slotted</span>(<span class="hljs-selector-class">.drawer-item</span>) {
+          <span class="hljs-attribute">display</span>: block;
+          <span class="hljs-attribute">text-decoration</span>: none;
+          <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--ee-drawer-color, <span class="hljs-number">#ddd</span>);
+          <span class="hljs-attribute">line-height</span>: <span class="hljs-number">32px</span>;
+          <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">24px</span>;
+          <span class="hljs-attribute">cursor</span>: pointer;
+          <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0.9em</span>;
+        }
+
+        <span class="hljs-selector-id">#nav</span> <span class="hljs-selector-pseudo">::slotted</span>(<span class="hljs-selector-tag">a</span><span class="hljs-selector-attr">[selected]</span>),
+        <span class="hljs-selector-id">#nav</span> <span class="hljs-selector-pseudo">::slotted</span>(<span class="hljs-selector-class">.drawer-item</span><span class="hljs-selector-attr">[selected]</span>) {
+          <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--ee-drawer-selected-color);
+          <span class="hljs-attribute">font-weight</span>: bolder;
+          <span class="hljs-attribute">border-left</span>: <span class="hljs-number">3px</span> solid <span class="hljs-built_in">var</span>(--ee-drawer-selected-color);
+          <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">rgba</span>(<span class="hljs-number">255</span>,<span class="hljs-number">255</span>,<span class="hljs-number">255</span>, <span class="hljs-number">0.1</span>);
+        }
+
+        <span class="hljs-selector-id">#nav</span> <span class="hljs-selector-pseudo">::slotted</span>(<span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span>),
+        <span class="hljs-selector-id">#nav</span> <span class="hljs-selector-pseudo">::slotted</span>(<span class="hljs-selector-class">.drawer-item</span><span class="hljs-selector-pseudo">:hover</span>) {
+          <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">rgba</span>(<span class="hljs-number">255</span>,<span class="hljs-number">255</span>,<span class="hljs-number">255</span>, <span class="hljs-number">0.05</span>);
+        }
+
+        <span class="hljs-comment">/* A header item can be slotted with class=&quot;head&quot;. It can be a simple heading tag, or an element containing anything*/</span>
+        <span class="hljs-selector-id">#nav</span> <span class="hljs-selector-pseudo">::slotted</span>(<span class="hljs-selector-class">.head</span>) {
+          <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--ee-drawer-color, white);
+          <span class="hljs-attribute">box-sizing</span>: border-box;
+          <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+          <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">1px</span> solid <span class="hljs-built_in">var</span>(--ee-drawer-selected-color);
+          <span class="hljs-attribute">padding</span>: <span class="hljs-number">6px</span> <span class="hljs-number">70%</span> <span class="hljs-number">6px</span> <span class="hljs-number">0</span>;
+          <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1.15em</span>;
+          <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span> auto;
+        }
+
+        <span class="hljs-comment">/* Close button styles */</span>
+
+        <span class="hljs-selector-id">#close</span> {
+          -webkit-appearance: none;
+          <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--ee-drawer-background-color);
+          fill: <span class="hljs-built_in">var</span>(--ee-drawer-background-color);
+          <span class="hljs-attribute">position</span>: absolute;
+          <span class="hljs-attribute">right</span>: <span class="hljs-number">5px</span>;
+          <span class="hljs-attribute">z-index</span>: <span class="hljs-number">10</span>;
+          <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">var</span>(--ee-drawer-background-color);
+          <span class="hljs-attribute">border</span>: none;
+          <span class="hljs-attribute">cursor</span>: pointer;
+          <span class="hljs-attribute">right</span>: <span class="hljs-number">0</span>;
+          <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+          <span class="hljs-attribute">box-sizing</span>: border-box;
+          <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">2px</span>;
+        }
+
+        <span class="hljs-selector-id">#close</span> svg {
+          <span class="hljs-attribute">height</span>: <span class="hljs-number">20px</span>;
+          <span class="hljs-attribute">width</span>: <span class="hljs-number">20px</span>;
+        }
+
+        <span class="hljs-selector-id">#close</span><span class="hljs-selector-pseudo">:focus</span>, <span class="hljs-selector-id">#close</span><span class="hljs-selector-pseudo">:active</span> {
+          <span class="hljs-attribute">outline</span>: none <span class="hljs-meta">!important</span>;
+        }
+
+        <span class="hljs-selector-id">#close</span><span class="hljs-selector-pseudo">:active</span>, <span class="hljs-selector-id">#close</span><span class="hljs-selector-pseudo">:hover</span> {
+          <span class="hljs-attribute">filter</span>: <span class="hljs-built_in">brightness</span>(<span class="hljs-number">120%</span>);
+          fill: <span class="hljs-built_in">var</span>(--ee-drawer-selected-color);
+          <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--ee-drawer-selected-color);
+        }
+      `</span>
+    ]
+  }
+
+  <span class="hljs-keyword">static</span> get properties () {
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-attr">opened</span>: { <span class="hljs-attr">type</span>: <span class="hljs-title class_">Boolean</span>, <span class="hljs-attr">reflect</span>: <span class="hljs-literal">true</span> },
+      <span class="hljs-attr">backdrop</span>: { <span class="hljs-attr">type</span>: <span class="hljs-title class_">Boolean</span>, <span class="hljs-attr">reflect</span>: <span class="hljs-literal">true</span> },
+      <span class="hljs-attr">closeButton</span>: { <span class="hljs-attr">type</span>: <span class="hljs-title class_">Boolean</span>, <span class="hljs-attr">attribute</span>: <span class="hljs-string">&#x27;close-button&#x27;</span> },
+      <span class="hljs-attr">closeThreshold</span>: { <span class="hljs-attr">type</span>: <span class="hljs-title class_">Number</span> },
+      <span class="hljs-attr">openThreshold</span>: { <span class="hljs-attr">type</span>: <span class="hljs-title class_">Number</span> }
+    }
+  }
+
+  <span class="hljs-title function_">constructor</span> () {
+    <span class="hljs-variable language_">super</span>()
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">backdrop</span> = <span class="hljs-literal">true</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">closeButton</span> = <span class="hljs-literal">true</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">opened</span> = <span class="hljs-literal">false</span></pre></div>
+            
+          
+            
+            <p>These properties allow the developer to decide how far the user needs to drag in order to trigger open and close events. Values between 0 and 1.</p>
+
+            
+              <div class='highlight'><pre>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">closeThreshold</span> = <span class="hljs-number">0.6</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">openThreshold</span> = <span class="hljs-number">0.6</span>
+  }
+
+  connectedCallback () {
+    <span class="hljs-variable language_">super</span>.<span class="hljs-title function_">connectedCallback</span>()
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">_handleOutsideClick</span>)</pre></div>
+            
+          
+            
+            <p>Add listeners for the events to handle dragging the drawer. Touchevents must be added, besides the fact the mouse events are emulated in mobile devices
+When these listeners are not added, scrolling behavior from the browser takes over and prevents emulated mouse events from firing.
+To make sure behavior is consistent, the handlers must call event.preventDefault() which will avoid scrolling and duplicate emulated events
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/Touch_events/Supporting_both_TouchEvent_and_MouseEvent">https://developer.mozilla.org/en-US/docs/Web/API/Touch_events/Supporting_both_TouchEvent_and_MouseEvent</a></p>
+
+            
+              <div class='highlight'><pre>    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;touchstart&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">_handleDragStart</span>)
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;touchmove&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">_handleDrag</span>)
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;touchend&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">_handleDragEnd</span>)</pre></div>
+            
+          
+            
+            <p>These are also needed to support dragging in desktop</p>
+
+            
+              <div class='highlight'><pre>    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;mousedown&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">_handleDragStart</span>)
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;mousemove&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">_handleDrag</span>)
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;mouseup&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">_handleDragEnd</span>)
+  }
+
+  disconnectedCallback () {
+    <span class="hljs-variable language_">super</span>.<span class="hljs-title function_">disconnectedCallback</span>()
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">removeEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">_handleOutsideClick</span>)
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">removeEventListener</span>(<span class="hljs-string">&#x27;touchstart&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">_handleDragStart</span>)
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">removeEventListener</span>(<span class="hljs-string">&#x27;touchmove&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">_handleDrag</span>)
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">removeEventListener</span>(<span class="hljs-string">&#x27;touchend&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">_handleDragEnd</span>)</pre></div>
+            
+          
+            
+            <p>These are also needed to support dragging in desktop</p>
+
+            
+              <div class='highlight'><pre>    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">removeEventListener</span>(<span class="hljs-string">&#x27;mousedown&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">_handleDragStart</span>)
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">removeEventListener</span>(<span class="hljs-string">&#x27;mousemove&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">_handleDrag</span>)
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">removeEventListener</span>(<span class="hljs-string">&#x27;mouseup&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">_handleDragEnd</span>)
+  }
+
+  firstUpdated () {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">container</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">shadowRoot</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;div#container&#x27;</span>)
+  }
+
+  render () {
+    
+    <span class="hljs-keyword">return</span> html`<span class="language-xml">
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span>
+        </span><span class="hljs-subst">${<span class="hljs-variable language_">this</span>.closeButton ? html`<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;close&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-subst">${<span class="hljs-variable language_">this</span>.close}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span></span><span class="hljs-subst">${chevronLeft}</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>`</span> : <span class="hljs-string">&#x27;&#x27;</span>}</span><span class="language-xml">
+        <span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;nav&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">slot</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    `</span>
+  }
+
+  open () {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">opened</span> = <span class="hljs-literal">true</span>
+  }
+
+  close () {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">opened</span> = <span class="hljs-literal">false</span>
+  }
+
+  toggle () {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">opened</span> = !<span class="hljs-variable language_">this</span>.<span class="hljs-property">opened</span>
+  }
+
+  _handleOutsideClick (e) {</pre></div>
+            
+          
+            
+            <p>This flag can be set to avoid closing the drawer after finishing a drag, which triggers a click</p>
+
+            
+              <div class='highlight'><pre>    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">ignoreNextClick</span>) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">ignoreNextClick</span> = <span class="hljs-literal">false</span>
+      <span class="hljs-keyword">return</span>
+    }
+
+    <span class="hljs-keyword">if</span> (e.<span class="hljs-property">target</span>.<span class="hljs-property">nodeName</span> === <span class="hljs-string">&#x27;EE-DRAWER&#x27;</span>) <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">close</span>()
+  }
+
+  _handleDragStart (e) {</pre></div>
+            
+          
+            
+            <p>save starting point reference</p>
+
+            
+              <div class='highlight'><pre>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">dragStart</span> = e.<span class="hljs-property">type</span> === <span class="hljs-string">&#x27;touchstart&#x27;</span> ? e.<span class="hljs-property">touches</span>[<span class="hljs-number">0</span>].<span class="hljs-property">clientX</span> : e.<span class="hljs-property">clientX</span></pre></div>
+            
+          
+            
+            <p>Force ee-drawer to be full viewport width during the event</p>
+
+            
+              <div class='highlight'><pre>    <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">opened</span>) <span class="hljs-variable language_">this</span>.<span class="hljs-property">style</span>.<span class="hljs-property">width</span> = <span class="hljs-string">&#x27;100vw&#x27;</span>
+  }
+
+  _handleDrag (e) {</pre></div>
+            
+          
+            
+            <p>ignore event if there wasn’t a dragStart immediatelly before</p>
+
+            
+              <div class='highlight'><pre>    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">dragStart</span> === <span class="hljs-literal">undefined</span>) <span class="hljs-keyword">return</span></pre></div>
+            
+          
+            
+            <p>Set this flag so it’s possible to know if there’s an ongoing drag</p>
+
+            
+              <div class='highlight'><pre>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">dragging</span> = <span class="hljs-literal">true</span></pre></div>
+            
+          
+            
+            <p>Always call preventDefault when in a touch enabled device, to avoid duplicate simulated mouse events afterwards</p>
+
+            
+              <div class='highlight'><pre>    e.<span class="hljs-title function_">preventDefault</span>()</pre></div>
+            
+          
+            
+            <p>Now, we need to compare the current pointer/touch position with the position at the start of the drag. We calculate the offset and get the width of the drawer.</p>
+
+            
+              <div class='highlight'><pre>    <span class="hljs-keyword">const</span> x = e.<span class="hljs-property">type</span> === <span class="hljs-string">&#x27;touchmove&#x27;</span> ? e.<span class="hljs-property">touches</span>[<span class="hljs-number">0</span>].<span class="hljs-property">clientX</span> : e.<span class="hljs-property">clientX</span>
+    <span class="hljs-keyword">const</span> offset = x - <span class="hljs-variable language_">this</span>.<span class="hljs-property">dragStart</span>
+    <span class="hljs-keyword">const</span> w = <span class="hljs-variable language_">this</span>.<span class="hljs-property">container</span>.<span class="hljs-title function_">getBoundingClientRect</span>().<span class="hljs-property">width</span></pre></div>
+            
+          
+            
+            <p>Determine the movement tolerance before triggering open or close during dragging.</p>
+
+            
+              <div class='highlight'><pre>    <span class="hljs-keyword">const</span> openTrigger = (w - <span class="hljs-variable language_">this</span>.<span class="hljs-property">openThreshold</span> * w)
+    <span class="hljs-keyword">const</span> closeTrigger = -<span class="hljs-number">1</span> * (w - <span class="hljs-variable language_">this</span>.<span class="hljs-property">closeThreshold</span> * w)</pre></div>
+            
+          
+            
+            <p>Check if user dragged far enough for either closing or opening the drawer, call _finishDrag to cleanup</p>
+
+            
+              <div class='highlight'><pre>    <span class="hljs-keyword">if</span> (offset &lt; closeTrigger) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">close</span>()
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_finishDrag</span>()
+      <span class="hljs-keyword">return</span>
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (offset &gt; openTrigger) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">open</span>()</pre></div>
+            
+          
+            
+            <p>Necessary for mouse events, because calling preventDefault in mouseup handler does not cancel the click event after</p>
+
+            
+              <div class='highlight'><pre>      <span class="hljs-variable language_">this</span>.<span class="hljs-property">ignoreNextClick</span> = <span class="hljs-literal">true</span>
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_finishDrag</span>()
+      <span class="hljs-keyword">return</span>
+    }</pre></div>
+            
+          
+            
+            <p>if still within trigering range, update drawer position smoothly, using requestAnimationFrame</p>
+
+            
+              <div class='highlight'><pre>    <span class="hljs-title function_">requestAnimationFrame</span>(<span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">container</span>.<span class="hljs-property">style</span>.<span class="hljs-property">transform</span> = <span class="hljs-string">`translateX(calc(<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.opened ? <span class="hljs-string">&#x27;&#x27;</span> : <span class="hljs-string">&#x27;-100% +&#x27;</span>}</span> <span class="hljs-subst">${offset}</span>px))`</span>
+    })
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+  }
+
+  _handleDragEnd (e) {</pre></div>
+            
+          
+            
+            <p>If this event follows a touchmove/mousemove event, call preventDefault. It is necessary to prevent the click event from firing, as it is next the Event order:
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/Touch_events/Supporting_both_TouchEvent_and_MouseEvent#Event_order">https://developer.mozilla.org/en-US/docs/Web/API/Touch_events/Supporting_both_TouchEvent_and_MouseEvent#Event_order</a></p>
+
+            
+              <div class='highlight'><pre>    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">dragging</span>) e.<span class="hljs-title function_">preventDefault</span>()
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">dragStart</span> = <span class="hljs-literal">undefined</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">dragging</span> = <span class="hljs-literal">false</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_finishDrag</span>()
+  }
+
+  _finishDrag () {</pre></div>
+            
+          
+            
+            <p>This will clear flags and inline styles after the drag is done</p>
+
+            
+              <div class='highlight'><pre>    <span class="hljs-title function_">requestAnimationFrame</span>(<span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">container</span>.<span class="hljs-property">style</span>.<span class="hljs-property">transform</span> = <span class="hljs-string">&#x27;&#x27;</span>
+      <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">opened</span>) <span class="hljs-variable language_">this</span>.<span class="hljs-property">style</span>.<span class="hljs-property">width</span> = <span class="hljs-string">&#x27;&#x27;</span>
+    })
+  }
+}
+tpeRegistry.<span class="hljs-title function_">register</span>(<span class="hljs-string">&#x27;ee-drawer&#x27;</span>, <span class="hljs-title class_">EeDrawer</span>)</pre></div>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="bottombar">
+
+    </div>
+  </div>
+</body>
+</html>

@@ -1,38 +1,29 @@
-/**
- * @license
- * Copyright 2018 Google LLC
- * SPDX-License-Identifier: BSD-3-Clause
- */
+import resolve from '@rollup/plugin-node-resolve'
+// import babel from 'rollup-plugin-babel'
+import { terser } from 'rollup-plugin-terser'
 
-import summary from 'rollup-plugin-summary';
-import {terser} from 'rollup-plugin-terser';
-import resolve from '@rollup/plugin-node-resolve';
-import replace from '@rollup/plugin-replace';
+module.exports = [
 
-export default {
-  input: 'tpe.js',
-  output: {
-    file: 'tpe.bundled.js',
-    format: 'esm',
+  // IIFE
+  {
+    // input: './tpe-babel.js',
+    input: './tpe.js',
+    output: {
+      file: 'distr/tpe.js', // IIFE ONE FILE
+      format: 'iife'
+    },
+    // plugins: [resolve({}), babel({exclude: [/\/core-js\//]}), minify({})]
+    // plugins: [resolve({}), babel({ runtimeHelpers: true }), minify({})]
+    plugins: [resolve({}), terser()]
   },
-  onwarn(warning) {
-    if (warning.code !== 'THIS_IS_UNDEFINED') {
-      console.error(`(!) ${warning.message}`);
-    }
-  },
-  plugins: [
-    replace({'Reflect.decorate': 'undefined'}),
-    resolve(),
-    terser({
-      ecma: 2017,
-      module: true,
-      warnings: true,
-      mangle: {
-        properties: {
-          regex: /^__/,
-        },
-      },
-    }),
-    summary(),
-  ],
-};
+
+  {
+    input: './tpe.js',
+    output: {
+      file: 'distr/tpe-esm.js', // IIFE ONE FILE
+      format: 'esm'
+    },
+    plugins: [resolve({})]
+  }
+
+]

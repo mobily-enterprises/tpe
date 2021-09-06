@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>NativeReflectorMixin</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="../tpe.css" />
+</head>
+<body>
+  <div class="container">
+      <div class="header">
+        <div class="topbar">
+          <div id="logo" alt="TPE">
+          </div>
+          <h3>NativeReflectorMixin</h3>
+          <!-- <img id="logo" src="/images/TPE_logo_white.png" height="60px" alt="TPE" > -->
+          <div class="links">
+            <a href="https://github.com/mobily-enterprises/tpe" target="_blank" title="View on GitHub">
+              <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub icon</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            </a>
+          </div>
+        </div>
+        NativeReflectorMixin
+      </div>
+      <div class="main">
+        
+          <div class="toc">
+            <ul>
+              
+                
+                
+                  <li>
+                      <a class="source " href="../index.html">
+                          index
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../quickstart-designers.html">
+                          quickstart designers
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../tutorials-designers.html">
+                          tutorials designers
+                      </a>
+                  </li>
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../quickstart-developers.html">
+                          quickstart developers
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../tutorials-developers.html">
+                          tutorials developers
+                      </a>
+                  </li>
+                
+              
+                
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../elements.html">
+                          elements
+                      </a>
+                  </li>
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+                  <li>
+                      <a class="source  current " href="../mixins.html">
+                          mixins
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="AddHasValueAttributeMixin.html">
+                          AddHasValueAttributeMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="DraggableElementMixin.html">
+                          DraggableElementMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="DraggableListMixin.html">
+                          DraggableListMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="FormElementMixin.html">
+                          FormElementMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="InputMixin.html">
+                          InputMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="LabelsMixin.html">
+                          LabelsMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented  current " href="NativeReflectorMixin.html">
+                          NativeReflectorMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="NativeValidatorMixin.html">
+                          NativeValidatorMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="StyleableMixin.html">
+                          StyleableMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="SyntheticValidatorMixin.html">
+                          SyntheticValidatorMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="ThemeableMixin.html">
+                          ThemeableMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../appendices.html">
+                          appendices
+                      </a>
+                  </li>
+                
+              
+                
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../material-theme.html">
+                          material theme
+                      </a>
+                  </li>
+                
+              
+            </ul>
+          </div>
+        
+        <div class="contentPage">
+          
+            
+            <p>This is the centrepiece of the <code>nn-</code> elements. Every <code>nn-</code> element has the
+characteristic of being basically a native element with theming steroids.
+Each <code>nn-</code> element has, in its template, a native element marked as
+<code>id=&quot;native&quot;</code> which identifies the element they represent. For example
+the <code>Button.js</code> file will implement <code>nn-button</code> element, which in turn will
+have <code>&lt;button id=&quot;native&quot;</code> in its template.</p>
+<p>The approach to <code>nn-</code> elements is to reflect as much as possible, in terms
+of properties and attributes, from the <code>nn-</code> element down to the <code>native</code> one.</p>
+<p>This means that the <code>nn-</code> element is a “gateway” to properties and attributes
+of the actual native element inside.</p>
+<p>For example writing:</p>
+<pre><code>&lt;nn-button label=<span class="hljs-string">&quot;Some label&quot;</span>&gt;&lt;/nn-button&gt;
+</code></pre>
+<p>Will imply that the contained <code>&lt;button&gt;</code> element (which is marked as
+<code>native</code>) also has the <code>label</code> attribute set to <code>Some label</code>.</p>
+<p>The idea is that between <code>&lt;nn-button&gt;</code> and <code>&lt;button&gt;</code> <em>everything</em> is
+reflected. This is great in theory, but there is a level of trickery
+required to make things work properly. For example, some attributes will
+<em>always</em> need to be skipped (<code>id</code>, <code>style</code>, <code>class</code>). Also, it’s impossible
+to simply reflect every property, since 1) they could be anywhere in the
+prototype chain 2) Some properties should never be reflected (see:
+<code>setAttribute()</code>, <code>hasChildNodes()</code>, and so on).</p>
+<p>So, the approach is:</p>
+<ul>
+<li>All attributes are reflected, <em>except</em> some that are blacklisted (in
+<code>this.skipAttributes</code>)</li>
+<li>Only properties/methods listed in <code>this.reflectProperties</code> are reflected.
+Each element will provide a comprehensive list of reflected properties, which
+will depend on the HTML specs of the targeted <code>native</code> element.</li>
+<li>Some “boot” properties are assigned when the element is first updated.</li>
+</ul>
+<h2 id="into-the-code">Into the code</h2>
+
+            
+          
+            
+            <p>First of all, NativeRefletorMixin is declared as a mixing in function:</p>
+
+            
+              <div class='highlight'><pre><span class="hljs-keyword">import</span> { element } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../lib/htmlApi.js&#x27;</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title function_">NativeReflectorMixin</span> = (<span class="hljs-params">base</span>) =&gt; {
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Base</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">base</span> { <span class="hljs-comment">// eslint-disable-line</span></pre></div>
+            
+          
+            
+            <p>The firstUpdated method is used to perform one-time work after the element’s
+template has been created. In this case, it will need to:</p>
+<ol>
+<li>Find the native element (marked with <code>id=&quot;native&quot;</code>)</li>
+<li>Start reflection of attributes and properties</li>
+</ol>
+
+            
+              <div class='highlight'><pre>    firstUpdated () {
+      <span class="hljs-comment">/* Find the native element */</span>
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">native</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">shadowRoot</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;#native&#x27;</span>)
+
+      <span class="hljs-comment">/* Reflect all attributes and properties */</span>
+      <span class="hljs-comment">/*  - all properties are reflected except some (listed in skipAttributes) */</span>
+      <span class="hljs-comment">/*  - only elected properties are reflected (listed in reflectProperties) */</span>
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_reflectAttributesAndProperties</span>()
+    }
+
+    get reflectProperties () {
+      <span class="hljs-keyword">return</span> element
+    }
+
+    get skipProperties () {
+      <span class="hljs-keyword">return</span> [<span class="hljs-string">&#x27;style&#x27;</span>]
+    }
+
+    get skipAttributes () {
+      <span class="hljs-keyword">return</span> [<span class="hljs-string">&#x27;id&#x27;</span>, <span class="hljs-string">&#x27;style&#x27;</span>, <span class="hljs-string">&#x27;class&#x27;</span>]
+    }
+
+    afterSettingProperty () {}
+
+    getAttribute (attr) {
+      <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">native</span> || <span class="hljs-variable language_">this</span>.<span class="hljs-property">skipAttributes</span>.<span class="hljs-title function_">indexOf</span>(attr) !== -<span class="hljs-number">1</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">super</span>.<span class="hljs-title function_">getAttribute</span>(attr)
+      }
+
+      <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">native</span>.<span class="hljs-title function_">getAttribute</span>(attr)
+
+      <span class="hljs-comment">/*
+      const nativeAttribute = this.native.getAttribute(attr)
+      if (nativeAttribute !== null) return nativeAttribute
+
+</span></pre></div>
+            
+          
+            
+            <p>This shouldn’t really happen, but it’s here as a fallback
+TODO: Maybe delete it and always return the native’s value regardless</p>
+
+            
+              <div class='highlight'><pre>      <span class="hljs-keyword">return</span> <span class="hljs-variable language_">super</span>.<span class="hljs-title function_">getAttribute</span>(attr)
+      */
+    }
+
+    setAttribute (attr, value) {</pre></div>
+            
+          
+            
+            <p>Set the attribute</p>
+
+            
+              <div class='highlight'><pre>      <span class="hljs-variable language_">super</span>.<span class="hljs-title function_">setAttribute</span>(attr, value)</pre></div>
+            
+          
+            
+            <p>Skip the ones in the skipAttributes list</p>
+
+            
+              <div class='highlight'><pre>      <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">skipAttributes</span>.<span class="hljs-title function_">indexOf</span>(attr) !== -<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span></pre></div>
+            
+          
+            
+            <p>Assign the same attribute to the contained native
+element, taking care of the ‘nn’ syntax</p>
+
+            
+              <div class='highlight'><pre>      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_setSubAttr</span>(attr, value)
+    }
+
+    removeAttribute (attr) {</pre></div>
+            
+          
+            
+            <p>Set the attribute</p>
+
+            
+              <div class='highlight'><pre>      <span class="hljs-variable language_">super</span>.<span class="hljs-title function_">removeAttribute</span>(attr)</pre></div>
+            
+          
+            
+            <p>Skip the ones in the skipAttributes list</p>
+
+            
+              <div class='highlight'><pre>      <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">skipAttributes</span>.<span class="hljs-title function_">indexOf</span>(attr) !== -<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span></pre></div>
+            
+          
+            
+            <p>Assign the same attribute to the contained native
+element, taking care of the ‘nn’ syntax</p>
+
+            
+              <div class='highlight'><pre>      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_setSubAttr</span>(attr, <span class="hljs-literal">null</span>)
+    }
+
+    _setSubAttr (subAttr, attrValue) {
+      <span class="hljs-keyword">const</span> tokens = subAttr.<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;::&#x27;</span>)</pre></div>
+            
+          
+            
+            <p>Safeguard: if this.native is not yet set, it means that
+an attribute was set BEFORE the element was rendered. If that
+is the case, simply give up. _reflectAttributesAndProperties() will
+be run afterwards to sync things up anyway</p>
+
+            
+              <div class='highlight'><pre>      <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">native</span>) <span class="hljs-keyword">return</span></pre></div>
+            
+          
+            
+            <p>No :: found, simply change attribute in <code>native</code></p>
+
+            
+              <div class='highlight'><pre>      <span class="hljs-keyword">if</span> (tokens.<span class="hljs-property">length</span> === <span class="hljs-number">1</span>) {
+        (attrValue === <span class="hljs-literal">null</span>)
+          ? <span class="hljs-variable language_">this</span>.<span class="hljs-property">native</span>.<span class="hljs-title function_">removeAttribute</span>(subAttr)
+          : <span class="hljs-variable language_">this</span>.<span class="hljs-property">native</span>.<span class="hljs-title function_">setAttribute</span>(subAttr, attrValue)</pre></div>
+            
+          
+            
+            <p>Yes, :: is there: assign the attribute to the element with the
+corresponding ID</p>
+
+            
+              <div class='highlight'><pre>      } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (tokens.<span class="hljs-property">length</span> === <span class="hljs-number">2</span>) {
+        <span class="hljs-keyword">const</span> dstElement = <span class="hljs-variable language_">this</span>.<span class="hljs-property">shadowRoot</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">`#<span class="hljs-subst">${tokens[<span class="hljs-number">0</span>]}</span>`</span>)
+        <span class="hljs-keyword">if</span> (dstElement) {
+          attrValue === <span class="hljs-literal">null</span>
+            ? dstElement.<span class="hljs-title function_">removeAttribute</span>(tokens[<span class="hljs-number">1</span>])
+            : dstElement.<span class="hljs-title function_">setAttribute</span>(tokens[<span class="hljs-number">1</span>], attrValue)
+        }
+      }
+    }
+
+    _reflectAttributesAndProperties () {</pre></div>
+            
+          
+            
+            <p>STEP #1: ATTRIBUTES FIRST</p>
+<p>Assign all starting attribute to the destination element</p>
+
+            
+              <div class='highlight'><pre>      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> attributeObject <span class="hljs-keyword">of</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">attributes</span>) {
+        <span class="hljs-keyword">const</span> attr = attributeObject.<span class="hljs-property">name</span>
+
+        <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">skipAttributes</span>.<span class="hljs-title function_">indexOf</span>(attr) !== -<span class="hljs-number">1</span>) <span class="hljs-keyword">continue</span>
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_setSubAttr</span>(attr, <span class="hljs-variable language_">super</span>.<span class="hljs-title function_">getAttribute</span>(attr))
+      }</pre></div>
+            
+          
+            
+            <p>Observe changes in attribute from the source element, and reflect
+them to the destination element</p>
+
+            
+              <div class='highlight'><pre>      <span class="hljs-keyword">const</span> thisObserver = <span class="hljs-keyword">new</span> <span class="hljs-title class_">MutationObserver</span>(<span class="hljs-function">(<span class="hljs-params">mutations</span>) =&gt;</span> {
+        mutations.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">mutation</span>) =&gt;</span> {
+          <span class="hljs-keyword">if</span> (mutation.<span class="hljs-property">type</span> === <span class="hljs-string">&#x27;attributes&#x27;</span>) {
+            <span class="hljs-keyword">const</span> attr = mutation.<span class="hljs-property">attributeName</span></pre></div>
+            
+          
+            
+            <p>Don’t reflect forbidden attributes</p>
+
+            
+              <div class='highlight'><pre>            <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">skipAttributes</span>.<span class="hljs-title function_">indexOf</span>(attr) !== -<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span></pre></div>
+            
+          
+            
+            <p>Don’t reflect attributes with ::</p>
+
+            
+              <div class='highlight'><pre>            <span class="hljs-keyword">if</span> (attr.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&#x27;::&#x27;</span>) !== -<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span></pre></div>
+            
+          
+            
+            <p>Check if the value has changed. If it hasn’t, there is no
+point in re-assigning it, especially since the observer
+might have been triggered by this very mixin</p>
+
+            
+              <div class='highlight'><pre>            <span class="hljs-keyword">const</span> newValue = <span class="hljs-variable language_">this</span>.<span class="hljs-property">native</span>.<span class="hljs-title function_">getAttribute</span>(attr)
+            <span class="hljs-keyword">const</span> thisValue = <span class="hljs-variable language_">super</span>.<span class="hljs-title function_">getAttribute</span>(attr)
+            <span class="hljs-keyword">if</span> (newValue === thisValue) <span class="hljs-keyword">return</span></pre></div>
+            
+          
+            
+            <p>Assign the new value</p>
+
+            
+              <div class='highlight'><pre>            (newValue === <span class="hljs-literal">null</span>)
+              ? <span class="hljs-variable language_">super</span>.<span class="hljs-title function_">removeAttribute</span>(attr)
+              : <span class="hljs-variable language_">super</span>.<span class="hljs-title function_">setAttribute</span>(attr, newValue)
+          }
+        })
+      })
+      thisObserver.<span class="hljs-title function_">observe</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">native</span>, { <span class="hljs-attr">attributes</span>: <span class="hljs-literal">true</span> })</pre></div>
+            
+          
+            
+            <p>STEP #2: METHODS (as bound functions) AND PROPERTIES (as getters/setters)</p>
+
+            
+              <div class='highlight'><pre>      <span class="hljs-keyword">const</span> uniqProps = [...<span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">reflectProperties</span>)]
+      <span class="hljs-keyword">const</span> proto = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">getPrototypeOf</span>(<span class="hljs-variable language_">this</span>)
+
+      <span class="hljs-keyword">if</span> (!proto.<span class="hljs-property">_alreadyReflecting</span>) {
+        uniqProps.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">prop</span> =&gt;</span> {
+          <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">skipProperties</span>.<span class="hljs-title function_">indexOf</span>(prop) !== -<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span>
+          <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">defineProperty</span>(<span class="hljs-title class_">Object</span>.<span class="hljs-title function_">getPrototypeOf</span>(<span class="hljs-variable language_">this</span>), prop, {
+            <span class="hljs-attr">get</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+              <span class="hljs-keyword">const</span> dst = <span class="hljs-variable language_">this</span>.<span class="hljs-property">native</span>
+              <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">native</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">undefined</span>
+              <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> dst[prop] === <span class="hljs-string">&#x27;function&#x27;</span>) <span class="hljs-keyword">return</span> dst[prop].<span class="hljs-title function_">bind</span>(dst)
+              <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> dst[prop]
+            },
+            <span class="hljs-attr">set</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">newValue</span>) {
+              <span class="hljs-keyword">const</span> dst = <span class="hljs-variable language_">this</span>.<span class="hljs-property">native</span></pre></div>
+            
+          
+            
+            <p>It IS possile that this.native isn’t set yet, since the
+property observer is on the prototype. So, you could have
+one nn-input-box without a value assigned (and the observer is
+installed for prototype) and then another one with a property
+assigned at creation (observer is set, but this.native is not yet set)
+If that is the case, it will assign the object’s prop. Then,
+when firstUpdated() runs, it will forward-assign this value to
+this.native</p>
+
+            
+              <div class='highlight'><pre>              <span class="hljs-keyword">if</span> (!dst) {
+                <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> newValue !== <span class="hljs-string">&#x27;undefined&#x27;</span>) {
+                  <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">defineProperty</span>(<span class="hljs-variable language_">this</span>, prop, { <span class="hljs-attr">value</span>: newValue, <span class="hljs-attr">configurable</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">writable</span>: <span class="hljs-literal">true</span> })
+                }
+                <span class="hljs-keyword">return</span>
+              }
+
+              <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">beforeSettingProperty</span> === <span class="hljs-string">&#x27;function&#x27;</span>) {
+                <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">beforeSettingProperty</span>(prop, newValue)
+              }
+              <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> dst[prop] === <span class="hljs-string">&#x27;function&#x27;</span>) <span class="hljs-keyword">return</span>
+              <span class="hljs-keyword">const</span> oldValue = dst[prop]</pre></div>
+            
+          
+            
+            <p>Set the new value</p>
+
+            
+              <div class='highlight'><pre>              dst[prop] = newValue</pre></div>
+            
+          
+            
+            <p>This is required by litElement since it won’t
+create a setter if there is already one</p>
+
+            
+              <div class='highlight'><pre>              <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">requestUpdate</span>(prop, oldValue)
+
+              <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">afterSettingProperty</span> === <span class="hljs-string">&#x27;function&#x27;</span>) {
+                <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">afterSettingProperty</span>(prop, newValue)
+              }
+            },
+            <span class="hljs-attr">configurable</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">enumerable</span>: <span class="hljs-literal">true</span>
+          })
+        })
+        proto.<span class="hljs-property">_alreadyReflecting</span> = <span class="hljs-literal">true</span>
+      }</pre></div>
+            
+          
+            
+            <p>Assign existing properties, in case the setter had already been triggered
+BEFORE firstUpdated() (in which case, the setter would have assigned
+OBJECT properties, without reflection)</p>
+
+            
+              <div class='highlight'><pre>      uniqProps.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">prop</span> =&gt;</span> {
+        <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">skipProperties</span>.<span class="hljs-title function_">indexOf</span>(prop) !== -<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span>
+
+        <span class="hljs-keyword">let</span> propValue
+        <span class="hljs-keyword">if</span> (<span class="hljs-title class_">Object</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">hasOwnProperty</span>.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">this</span>, prop)) {
+          propValue = <span class="hljs-variable language_">this</span>[prop]
+          <span class="hljs-keyword">delete</span> <span class="hljs-variable language_">this</span>[prop]
+          <span class="hljs-variable language_">this</span>[prop] = propValue
+        }
+      })
+    }
+  }
+}</pre></div>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="bottombar">
+
+    </div>
+  </div>
+</body>
+</html>

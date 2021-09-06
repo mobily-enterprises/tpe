@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>ThemeableMixin</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="../tpe.css" />
+</head>
+<body>
+  <div class="container">
+      <div class="header">
+        <div class="topbar">
+          <div id="logo" alt="TPE">
+          </div>
+          <h3>ThemeableMixin</h3>
+          <!-- <img id="logo" src="/images/TPE_logo_white.png" height="60px" alt="TPE" > -->
+          <div class="links">
+            <a href="https://github.com/mobily-enterprises/tpe" target="_blank" title="View on GitHub">
+              <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub icon</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            </a>
+          </div>
+        </div>
+        ThemeableMixin
+      </div>
+      <div class="main">
+        
+          <div class="toc">
+            <ul>
+              
+                
+                
+                  <li>
+                      <a class="source " href="../index.html">
+                          index
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../quickstart-designers.html">
+                          quickstart designers
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../tutorials-designers.html">
+                          tutorials designers
+                      </a>
+                  </li>
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../quickstart-developers.html">
+                          quickstart developers
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../tutorials-developers.html">
+                          tutorials developers
+                      </a>
+                  </li>
+                
+              
+                
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../elements.html">
+                          elements
+                      </a>
+                  </li>
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+              
+                
+                
+                  <li>
+                      <a class="source  current " href="../mixins.html">
+                          mixins
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="AddHasValueAttributeMixin.html">
+                          AddHasValueAttributeMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="DraggableElementMixin.html">
+                          DraggableElementMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="DraggableListMixin.html">
+                          DraggableListMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="FormElementMixin.html">
+                          FormElementMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="InputMixin.html">
+                          InputMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="LabelsMixin.html">
+                          LabelsMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="NativeReflectorMixin.html">
+                          NativeReflectorMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="NativeValidatorMixin.html">
+                          NativeValidatorMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="StyleableMixin.html">
+                          StyleableMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented " href="SyntheticValidatorMixin.html">
+                          SyntheticValidatorMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source  indented  current " href="ThemeableMixin.html">
+                          ThemeableMixin.js
+                      </a>
+                  </li>
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../appendices.html">
+                          appendices
+                      </a>
+                  </li>
+                
+              
+                
+                
+              
+                
+                
+                  <li>
+                      <a class="source " href="../material-theme.html">
+                          material theme
+                      </a>
+                  </li>
+                
+              
+            </ul>
+          </div>
+        
+        <div class="contentPage">
+          
+            
+            <h1 id="themeablemixin">ThemeableMixin</h1>
+
+            
+          
+            
+            <p>This mixin is entirely responsible for the flexible theming capabilities of
+TPE. There’s a simple interface to be implemented by the theme developers.
+The theme is defined with an object containing these keys:</p>
+<ul>
+<li>shared: A mixin that will be applied to all tpe elements. If the theme
+doesn’t use any shared code, this key can be ommitted.</li>
+<li>[<code>name</code>]: in which <code>name</code> matches each element that will be modified in
+the TPE collection. For example, the styles for <strong>nn-input-text</strong> should
+be defined in a mixin and assined to a “nn-input-text” key in the theme
+object.</li>
+</ul>
+<p>Another important point is that the theme <strong>must</strong> be assigned to the global
+<strong>window.TP_THEME</strong>, and be available before loading TPE itself. Here’s an
+example:</p>
+<pre><code>    <span class="hljs-variable language_">window</span>.<span class="hljs-property">TP_THEME</span> = {
+      <span class="hljs-attr">shared</span>: <span class="hljs-title class_">MySharedThemeMixin</span>,
+      <span class="hljs-string">&quot;nn-input-text&quot;</span>: <span class="hljs-title class_">MyInputTextThemeMixin</span>,
+      <span class="hljs-string">&quot;nn-button&quot;</span>: <span class="hljs-title class_">MyButtonThemeMixin</span>,
+      <span class="hljs-string">&quot;ee-tabs&quot;</span>: <span class="hljs-title class_">MyTabsThemeMixin</span>
+    }
+</code></pre>
+<p>The actual mixin is relatively simple. It will check for <code>shared</code> and for a
+specific value corresponding to the element name, expect as the functiona
+parameter. If they are present, they will be applied to the target element,
+along with two mixins defined below, CustomThemeMixin and LitBits.</p>
+
+            
+              <div class='highlight'><pre><span class="hljs-keyword">import</span> { unsafeCSS } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;lit&#x27;</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title function_">ThemeableMixin</span> = (<span class="hljs-params">name, theme</span>) =&gt; <span class="hljs-function">(<span class="hljs-params">base</span>) =&gt;</span> {
+  <span class="hljs-keyword">if</span> (!base) <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(name, base)
+  <span class="hljs-keyword">const</span> shared = (theme &amp;&amp; theme.<span class="hljs-property">shared</span>) || (<span class="hljs-function"><span class="hljs-params">p</span> =&gt;</span> p)
+  <span class="hljs-keyword">const</span> elementTheme = (theme &amp;&amp; theme[name]) || (<span class="hljs-function"><span class="hljs-params">p</span> =&gt;</span> p)
+  <span class="hljs-keyword">return</span> <span class="hljs-title function_">elementTheme</span>(<span class="hljs-title function_">shared</span>(<span class="hljs-title class_">CustomThemeMixin</span>(base)))
+}</pre></div>
+            
+          
+            
+            <p>In addition to applying the imported theme, ThemeableMixin adds a
+non-standard LitElement property: <em>customStyles</em>. Using <em>customStyles</em> allows
+developers to completely bypass the shadowRoot scope and redefine any part or
+all of the elements CSS using a stylesheet string or a CSSTemplateResult
+object. The principle behind this mechanism is that if a new style is added
+using this property, the adopteStylesheet of the element is updated in
+realtime. This approach can be costly for performance if abused, but for the
+main purpose of overriding scoped CSS, it won’t have any side effects.</p>
+
+            
+              <div class='highlight'><pre><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title function_">CustomThemeMixin</span> = (<span class="hljs-params">base</span>) =&gt; {
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Theme</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">base</span> {
+    get customStyles () {
+      <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">_customStyles</span> || <span class="hljs-string">&#x27;&#x27;</span>
+    }
+
+    set customStyles (cssTemplate) {
+      <span class="hljs-keyword">if</span> (!cssTemplate) <span class="hljs-keyword">return</span>
+      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> cssTemplate === <span class="hljs-string">&#x27;string&#x27;</span>) {
+        cssTemplate = unsafeCSS<span class="hljs-string">`<span class="hljs-subst">${cssTemplate}</span>`</span>
+      }
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">_customStyles</span> = cssTemplate
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">constructor</span>.<span class="hljs-property">_styles</span> = [...<span class="hljs-variable language_">this</span>.<span class="hljs-property">constructor</span>.<span class="hljs-property">_styles</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">_customStyles</span>]
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">adoptStyles</span>()
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">requestUpdate</span>()
+    }
+  }
+}</pre></div>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="bottombar">
+
+    </div>
+  </div>
+</body>
+</html>
