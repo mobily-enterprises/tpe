@@ -8,7 +8,7 @@ import { StyleableMixin } from '../mixins/StyleableMixin.js'
 import { textAreaElement } from '../lib/htmlApi.js'
 import tpeRegistry from '../tpeRegistry'
 
-export class NnTextArea extends StyleableMixin(FormElementMixin(NativeValidatorMixin(LabelsMixin(InputMixin(NativeReflectorMixin(LitElement)))))) {
+export class NnTextarea extends StyleableMixin(FormElementMixin(NativeValidatorMixin(LabelsMixin(InputMixin(NativeReflectorMixin(LitElement)))))) {
   get reflectProperties () {
     return [...super.reflectProperties, ...textAreaElement]
   }
@@ -24,4 +24,5 @@ export class NnTextArea extends StyleableMixin(FormElementMixin(NativeValidatorM
     `
   }
 }
-tpeRegistry.register('nn-textarea', NnTextArea)
+
+tpeRegistry.register('nn-textarea', NnTextarea)
