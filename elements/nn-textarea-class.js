@@ -5,12 +5,12 @@ import { FormElementMixin } from '../mixins/FormElementMixin.js'
 import { NativeValidatorMixin } from '../mixins/NativeValidatorMixin.js'
 import { LabelsMixin } from '../mixins/LabelsMixin.js'
 import { StyleableMixin } from '../mixins/StyleableMixin.js'
-import { textAreaElement } from '../lib/htmlApi.js'
+import { textareaElement } from '../lib/htmlApi.js'
 import tpeRegistry from '../tpeRegistry'
 
 export class NnTextarea extends StyleableMixin(FormElementMixin(NativeValidatorMixin(LabelsMixin(InputMixin(NativeReflectorMixin(LitElement)))))) {
   get reflectProperties () {
-    return [...super.reflectProperties, ...textAreaElement]
+    return [...super.reflectProperties, ...textareaElement]
   }
 
   render () {
