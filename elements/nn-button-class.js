@@ -5,7 +5,7 @@ import { NativeValidatorMixin } from '../mixins/NativeValidatorMixin.js'
 import { StyleableMixin } from '../mixins/StyleableMixin.js'
 // import { ThemeableMixin } from '../mixins/ThemeableMixin.js'
 import { buttonElement } from '../lib/htmlApi.js'
-import tpeRegistry from '../tpeRegistry'
+import tpeRegistry from '../lib/tpeRegistry'
 
 export class NnButton extends FormElementMixin(NativeValidatorMixin(StyleableMixin(NativeReflectorMixin(LitElement)))) {
   get skipAttributes () {

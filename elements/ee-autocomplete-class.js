@@ -2,7 +2,7 @@ import { LitElement, html, css } from 'lit'
 import { StyleableMixin } from '../mixins/StyleableMixin.js'
 import { ThemeableMixin } from '../mixins/ThemeableMixin.js'
 import './ee-autocomplete-item-li-class'
-import tpeRegistry from '../tpeRegistry'
+import tpeRegistry from '../lib/tpeRegistry'
 
 export class EeAutocomplete extends StyleableMixin(LitElement) {
   static get styles () {

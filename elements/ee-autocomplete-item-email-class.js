@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit'
 import { StyleableMixin } from '../mixins/StyleableMixin.js'
-import tpeRegistry from '../tpeRegistry'
+import tpeRegistry from '../lib/tpeRegistry'
 
 export class EeAutocompleteItemEmail extends StyleableMixin(LitElement) {
   static get styles () {

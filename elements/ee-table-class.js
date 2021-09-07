@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit'
 import { StyleableMixin } from '../mixins/StyleableMixin'
-import tpeRegistry from '../tpeRegistry'
+import tpeRegistry from '../lib/tpeRegistry'
 
 // https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 // https://dev.to/drews256/ridiculously-easy-row-and-column-layouts-with-flexbox-1k01

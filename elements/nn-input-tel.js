@@ -1,4 +1,4 @@
-import tpeRegistry from '../tpeRegistry'
+import tpeRegistry from '../lib/tpeRegistry'try'
 import { NnInputTel } from './nn-input-tel-class'
 
 tpeRegistry.define('nn-input-tel', NnInputTel)

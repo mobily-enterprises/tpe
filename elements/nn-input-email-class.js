@@ -1,6 +1,6 @@
 import { html } from 'lit'
 import { NnInputText } from './nn-input-text-class'
-import tpeRegistry from '../tpeRegistry'
+import tpeRegistry from '../lib/tpeRegistry'
 
 export class NnInputEmail extends NnInputText {
   render () {
