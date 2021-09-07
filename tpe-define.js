@@ -1,2 +1,2 @@
-import tpeRegistry from './tpeRegistry.js'
+import { tpeRegistry } from './tpeRegistry.js'
 tpeRegistry.defineAll()

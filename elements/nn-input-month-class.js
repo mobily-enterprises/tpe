@@ -1,6 +1,6 @@
 import { html } from 'lit'
 import { NnInputText } from './nn-input-text-class'
-import tpeRegistry from '../lib/tpeRegistry'
+import { tpeRegistry } from '../lib/tpeRegistry'
 
 export class NnInputMonth extends NnInputText {
   render () {

@@ -1,4 +1,4 @@
-import tpeRegistry from '../lib/tpeRegistry'
+import { tpeRegistry } from '../lib/tpeRegistry'
 import { EeAutocompleteLi, EeAutocompleteLiView } from './ee-autocomplete-item-li-class'
 
 tpeRegistry.define('ee-autocomplete-item-li', EeAutocompleteItemLi)

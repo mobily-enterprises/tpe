@@ -3,7 +3,7 @@ import { NativeReflectorMixin } from '../mixins/NativeReflectorMixin.js'
 import { StyleableMixin } from '../mixins/StyleableMixin.js'
 import { LabelsMixin } from '../mixins/LabelsMixin.js'
 import { meterElement } from '../lib/htmlApi'
-import tpeRegistry from '../lib/tpeRegistry'
+import { tpeRegistry } from '../lib/tpeRegistry'
 
 export class NnMeter extends StyleableMixin(LabelsMixin(NativeReflectorMixin(LitElement))) {
   get reflectProperties () {

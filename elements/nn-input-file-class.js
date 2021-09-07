@@ -5,7 +5,7 @@ import { FormElementMixin } from '../mixins/FormElementMixin.js'
 import { NativeValidatorMixin } from '../mixins/NativeValidatorMixin.js'
 import { LabelsMixin } from '../mixins/LabelsMixin.js'
 import { StyleableMixin } from '../mixins/StyleableMixin.js'
-import tpeRegistry from '../lib/tpeRegistry'
+import { tpeRegistry } from '../lib/tpeRegistry'
 
 export class NnInputFile extends FormElementMixin(NativeValidatorMixin(StyleableMixin(LabelsMixin(InputMixin(NativeReflectorMixin(LitElement)))))) {
   static get styles () {

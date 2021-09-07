@@ -5,7 +5,7 @@ import { FormElementMixin } from '../mixins/FormElementMixin.js'
 import { NativeValidatorMixin } from '../mixins/NativeValidatorMixin.js'
 import { LabelsMixin } from '../mixins/LabelsMixin.js'
 import { StyleableMixin } from '../mixins/StyleableMixin.js'
-import tpeRegistry from '../lib/tpeRegistry'
+import { tpeRegistry } from '../lib/tpeRegistry'
 
 export class NnInputRadio extends FormElementMixin(NativeValidatorMixin(LabelsMixin(StyleableMixin(InputMixin(NativeReflectorMixin(LitElement)))))) {
   render () {

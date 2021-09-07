@@ -3,7 +3,7 @@ import { NativeReflectorMixin } from '../mixins/NativeReflectorMixin.js'
 import { InputMixin } from '../mixins/InputMixin.js'
 import { FormElementMixin } from '../mixins/FormElementMixin.js'
 import { NativeValidatorMixin } from '../mixins/NativeValidatorMixin.js'
-import tpeRegistry from '../lib/tpeRegistry'
+import { tpeRegistry } from '../lib/tpeRegistry'
 
 export class NnInputSubmit extends FormElementMixin(NativeValidatorMixin(InputMixin(NativeReflectorMixin(LitElement)))) {
   render () {
