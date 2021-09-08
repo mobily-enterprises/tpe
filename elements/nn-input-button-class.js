@@ -7,11 +7,15 @@ import { tpeRegistry } from '../lib/tpeRegistry'
 
 export class NnInputButton extends FormElementMixin(NativeValidatorMixin(InputMixin(NativeReflectorMixin(LitElement)))) {
   render () {
-    
     return html`
       <input type="button" id="native">
         <slot></slot>
      `
   }
+
+  constructor () {
+    super()
+  }
+  
 }
 tpeRegistry.register('nn-input-button', NnInputButton)

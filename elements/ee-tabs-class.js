@@ -25,6 +25,7 @@ export class EeTabs extends StyleableMixin(LitElement) {
 
         :host #contentContainer {
           height: 100%;
+          padding: var(--ee-tabs-content-padding, 10px);
         }
 
         #contentContainer ::slotted(*) {
@@ -32,7 +33,7 @@ export class EeTabs extends StyleableMixin(LitElement) {
         }
 
         #contentContainer ::slotted([active]) {
-          display: block;
+          display: initial;
         }
 
         nav ::slotted(*) .icon {
