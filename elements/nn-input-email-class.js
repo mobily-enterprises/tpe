@@ -4,7 +4,7 @@ import { tpeRegistry } from '../lib/tpeRegistry'
 export class NnInputEmail extends NnInputText {
   constructor () {
     super()
-    this.type = 'email'
+    this.inputType ='email'
   }
 }
 tpeRegistry.register('nn-input-email', NnInputEmail)

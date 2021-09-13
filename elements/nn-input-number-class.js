@@ -4,7 +4,7 @@ import { tpeRegistry } from '../lib/tpeRegistry'
 export class NnInputNumber extends NnInputText {
   constructor () {
     super()
-    this.type = 'number'
+    this.inputType ='number'
   }
 }
 tpeRegistry.register('nn-input-number', NnInputNumber)

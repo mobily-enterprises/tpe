@@ -4,7 +4,7 @@ import { tpeRegistry } from '../lib/tpeRegistry'
 export class NnInputDateTimeLocal extends NnInputText {
   constructor () {
     super()
-    this.type = 'datetime-local'
+    this.inputType ='datetime-local'
   }
 }
 tpeRegistry.register('nn-input-datetime-local', NnInputDateTimeLocal)

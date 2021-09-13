@@ -4,7 +4,7 @@ import { tpeRegistry } from '../lib/tpeRegistry'
 export class NnInputPassword extends NnInputText {
   constructor () {
     super()
-    this.type = 'password'
+    this.inputType ='password'
   }
 }
 tpeRegistry.register('nn-input-password', NnInputPassword)

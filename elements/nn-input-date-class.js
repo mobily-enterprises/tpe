@@ -4,7 +4,7 @@ import { tpeRegistry } from '../lib/tpeRegistry'
 export class NnInputDate extends NnInputText {
   constructor () {
     super()
-    this.type = 'date'
+    this.inputType ='date'
   }
 }
 tpeRegistry.register('nn-input-date', NnInputDate)
