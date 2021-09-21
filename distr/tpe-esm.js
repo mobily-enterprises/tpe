@@ -5123,7 +5123,7 @@ class NnInputText extends FormElementMixin(NativeValidatorMixin(StyleableMixin(L
     return y`
       ${this.ifLabelBefore}
       ${this.ifValidationMessageBefore}
-      <input type="${this.type || 'text'}" id="native" real-time-event="input" >
+      <input type="${this.inputType || 'text'}" id="native" real-time-event="input" >
       ${this.ifValidationMessageAfter}
       ${this.ifLabelAfter}
       <slot id="datalist-slot" name="datalist"></slot>
@@ -5182,7 +5182,7 @@ tpeRegistry.register('nn-input-text', NnInputText);
 class NnInputColor extends NnInputText {
   constructor () {
     super();
-    this.type = 'color';
+    this.inputType ='color';
   }
 }
 tpeRegistry.register('nn-input-color', NnInputColor);
@@ -5190,7 +5190,7 @@ tpeRegistry.register('nn-input-color', NnInputColor);
 class NnInputDate extends NnInputText {
   constructor () {
     super();
-    this.type = 'date';
+    this.inputType ='date';
   }
 }
 tpeRegistry.register('nn-input-date', NnInputDate);
@@ -5198,7 +5198,7 @@ tpeRegistry.register('nn-input-date', NnInputDate);
 class NnInputDateTimeLocal extends NnInputText {
   constructor () {
     super();
-    this.type = 'datetime-local';
+    this.inputType ='datetime-local';
   }
 }
 tpeRegistry.register('nn-input-datetime-local', NnInputDateTimeLocal);
@@ -5206,7 +5206,7 @@ tpeRegistry.register('nn-input-datetime-local', NnInputDateTimeLocal);
 class NnInputEmail extends NnInputText {
   constructor () {
     super();
-    this.type = 'email';
+    this.inputType ='email';
   }
 }
 tpeRegistry.register('nn-input-email', NnInputEmail);
@@ -5280,7 +5280,7 @@ tpeRegistry.register('nn-input-file', NnInputFile);
 class NnInputMonth extends NnInputText {
   constructor () {
     super();
-    this.type = 'month';
+    this.inputType ='month';
   }
 }
 tpeRegistry.register('nn-input-month', NnInputMonth);
@@ -5288,7 +5288,7 @@ tpeRegistry.register('nn-input-month', NnInputMonth);
 class NnInputNumber extends NnInputText {
   constructor () {
     super();
-    this.type = 'number';
+    this.inputType ='number';
   }
 }
 tpeRegistry.register('nn-input-number', NnInputNumber);
@@ -5296,7 +5296,7 @@ tpeRegistry.register('nn-input-number', NnInputNumber);
 class NnInputPassword extends NnInputText {
   constructor () {
     super();
-    this.type = 'password';
+    this.inputType ='password';
   }
 }
 tpeRegistry.register('nn-input-password', NnInputPassword);
@@ -5343,7 +5343,7 @@ tpeRegistry.register('nn-input-radio', NnInputRadio);
 class NnInputRange extends NnInputText {
   constructor () {
     super();
-    this.type = 'range';
+    this.inputType ='range';
   }
 }
 tpeRegistry.register('nn-input-range', NnInputRange);
