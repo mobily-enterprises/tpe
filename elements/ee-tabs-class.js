@@ -15,7 +15,7 @@ export class EeTabs extends StyleableMixin(LitElement) {
         :host nav {
         display: flex; 
           position: var(--ee-tabs-nav-position, sticky);
-          top:0;
+          top: var(--ee-tabs-nav-top, 0);
           width: 100%;
           border-bottom: 1px solid var(--ee-tabs-lines-color, #bbb);
           height: var(--ee-tabs-height, 32px);
