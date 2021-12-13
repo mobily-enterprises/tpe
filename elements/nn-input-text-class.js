@@ -37,7 +37,7 @@ export class NnInputText extends CustomStylesMixin(FormElementMixin(NativeValida
     return html`
       ${this.ifLabelBefore}
       ${this.ifValidationMessageBefore}
-      <input type="${this.inputType || 'text'}" id="native" real-time-event="input" >
+      <input type="${this.inputType}" id="native" real-time-event="input" >
       ${this.ifValidationMessageAfter}
       ${this.ifLabelAfter}
       <slot id="datalist-slot" name="datalist"></slot>
@@ -47,11 +47,13 @@ export class NnInputText extends CustomStylesMixin(FormElementMixin(NativeValida
   constructor () {
     super()
     this._boundKeyEventListener = this._eventListener.bind(this)
+    this.inputType = 'text'
   }
 
   static get properties () {
     return {
-      submitOnEnter: { type: Boolean, attribute: 'submit-on-enter' }
+      submitOnEnter: { type: Boolean, attribute: 'submit-on-enter' },
+      inputType: { type: String }
     }
   }
 
