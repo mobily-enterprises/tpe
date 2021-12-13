@@ -1,8 +1,9 @@
 import { LitElement, html, css } from 'lit'
 import { StyleableMixin } from '../mixins/StyleableMixin.js'
+import { CustomStylesMixin } from '../mixins/CustomStylesMixin.js'
 import { tpeRegistry } from '../lib/tpeRegistry'
 
-export class EeAutocompleteItemLi extends StyleableMixin(LitElement) {
+export class EeAutocompleteItemLi extends CustomStylesMixin(StyleableMixin(LitElement)) {
   static get styles () {
     return [
       super.styles,

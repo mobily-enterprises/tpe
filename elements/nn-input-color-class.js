@@ -1,5 +1,5 @@
-import { tpeRegistry } from '../lib/tpeRegistry'
 import { NnInputText } from './nn-input-text-class.js'
+import { tpeRegistry } from '../lib/tpeRegistry'
 
 export class NnInputColor extends NnInputText {
   constructor () {

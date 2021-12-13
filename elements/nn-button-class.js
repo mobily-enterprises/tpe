@@ -3,11 +3,11 @@ import { NativeReflectorMixin } from '../mixins/NativeReflectorMixin.js'
 import { FormElementMixin } from '../mixins/FormElementMixin.js'
 import { NativeValidatorMixin } from '../mixins/NativeValidatorMixin.js'
 import { StyleableMixin } from '../mixins/StyleableMixin.js'
-// import { ThemeableMixin } from '../mixins/ThemeableMixin.js'
+import { CustomStylesMixin } from '../mixins/CustomStylesMixin.js'
 import { buttonElement } from '../lib/htmlApi.js'
 import { tpeRegistry } from '../lib/tpeRegistry'
 
-export class NnButton extends FormElementMixin(NativeValidatorMixin(StyleableMixin(NativeReflectorMixin(LitElement)))) {
+export class NnButton extends CustomStylesMixin(FormElementMixin(NativeValidatorMixin(StyleableMixin(NativeReflectorMixin(LitElement))))) {
   get skipAttributes () {
     return [...super.skipAttributes, 'form']
   }

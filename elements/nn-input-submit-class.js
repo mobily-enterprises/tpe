@@ -3,9 +3,10 @@ import { NativeReflectorMixin } from '../mixins/NativeReflectorMixin.js'
 import { InputMixin } from '../mixins/InputMixin.js'
 import { FormElementMixin } from '../mixins/FormElementMixin.js'
 import { NativeValidatorMixin } from '../mixins/NativeValidatorMixin.js'
+import { CustomStylesMixin } from '../mixins/CustomStylesMixin.js'
 import { tpeRegistry } from '../lib/tpeRegistry'
 
-export class NnInputSubmit extends FormElementMixin(NativeValidatorMixin(InputMixin(NativeReflectorMixin(LitElement)))) {
+export class NnInputSubmit extends CustomStylesMixin(FormElementMixin(NativeValidatorMixin(InputMixin(NativeReflectorMixin(LitElement))))) {
   render () {
     
     return html`

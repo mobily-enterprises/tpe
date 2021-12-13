@@ -1,8 +1,9 @@
 import { LitElement, html, css } from 'lit'
 import { StyleableMixin } from '../mixins/StyleableMixin'
+import { CustomStylesMixin } from '../mixins/CustomStylesMixin.js'
 import { tpeRegistry } from '../lib/tpeRegistry'
 
-export class EeSnackBar extends StyleableMixin(LitElement) {
+export class EeSnackBar extends CustomStylesMixin(StyleableMixin(LitElement)) {
   static get styles () {
     return [
       super.styles,

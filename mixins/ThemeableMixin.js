@@ -31,39 +31,9 @@
 // parameter. If they are present, they will be applied to the target element,
 // along with two mixins defined below, CustomThemeMixin and LitBits.
 
-import { unsafeCSS } from 'lit'
-
 export const ThemeableMixin = (name, theme) => (base) => {
   if (!base) console.log(name, base)
   const shared = (theme && theme.shared) || (p => p)
   const elementTheme = (theme && theme[name]) || (p => p)
-  return elementTheme(shared(CustomThemeMixin(base)))
-}
-
-// In addition to applying the imported theme, ThemeableMixin adds a
-// non-standard LitElement property: _customStyles_. Using _customStyles_ allows
-// developers to completely bypass the shadowRoot scope and redefine any part or
-// all of the elements CSS using a stylesheet string or a CSSTemplateResult
-// object. The principle behind this mechanism is that if a new style is added
-// using this property, the adopteStylesheet of the element is updated in
-// realtime. This approach can be costly for performance if abused, but for the
-// main purpose of overriding scoped CSS, it won't have any side effects.
-
-export const CustomThemeMixin = (base) => {
-  return class Theme extends base {
-    get customStyles () {
-      return this._customStyles || ''
-    }
-
-    set customStyles (cssTemplate) {
-      if (!cssTemplate) return
-      if (typeof cssTemplate === 'string') {
-        cssTemplate = unsafeCSS`${cssTemplate}`
-      }
-      this._customStyles = cssTemplate
-      this.constructor._styles = [...this.constructor._styles, this._customStyles]
-      this.adoptStyles()
-      this.requestUpdate()
-    }
-  }
+  return elementTheme(shared(base))
 }

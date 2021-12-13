@@ -3,9 +3,10 @@ import { NativeReflectorMixin } from '../mixins/NativeReflectorMixin.js'
 import { StyleableMixin } from '../mixins/StyleableMixin.js'
 import { LabelsMixin } from '../mixins/LabelsMixin.js'
 import { progressElement } from '../lib/htmlApi'
+import { CustomStylesMixin } from '../mixins/CustomStylesMixin.js'
 import { tpeRegistry } from '../lib/tpeRegistry'
 
-export class NnProgress extends StyleableMixin(LabelsMixin(NativeReflectorMixin(LitElement))) {
+export class NnProgress extends CustomStylesMixin(StyleableMixin(LabelsMixin(NativeReflectorMixin(LitElement)))) {
   static get properties () {
     return {
     }

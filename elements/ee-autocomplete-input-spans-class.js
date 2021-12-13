@@ -2,9 +2,10 @@ import { LitElement, html, css } from 'lit'
 import { LabelsMixin } from '../mixins/LabelsMixin.js'
 import { SyntheticValidatorMixin } from '../mixins/SyntheticValidatorMixin'
 import { StyleableMixin } from '../mixins/StyleableMixin'
+import { CustomStylesMixin } from '../mixins/CustomStylesMixin.js'
 import { tpeRegistry } from '../lib/tpeRegistry'
 
-export class EeAutocompleteInputSpans extends SyntheticValidatorMixin(StyleableMixin(LabelsMixin(LitElement))) {
+export class EeAutocompleteInputSpans extends CustomStylesMixin(SyntheticValidatorMixin(StyleableMixin(LabelsMixin(LitElement)))) {
   static get properties () {
     return {
       name: {

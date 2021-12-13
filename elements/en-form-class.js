@@ -9,10 +9,11 @@
 import { LitElement, html } from 'lit'
 import { StyleableMixin } from '../mixins/StyleableMixin.js'
 import { formElement } from '../lib/htmlApi.js'
+import { CustomStylesMixin } from '../mixins/CustomStylesMixin.js'
 import { tpeRegistry } from '../lib/tpeRegistry'
 
 /* globals customElements CustomEvent */
-export class EnForm extends StyleableMixin(LitElement) {
+export class EnForm extends CustomStylesMixin(StyleableMixin(LitElement)) {
   get reflectProperties () {
     return [...super.reflectProperties, ...formElement]
   }
