@@ -147,7 +147,7 @@ export class EeTabs extends CustomStylesMixin(StyleableMixin(LitElement)) {
   }
 
   _allTabs () {
-    return this.shadowRoot.querySelector('slot#tabs').assignedElements()
+    return this.tabsSlot.assignedElements()
   }
 
   _workoutHash () {
@@ -162,6 +162,7 @@ export class EeTabs extends CustomStylesMixin(StyleableMixin(LitElement)) {
 
   firstUpdated () {
     super.firstUpdated()
+    this.tabsSlot = this.shadowRoot.querySelector('slot#tabs')
 
     const tab = this._workoutHash()
     this.select(tab, false)

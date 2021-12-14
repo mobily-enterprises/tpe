@@ -164,6 +164,9 @@ export class EeAutocompleteInputSpans extends CustomStylesMixin(SyntheticValidat
   }
 
   firstUpdated () {
+    this.list = this.shadowRoot.querySelector('#list')
+    this.ta = this.shadowRoot.querySelector('#ta')
+    this.ni = this.shadowRoot.querySelector('#ni')
     if (this._tempValue) {
       this.value = this._tempValue
     }
@@ -171,7 +174,7 @@ export class EeAutocompleteInputSpans extends CustomStylesMixin(SyntheticValidat
   }
 
   focus () {
-    this.shadowRoot.querySelector('#ta').focus()
+    this.ta.focus()
   }
 
   _listClicked (e) {
@@ -180,12 +183,10 @@ export class EeAutocompleteInputSpans extends CustomStylesMixin(SyntheticValidat
 
   get value () {
     let r
-    let list
     switch (this.valueAs) {
     case 'json':
       r = {}
-      list = this.shadowRoot.querySelector('#list')
-      for (const span of list.children) {
+      for (const span of this.list.children) {
         if (span.id === 'ta') continue
         const idValue = span.firstChild.idValue
         r[idValue] = span.firstChild.data
@@ -193,8 +194,7 @@ export class EeAutocompleteInputSpans extends CustomStylesMixin(SyntheticValidat
       return r
     default:
       r = []
-      list = this.shadowRoot.querySelector('#list')
-      for (const span of list.children) {
+      for (const span of this.list.children) {
         if (span.id === 'ta') continue
         if (this.valueAs === 'text') {
           // Won't push invalid spans to the final value
@@ -208,16 +208,14 @@ export class EeAutocompleteInputSpans extends CustomStylesMixin(SyntheticValidat
   }
 
   set value (v) {
-    const list = this.shadowRoot.querySelector('#list')
-
-    if (!list) {
+    if (!this.list) {
       this._tempValue = v
       return
     }
     // Remove all children
-    while ((this.clearOnSetValue || v === '' || v === null || v === undefined) && list.firstChild) {
-      if (list.firstChild.id === 'ta') break
-      list.removeChild(list.firstChild)
+    while ((this.clearOnSetValue || v === '' || v === null || v === undefined) && this.list.firstChild) {
+      if (this.list.firstChild.id === 'ta') break
+      this.list.removeChild(list.firstChild)
     }
 
     // Assign all children using pickedElement
@@ -249,8 +247,7 @@ export class EeAutocompleteInputSpans extends CustomStylesMixin(SyntheticValidat
   }
 
   get autocompleteValue () {
-    const ta = this.shadowRoot.querySelector('#ta')
-    if (ta) return ta.value
+    if (this.ta) return ta.value
     return ''
   }
 
@@ -261,7 +258,7 @@ export class EeAutocompleteInputSpans extends CustomStylesMixin(SyntheticValidat
   // work out a data structure based on the string
   _pickCurrentValue () {
     if (this.valueAs === 'text') {
-      this.pickedElement(this.shadowRoot.querySelector('#ta').value, true)
+      this.pickedElement(this.ta.value, true)
     }
   }
 
@@ -271,8 +268,7 @@ export class EeAutocompleteInputSpans extends CustomStylesMixin(SyntheticValidat
   }
 
   _updateNativeInputValue () {
-    const ni = this.shadowRoot.querySelector('#ni')
-    ni.value = this.value
+    this.ni.value = this.value
   }
 
   _removeItem (target, which = 'previous') {
@@ -362,12 +358,10 @@ export class EeAutocompleteInputSpans extends CustomStylesMixin(SyntheticValidat
     }
     el.data = data
 
-    const list = this.shadowRoot.querySelector('#list')
     const span = document.createElement('span')
     // -1 means that it will not in the list of tabs, but
     // it will be focusable (spans aren't by default)
     span.setAttribute('tabindex', -1)
-    const ta = this.shadowRoot.querySelector('#ta')
     const removeBtn = this._createRemoveBtn()
 
     span.onkeydown = this._handleKeyEvents.bind(this)
@@ -378,8 +372,8 @@ export class EeAutocompleteInputSpans extends CustomStylesMixin(SyntheticValidat
     span.appendChild(el)
     span.appendChild(removeBtn)
 
-    list.insertBefore(span, ta)
-    ta.value = ''
+    this.list.insertBefore(span, this.ta)
+    this.ta.value = ''
 
     this._updateNativeInputValue()
 

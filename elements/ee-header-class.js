@@ -39,7 +39,8 @@ export class EeHeader extends CustomStylesMixin(StyleableMixin(LitElement)) {
         }
 
         div[header-title], div[middle] {
-          display: block;
+          display: flex;
+          align-items: center;
         }
 
         div[header-title] h3,
