@@ -33,7 +33,6 @@ export const CustomStylesMixin = (base) => {
       // element is not ready for overriding styles. The redefined
       // `createRenderRoot` below will use the customStyles at the right time 
       if (!this.shadowRoot) return
-      adoptStyles(this.shadowRoot, [...this.constructor.styles, ...this._customStyles])
       this.requestUpdate()
     }
 
