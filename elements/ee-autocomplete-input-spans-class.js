@@ -247,7 +247,7 @@ export class EeAutocompleteInputSpans extends CustomStylesMixin(SyntheticValidat
   }
 
   get autocompleteValue () {
-    if (this.ta) return ta.value
+    if (this.ta) return this.ta.value
     return ''
   }
 
