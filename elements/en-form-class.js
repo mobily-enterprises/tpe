@@ -537,6 +537,29 @@ export class EnForm extends CustomStylesMixin(StyleableMixin(LitElement)) {
           else formData.append(k, body[k])
         }
       }
+
+      // EN-FORM checks for non-standard hash in
+      // `fetchoptions.files`. Devs can create that in the presubmit hook if
+      // files are added to a form in alternative ways, like drag and drop.
+      // Format is as follows:
+      // fetchcOptions.files = { file1: <Array<File> | File>, file2: <Array<File> | File> }
+      // It's still expected that the enctype attribute is set as
+      // `multipart/form-data`
+      if (fetchOptions.files) {
+        for (const k in fetchOptions.files) {
+          const f = fetchOptions.files[k]
+          // For a single file, just append
+          if (f instanceof File) formData.append(k, f)
+          // For multiple files in the same field, loop over and append
+          else if (Array.isArray(f)) {
+            for (const file of f) {
+              formData.append(k, file)
+            }
+          }
+        }
+        delete fetchOptions.files
+      }
+
       fetchOptions.body = formData
     }
 
