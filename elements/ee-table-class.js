@@ -2,6 +2,7 @@ import { LitElement, html, css } from 'lit'
 import { StyleableMixin } from '../mixins/StyleableMixin'
 import { CustomStylesMixin } from '../mixins/CustomStylesMixin.js'
 import { tpeRegistry } from '../lib/tpeRegistry'
+import { DraggableListMixin } from '../mixins/DraggableListMixin'
 
 // https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 // https://dev.to/drews256/ridiculously-easy-row-and-column-layouts-with-flexbox-1k01
@@ -9,7 +10,7 @@ import { tpeRegistry } from '../lib/tpeRegistry'
 // https://github.com/Victor-Bernabe/lit-media-query/blob/master/lit-media-query.js
 
 // eslint-disable-next-line new-cap
-export class EeTable extends CustomStylesMixin(StyleableMixin(LitElement)) {
+export class EeTable extends DraggableListMixin(CustomStylesMixin(StyleableMixin(LitElement))) {
   static get styles () {
     return [
       super.styles || [],

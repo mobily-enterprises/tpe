@@ -2,8 +2,9 @@ import { LitElement, html, css } from 'lit'
 import { StyleableMixin } from '../mixins/StyleableMixin'
 import { CustomStylesMixin } from '../mixins/CustomStylesMixin.js'
 import { tpeRegistry } from '../lib/tpeRegistry'
+import { DraggableElementMixin } from '../mixins/DraggableElementMixin'
 
-export class EeRow extends CustomStylesMixin(StyleableMixin(LitElement)) {
+export class EeRow extends DraggableElementMixin(CustomStylesMixin(StyleableMixin(LitElement))) {
   
   static get styles () {
     return [
