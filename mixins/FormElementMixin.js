@@ -88,7 +88,7 @@ export const FormElementMixin = (base) => {
         return this.internals.form
       }
       let el = this
-      while ((el = el.parentElement) && (el.tagName !== 'FORM' && el.tagName !== 'NN-FORM' && el.tagName !== 'EN-FORM' && !el.hasAttribute('as-form'))) { } // eslint-disable-line no-empty
+      while ((el = (el.parentElement || el.getRootNode().host)) && (el.tagName !== 'FORM' && el.tagName !== 'NN-FORM' && el.tagName !== 'EN-FORM' && !el.hasAttribute('as-form'))) { } // eslint-disable-line no-empty
       return el
     }
   }
