@@ -11,6 +11,7 @@ import { StyleableMixin } from '../mixins/StyleableMixin.js'
 import { formElement } from '../lib/htmlApi.js'
 import { CustomStylesMixin } from '../mixins/CustomStylesMixin.js'
 import { tpeRegistry } from '../lib/tpeRegistry'
+import { getElementValueSource } from '../lib/getElementValueSource'
 
 /* globals customElements CustomEvent */
 export class EnForm extends CustomStylesMixin(StyleableMixin(LitElement)) {
@@ -284,15 +285,7 @@ export class EnForm extends CustomStylesMixin(StyleableMixin(LitElement)) {
   }
 
   _getElementValueSource (el) {
-    if (
-      el.getAttribute('type') === 'checkbox' ||
-      el.getAttribute('type') === 'radio' ||
-      el.hasAttribute('as-checkbox') ||
-      el.hasAttribute('as-radio')
-    ) return 'checked'
-
-    if (el.getAttribute('value-source')) return el.getAttribute('value-source')
-    return 'value'
+    return getElementValueSource(el)
   }
 
   get elements () {
