@@ -22,6 +22,10 @@ export class EeAutocompleteInputSpans extends CustomStylesMixin(SyntheticValidat
       clearOnSetValue: {
         type: Boolean,
         attribute: 'clear-on-set-value'
+      },
+      pickOnBlur: {
+        type: Boolean,
+        attribute: 'pick-on-blur'
       }
     }
   }
@@ -35,6 +39,7 @@ export class EeAutocompleteInputSpans extends CustomStylesMixin(SyntheticValidat
     this.itemElementConfig = {}
     this.itemElementAttributes = {}
     this.valueSeparator = ','
+    this.pickOnBlur = false
   }
 
   static get styles () {
@@ -145,7 +150,7 @@ export class EeAutocompleteInputSpans extends CustomStylesMixin(SyntheticValidat
       ${this.ifLabelBefore}
       ${this.ifValidationMessageBefore}
       <div id="list" @click="${this._listClicked}">
-        <input @keydown="${this._handleKeyEvents}" rows="1" id="ta" spellcheck="false" autocomplete="off" autocapitalize="off" autocorrect="off" dir="ltr" role="combobox" aria-autocomplete="list"/>
+        <input @keydown="${this._handleKeyEvents}" @blur=${this._pickOnBlur} rows="1" id="ta" spellcheck="false" autocomplete="off" autocapitalize="off" autocorrect="off" dir="ltr" role="combobox" aria-autocomplete="list"/>
       </div>
       ${this.ifValidationMessageAfter}
       ${this.ifLabelAfter}
@@ -290,6 +295,18 @@ export class EeAutocompleteInputSpans extends CustomStylesMixin(SyntheticValidat
     return el
   }
 
+  _pickNow () {
+    if (!this.parentElement.suggestions.length) {
+      this._pickCurrentValue()
+    } else {
+      this.parentElement.pickFirst()
+    }
+  }
+
+  _pickOnBlur () {
+    if (this.pickOnBlur) this._pickNow()
+  }
+
   _handleKeyEvents (e) {
     const target = e.currentTarget
 
@@ -327,13 +344,8 @@ export class EeAutocompleteInputSpans extends CustomStylesMixin(SyntheticValidat
     case 'Tab':
     case 'Enter':
       if (!this.autocompleteValue) break
-      if (!this.parentElement.suggestions.length) {
-        e.preventDefault()
-        this._pickCurrentValue()
-      } else {
-        e.preventDefault()
-        this.parentElement.pickFirst()
-      }
+      e.preventDefault()
+      this._pickNow()
     }
   }
 
