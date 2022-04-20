@@ -1,4 +1,5 @@
 import { html } from 'lit'
+import { getElementValueSource } from '../lib/getElementValueSource'
 
 export const SyntheticValidatorMixin = (base) => {
   return class Base extends base {
@@ -75,14 +76,13 @@ export const SyntheticValidatorMixin = (base) => {
     _runValidator () {
       // Call the validator with a value. Here an element could be a checkbox,
       // a select, an simple text input, etc.
-      // If the containing form has _getElementValueSource, that is used to
-      // figure out what to pass to the validato (as well as _submitObject)
+      // getElementValueSource is used to figure out what to pass to the
+      // validator (as well as _submitObject, if available)
       let value
       let submitObject
-      if (this.form && this.form._getElementValueSource) {
-        value = this[this.form._getElementValueSource(this)]
-        submitObject = this.form.submitObject
-      }
+      value = this[getElementValueSource(this)]
+      submitObject = this.form ? this.form.submitObject : {}
+
       const ownErrorMessage = this.validator(value, submitObject)
       if (ownErrorMessage) this.setCustomValidity(ownErrorMessage)
     }
