@@ -61,7 +61,7 @@ export const LabelsMixin = (base) => {
     // This getter return the label template
     get labelTemplate () {
       return html`
-        <label id="label" for="native">
+        <label id="label" for="native" part="label">
           <div id="label-text">${this.label}</div>
           <slot id="label-slot" name="label"></slot>
         </label>
