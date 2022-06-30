@@ -1,11 +1,12 @@
 import { LitElement, html, css } from 'lit'
 import { NativeReflectorMixin } from '../mixins/NativeReflectorMixin.js'
+import { NativeValidatorMixin } from '../mixins/NativeValidatorMixin.js'
 import { InputMixin } from '../mixins/InputMixin.js'
 import { FormElementMixin } from '../mixins/FormElementMixin.js'
 import { StyleableMixin } from '../mixins/StyleableMixin.js'
 import { tpeRegistry } from '../lib/tpeRegistry'
 
-export class NnInputFile extends FormElementMixin(StyleableMixin(InputMixin(NativeReflectorMixin(LitElement)))) {
+export class NnInputFile extends FormElementMixin(NativeValidatorMixin(StyleableMixin(InputMixin(NativeReflectorMixin(LitElement))))) {
   static get styles () {
     return [
       super.styles,
@@ -49,8 +50,10 @@ export class NnInputFile extends FormElementMixin(StyleableMixin(InputMixin(Nati
     
     // From https://stackoverflow.com/a/25825731/829771
     return html`
+      ${this.ifValidationMessageBefore}
       <input type="file" id="native" @change="${this.fileNameChanged}" ?hidden=${this.hideNative} title=${this.title}>
       ${this.fileName}
+      ${this.ifValidationMessageAfter}
     `
   }
 
