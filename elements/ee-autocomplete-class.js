@@ -386,28 +386,28 @@ export class EeAutocomplete extends CustomStylesMixin(StyleableMixin(LitElement)
     if (!this.suggestions.length || !target.parentElement) return
 
     switch (e.key) {
-    case 'ArrowUp':
-      e.preventDefault()
-      target.previousElementSibling
-        ? target.previousElementSibling.focus()
-        : target.parentElement.lastElementChild.focus()
-      break
-    case 'ArrowDown':
-      e.preventDefault()
-      target.nextElementSibling
-        ? target.nextElementSibling.focus()
-        : target.parentElement.firstElementChild.focus()
-      break
-    case 'Tab':
-    case 'Enter':
-      this._picked(e)
-      e.preventDefault()
-      this.targetElement.focus()
-      break
-    case 'Escape':
-      this.dismissSuggestions()
-      this.targetElement.focus()
-      break
+      case 'ArrowUp':
+        e.preventDefault()
+        target.previousElementSibling
+          ? target.previousElementSibling.focus()
+          : target.parentElement.lastElementChild.focus()
+        break
+      case 'ArrowDown':
+        e.preventDefault()
+        target.nextElementSibling
+          ? target.nextElementSibling.focus()
+          : target.parentElement.firstElementChild.focus()
+        break
+      case 'Tab':
+      case 'Enter':
+        this._picked(e)
+        e.preventDefault()
+        this.targetElement.focus()
+        break
+      case 'Escape':
+        this.dismissSuggestions()
+        this.targetElement.focus()
+        break
     }
   }
 
