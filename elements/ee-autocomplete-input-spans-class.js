@@ -220,7 +220,7 @@ export class EeAutocompleteInputSpans extends CustomStylesMixin(SyntheticValidat
     // Remove all children
     while ((this.clearOnSetValue || v === '' || v === null || v === undefined) && this.list.firstChild) {
       if (this.list.firstChild.id === 'ta') break
-      this.list.removeChild(list.firstChild)
+      this.list.removeChild(this.list.firstChild)
     }
 
     // Assign all children using pickedElement
