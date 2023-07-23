@@ -126,8 +126,9 @@ export class EeTabs extends CustomStylesMixin(StyleableMixin(LitElement)) {
   constructor () {
     super()
     this.nameAttribute = 'name'
-    this.useHash = false
+    this.useHash = true
     this.passive = false
+    this.doNotPickDefault = true
   }
 
   /** Tabs usage
@@ -165,11 +166,13 @@ export class EeTabs extends CustomStylesMixin(StyleableMixin(LitElement)) {
     this.tabsSlot = this.shadowRoot.querySelector('slot#tabs')
 
     const tab = this._workoutHash()
+    debugger
     this.select(tab, false)
 
     window.addEventListener('popstate', e => {
       const tab = this._workoutHash()
       if (this.useHash) {
+        this.doNotPickDefault = true
         this.select(tab, true)
       }
     })
@@ -232,7 +235,6 @@ export class EeTabs extends CustomStylesMixin(StyleableMixin(LitElement)) {
   _clearAll (tabs, pages) {
     //
     if (tabs) {
-
       const currentTab = tabs.find(this._isActive.bind(this))
       if (currentTab) {
         currentTab.toggleAttribute('active', false)
@@ -258,7 +260,7 @@ export class EeTabs extends CustomStylesMixin(StyleableMixin(LitElement)) {
       element.setAttribute('tabindex', 1)
     }
 
-    if (!this.passive && this.default) {
+    if (!this.passive && this.default && !this.doNotPickDefault) {
       this.select(this.default, true)
     }
   }
