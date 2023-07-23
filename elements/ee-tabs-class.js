@@ -180,33 +180,47 @@ export class EeTabs extends CustomStylesMixin(StyleableMixin(LitElement)) {
   }
 
   select (tab, clearAll = true) {
-    let pages
 
-    // Find the tab. If it can't be found, end of story
+    let tabName
+    let tabElement
+ 
+    // Normalise "tab", which could be a string or a tab object
+    // In any case, attempt to create tabName and tabElement
     if (typeof tab === 'string') {
-      tab = this._allTabs().find(i => i.getAttribute(this.nameAttribute) === tab)
-    }
-    if (!tab) return
-
-    // If clearAll was passed, clear selection of tabs and (if !passive) pages
-    if (clearAll) {
-      pages = this.shadowRoot.querySelector('slot[name="content"]').assignedElements()
-
-      if (!this.passive) {
-        this._clearAll(this._allTabs(), pages)
-      } else {
-        this._clearAll(this._allTabs())
-      }
+      tabName = tab
+      tabElement = this._allTabs().find(i => i.getAttribute(this.nameAttribute) === tab)
+    } else {
+      tabName = tab.getAttribute(this.nameAttribute)
+      tabElement = tab
     }
 
-    // Activate the tab
-    tab.toggleAttribute('active', true)
-    tab.active = true
+    // ***************************************************
+    // First of all, deal with the tabs side of the story
+    // ***************************************************
+    
+    // If there is a tab element (the header at the top), then (maybe) clear it,
+    // and set the currently active element as "active"
+    if (tabElement) {
 
-    // If !passive, activate the corresponding page
+      // Make every tab unselected
+      if (clearAll) this._clearAll(this._allTabs())
+  
+      // Activate the tab
+      tabElement.toggleAttribute('active', true)
+      tabElement.active = true
+    }
+
+    // *********************************************************
+    // Then, the pages side of the story (but only if !passive)
+    // *********************************************************
+    
+    // Activate the corresponding page
     if (!this.passive) {
-      const name = tab.getAttribute(this.nameAttribute)
-      const activePage = pages.find(el => el.getAttribute(this.nameAttribute) === name)
+      const pages = this.shadowRoot.querySelector('slot[name="content"]').assignedElements()
+
+      // Clear the page
+      this._clearAll(null, pages)
+      const activePage = pages.find(el => el.getAttribute(this.nameAttribute) === tabName)
       if (activePage) {
         activePage.toggleAttribute('active', true)
         activePage.active = true
@@ -217,17 +231,22 @@ export class EeTabs extends CustomStylesMixin(StyleableMixin(LitElement)) {
   // Clear the seletecAttribute from the current active tab and page
   _clearAll (tabs, pages) {
     //
-    const currentTab = tabs.find(this._isActive.bind(this))
-    if (currentTab) {
-      currentTab.toggleAttribute('active', false)
-      currentTab.active = false
+    if (tabs) {
+
+      const currentTab = tabs.find(this._isActive.bind(this))
+      if (currentTab) {
+        currentTab.toggleAttribute('active', false)
+        currentTab.active = false
+      }
     }
 
-    if (!this.passive) {
-      const currentPage = pages.find(this._isActive.bind(this))
-      if (currentPage) {
-        currentPage.toggleAttribute('active', false)
-        currentPage.active = false
+    if (pages) {
+      if (!this.passive) {
+        const currentPage = pages.find(this._isActive.bind(this))
+        if (currentPage) {
+          currentPage.toggleAttribute('active', false)
+          currentPage.active = false
+        }
       }
     }
   }
