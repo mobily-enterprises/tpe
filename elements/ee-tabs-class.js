@@ -163,16 +163,22 @@ export class EeTabs extends CustomStylesMixin(StyleableMixin(LitElement)) {
 
   firstUpdated () {
     super.firstUpdated()
+
     this.tabsSlot = this.shadowRoot.querySelector('slot#tabs')
 
-    const tab = this._workoutHash()
-    debugger
-    this.select(tab, false)
+    // If there is no hash, select the default one
+    if (!window.location.hash && !this.passive && this.default) {
+      this.select(this.default, true)
+    // If there is a hash, select the tab with the dash
+    } else {
+      const tab = this._workoutHash()
+      this.select(tab, false)
+    }
+
 
     window.addEventListener('popstate', e => {
       const tab = this._workoutHash()
       if (this.useHash) {
-        this.doNotPickDefault = true
         this.select(tab, true)
       }
     })
@@ -258,10 +264,6 @@ export class EeTabs extends CustomStylesMixin(StyleableMixin(LitElement)) {
     for (const element of this._allTabs()) {
       element.addEventListener('click', (e) => { this.select.bind(this)(e.currentTarget) })
       element.setAttribute('tabindex', 1)
-    }
-
-    if (!this.passive && this.default && !this.doNotPickDefault) {
-      this.select(this.default, true)
     }
   }
 }
