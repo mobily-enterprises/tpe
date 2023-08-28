@@ -1,6 +1,6 @@
 {
   "name": "tpe",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "The Platform Elements",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
