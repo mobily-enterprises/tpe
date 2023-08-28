@@ -175,7 +175,6 @@ export class EeTabs extends CustomStylesMixin(StyleableMixin(LitElement)) {
       this.select(tab, false)
     }
 
-
     window.addEventListener('popstate', e => {
       const tab = this._workoutHash()
       if (this.useHash) {
@@ -209,6 +208,16 @@ export class EeTabs extends CustomStylesMixin(StyleableMixin(LitElement)) {
     
     // If there is a tab element (the header at the top), then (maybe) clear it,
     // and set the currently active element as "active"
+
+    // If the requested element is not found, set the default
+    // This will make 
+    if (!tabElement) {
+      tabElement = 
+        this._allTabs().find(i => i.getAttribute(this.nameAttribute) === this.default)  || 
+        this._allTabs()[0]
+      tabName = tabElement.getAttribute(this.nameAttribute)
+    }
+
     if (tabElement) {
 
       // Make every tab unselected
@@ -261,6 +270,9 @@ export class EeTabs extends CustomStylesMixin(StyleableMixin(LitElement)) {
 
   // This adds a click event listener to all slotted children (the tabs)
   _manageSlottedTabs (e) {
+    const tab = this._workoutHash()
+    this.select(tab, false)
+
     for (const element of this._allTabs()) {
       element.addEventListener('click', (e) => { this.select.bind(this)(e.currentTarget) })
       element.setAttribute('tabindex', 1)
