@@ -215,7 +215,7 @@ export class EeTabs extends CustomStylesMixin(StyleableMixin(LitElement)) {
       tabElement = 
         this._allTabs().find(i => i.getAttribute(this.nameAttribute) === this.default)  || 
         this._allTabs()[0]
-      tabName = tabElement.getAttribute(this.nameAttribute)
+      if (tabElement) tabName = tabElement.getAttribute(this.nameAttribute)
     }
 
     if (tabElement) {
