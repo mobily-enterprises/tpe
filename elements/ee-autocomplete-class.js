@@ -212,6 +212,10 @@ export class EeAutocomplete extends CustomStylesMixin(StyleableMixin(LitElement)
         const suggestionsDiv = this.shadowRoot.querySelector('#suggestions-elements')
         suggestionsDiv.firstChild.focus()
       }
+    case 'Enter':
+      if (this.suggestions.length) {
+        this.pickFirst() 
+      }  
     }
   }
 
