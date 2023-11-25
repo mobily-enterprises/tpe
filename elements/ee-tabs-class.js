@@ -126,7 +126,7 @@ export class EeTabs extends CustomStylesMixin(StyleableMixin(LitElement)) {
   constructor () {
     super()
     this.nameAttribute = 'name'
-    this.useHash = true
+    this.useHash = false
     this.passive = false
     this.doNotPickDefault = true
   }
@@ -153,11 +153,9 @@ export class EeTabs extends CustomStylesMixin(StyleableMixin(LitElement)) {
 
   _workoutHash () {
     let tab
-    if (this.useHash) {
-      if (window.location.hash) tab = window.location.hash.substr(1)
-      else if (this.default) tab = this.default
-      else tab = this._allTabs()[0]
-    }
+    if (this.useHash && window.location.hash) tab = window.location.hash.substr(1)
+    else if (this.default) tab = this.default
+    else tab = this._allTabs()[0]
     return tab
   }
 
