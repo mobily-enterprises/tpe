@@ -170,7 +170,7 @@ export class EeTabs extends CustomStylesMixin(StyleableMixin(LitElement)) {
     // If there is a hash, select the tab with the dash
     } else {
       const tab = this._workoutHash()
-      this.select(tab, false)
+      if (tab) this.select(tab, false)
     }
 
     window.addEventListener('popstate', e => {
@@ -190,6 +190,8 @@ export class EeTabs extends CustomStylesMixin(StyleableMixin(LitElement)) {
     let tabName
     let tabElement
  
+    if (!tab) return
+
     // Normalise "tab", which could be a string or a tab object
     // In any case, attempt to create tabName and tabElement
     if (typeof tab === 'string') {
@@ -269,7 +271,7 @@ export class EeTabs extends CustomStylesMixin(StyleableMixin(LitElement)) {
   // This adds a click event listener to all slotted children (the tabs)
   _manageSlottedTabs (e) {
     const tab = this._workoutHash()
-    this.select(tab, false)
+    if (tab) this.select(tab, false)
 
     for (const element of this._allTabs()) {
       element.addEventListener('click', (e) => { this.select.bind(this)(e.currentTarget) })
