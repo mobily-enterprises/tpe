@@ -299,7 +299,8 @@ export class EeAutocomplete extends CustomStylesMixin(StyleableMixin(LitElement)
     if (
       this.suggestions.length === 1 &&
       !this.targetElement.multiInputApi &&
-      typeof this.targetElement.setSelectionRange === 'function'
+      typeof this.targetElement.setSelectionRange === 'function' &&
+      !this.informational 
     ) {
       const firstOption = suggestionsDiv.firstChild
       const textValue = firstOption.textValue
