@@ -257,6 +257,12 @@ export class EeAutocomplete extends CustomStylesMixin(StyleableMixin(LitElement)
   }
 
   _dispatchPickedEvent () {
+    // Dispatch the "picked" event (always true when something is picked, evcne though there is no
+    // pickedData as it was a text autocomplete))
+    const pickedEvent = new CustomEvent('picked', { composed: true, bubbles: true, cancelable: false, detail: { synthetic: true, targetElementValue: this.targetElement.value, data: this.pickedData } })
+    this.targetElement.dispatchEvent(pickedEvent)
+
+    // Only dispatch the "input" event if something is picked and it contained pickedData
     if (!this.picked) return
     const inputEvent = new CustomEvent('input', { composed: true, bubbles: true, cancelable: false, detail: { synthetic: true, data: this.pickedData } })
     this.targetElement.dispatchEvent(inputEvent)
