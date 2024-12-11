@@ -422,7 +422,7 @@ export class EeAutocomplete extends CustomStylesMixin(StyleableMixin(LitElement)
     }
   }
 
-  async _inputEvent (e) {
+  async _inputEvent (e, programmatic = false) {
     console.log(e, this._autocompleteInFlight)
     // This is a synthetic event triggered by autocomplete itself
     // once a selection was made: ignore
@@ -503,7 +503,7 @@ export class EeAutocomplete extends CustomStylesMixin(StyleableMixin(LitElement)
 
       const errs = await response.json()
       // Emit event to make it possible to tell the user via UI about the problem
-      const event = new CustomEvent('autocomplete-error', { detail: { type: 'http', response, errs }, bubbles: true, composed: true })
+      const event = new CustomEvent('autocomplete-error', { detail: { synthetic: true, type: 'http', response, errs }, bubbles: true, composed: true })
       this.dispatchEvent(event)
 
     // CASE #3: NO error. Set fields to their
@@ -512,10 +512,16 @@ export class EeAutocomplete extends CustomStylesMixin(StyleableMixin(LitElement)
       // Convert the result to JSON
       const v = await response.json()
 
-      this.suggestions = v
+      if (programmatic && v.length) {
+        this.pickedData = v[0]
+        this.picked = true
+        this._dispatchPickedEvent()   
+      } else {
+        this.suggestions = v
+      }
 
-      // Emit event to make it possible to tell the user via UI about the problem
-      const event = new CustomEvent('form-ok', { detail: { response }, bubbles: true, composed: true })
+      // All OK event
+      const event = new CustomEvent('form-ok', { detail: { synthetic: true, response }, bubbles: true, composed: true })
       this.dispatchEvent(event)
     }
 
@@ -523,7 +529,7 @@ export class EeAutocomplete extends CustomStylesMixin(StyleableMixin(LitElement)
     if (this._attemptedAutocompleteFlight) {
       const oldE = this._attemptedAutocompleteFlight
       this._attemptedAutocompleteFlight = false
-      this._inputEvent(oldE)
+      this._inputEvent(oldE, programmatic)
     }
   }
 }
