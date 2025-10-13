@@ -35,15 +35,15 @@ export const SyntheticValidatorMixin = (base) => {
           valid: true,
           _customValidationMessage: ''
         }
-        this.toggleAttribute('valid', true)
-        if (m === '') this.shownValidationMessage = ''
+        this.removeAttribute('invalid')
+        this.shownValidationMessage = ''
       } else {
         this.validity = {
           valid: false,
           customError: true,
           _customValidationMessage: m
         }
-        this.toggleAttribute('valid', false)
+        this.setAttribute('invalid', '')
       }
     }
 
@@ -59,7 +59,6 @@ export const SyntheticValidatorMixin = (base) => {
       this.shownValidationMessage = ''
 
       if (!this.validity.valid) {
-        this.toggleAttribute('valid', false)
         this.shownValidationMessage = this.validity._customValidationMessage
         this.dispatchEvent(new CustomEvent('invalid', {
           cancelable: true,
@@ -68,7 +67,7 @@ export const SyntheticValidatorMixin = (base) => {
         }))
         return false
       } else {
-        this.toggleAttribute('valid', true)
+        this.removeAttribute('invalid')
         return true
       }
     }
@@ -85,6 +84,7 @@ export const SyntheticValidatorMixin = (base) => {
 
       const ownErrorMessage = this.validator(value, submitObject)
       if (ownErrorMessage) this.setCustomValidity(ownErrorMessage)
+      return ownErrorMessage
     }
 
     checkValidity () {
@@ -101,6 +101,7 @@ export const SyntheticValidatorMixin = (base) => {
         }))
         return false
       }
+      this.removeAttribute('invalid')
       return true
     }
 
