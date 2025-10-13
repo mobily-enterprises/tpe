@@ -99,7 +99,7 @@ const LabelsMixin = (base) => {
     // This getter return the label template
     get labelTemplate () {
       return y`
-        <label id="label" for="native">
+        <label id="label" for="native" part="label">
           <div id="label-text">${this.label}</div>
           <slot id="label-slot" name="label"></slot>
         </label>
@@ -118,6 +118,21 @@ const LabelsMixin = (base) => {
     }
   }
 };
+
+function getElementValueSource (el) {
+    if (
+      el.getAttribute('type') === 'checkbox' ||
+      el.getAttribute('type') === 'radio' ||
+      el.hasAttribute('as-checkbox') ||
+      el.hasAttribute('as-radio')
+    ) {
+      return 'checked'
+    }
+  
+    if (el.getAttribute('value-source')) return el.getAttribute('value-source')
+  
+    return 'value'
+  }
 
 const SyntheticValidatorMixin = (base) => {
   return class Base extends base {
@@ -153,15 +168,15 @@ const SyntheticValidatorMixin = (base) => {
           valid: true,
           _customValidationMessage: ''
         };
-        this.toggleAttribute('valid', true);
-        if (m === '') this.shownValidationMessage = '';
+        this.removeAttribute('invalid');
+        this.shownValidationMessage = '';
       } else {
         this.validity = {
           valid: false,
           customError: true,
           _customValidationMessage: m
         };
-        this.toggleAttribute('valid', false);
+        this.setAttribute('invalid', '');
       }
     }
 
@@ -177,7 +192,6 @@ const SyntheticValidatorMixin = (base) => {
       this.shownValidationMessage = '';
 
       if (!this.validity.valid) {
-        this.toggleAttribute('valid', false);
         this.shownValidationMessage = this.validity._customValidationMessage;
         this.dispatchEvent(new CustomEvent('invalid', {
           cancelable: true,
@@ -186,7 +200,7 @@ const SyntheticValidatorMixin = (base) => {
         }));
         return false
       } else {
-        this.toggleAttribute('valid', true);
+        this.removeAttribute('invalid');
         return true
       }
     }
@@ -194,16 +208,16 @@ const SyntheticValidatorMixin = (base) => {
     _runValidator () {
       // Call the validator with a value. Here an element could be a checkbox,
       // a select, an simple text input, etc.
-      // If the containing form has _getElementValueSource, that is used to
-      // figure out what to pass to the validato (as well as _submitObject)
+      // getElementValueSource is used to figure out what to pass to the
+      // validator (as well as _submitObject, if available)
       let value;
       let submitObject;
-      if (this.form && this.form._getElementValueSource) {
-        value = this[this.form._getElementValueSource(this)];
-        submitObject = this.form.submitObject;
-      }
+      value = this[getElementValueSource(this)];
+      submitObject = this.form ? this.form.submitObject : {};
+
       const ownErrorMessage = this.validator(value, submitObject);
       if (ownErrorMessage) this.setCustomValidity(ownErrorMessage);
+      return ownErrorMessage
     }
 
     checkValidity () {
@@ -220,6 +234,7 @@ const SyntheticValidatorMixin = (base) => {
         }));
         return false
       }
+      this.removeAttribute('invalid');
       return true
     }
 
@@ -298,7 +313,63 @@ const StyleableMixin = (base) => {
   }
 };
 
-class EeAutocompleteInputSpans extends SyntheticValidatorMixin(StyleableMixin(LabelsMixin(n$3))) {
+/**
+ * @license
+ * Copyright 2019 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+const t$2=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShadow)&&"adoptedStyleSheets"in Document.prototype&&"replace"in CSSStyleSheet.prototype,e$3=Symbol(),s$3=new Map;class n$4{constructor(t,s){if(this._$cssResult$=!0,s!==e$3)throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");this.cssText=t;}get styleSheet(){let e=s$3.get(this.cssText);return t$2&&void 0===e&&(s$3.set(this.cssText,e=new CSSStyleSheet),e.replaceSync(this.cssText)),e}toString(){return this.cssText}}const o$4=t=>new n$4("string"==typeof t?t:t+"",e$3),S$2=(e,s)=>{t$2?e.adoptedStyleSheets=s.map((t=>t instanceof CSSStyleSheet?t:t.styleSheet)):s.forEach((t=>{const s=document.createElement("style");s.textContent=t.cssText,e.appendChild(s);}));},i$2=t$2?t=>t:t=>t instanceof CSSStyleSheet?(t=>{let e="";for(const s of t.cssRules)e+=s.cssText;return o$4(e)})(t):t;
+
+/**
+ * @license
+ * Copyright 2017 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */var s$4,e$4;const r$4={toAttribute(t,i){switch(i){case Boolean:t=t?"":null;break;case Object:case Array:t=null==t?t:JSON.stringify(t);}return t},fromAttribute(t,i){let s=t;switch(i){case Boolean:s=null!==t;break;case Number:s=null===t?null:Number(t);break;case Object:case Array:try{s=JSON.parse(t);}catch(t){s=null;}}return s}},h$2=(t,i)=>i!==t&&(i==i||t==t),o$5={attribute:!0,type:String,converter:r$4,reflect:!1,hasChanged:h$2};class n$5 extends HTMLElement{constructor(){super(),this._$Et=new Map,this.isUpdatePending=!1,this.hasUpdated=!1,this._$Ei=null,this.o();}static addInitializer(t){var i;null!==(i=this.l)&&void 0!==i||(this.l=[]),this.l.push(t);}static get observedAttributes(){this.finalize();const t=[];return this.elementProperties.forEach(((i,s)=>{const e=this._$Eh(s,i);void 0!==e&&(this._$Eu.set(e,s),t.push(e));})),t}static createProperty(t,i=o$5){if(i.state&&(i.attribute=!1),this.finalize(),this.elementProperties.set(t,i),!i.noAccessor&&!this.prototype.hasOwnProperty(t)){const s="symbol"==typeof t?Symbol():"__"+t,e=this.getPropertyDescriptor(t,s,i);void 0!==e&&Object.defineProperty(this.prototype,t,e);}}static getPropertyDescriptor(t,i,s){return {get(){return this[i]},set(e){const r=this[t];this[i]=e,this.requestUpdate(t,r,s);},configurable:!0,enumerable:!0}}static getPropertyOptions(t){return this.elementProperties.get(t)||o$5}static finalize(){if(this.hasOwnProperty("finalized"))return !1;this.finalized=!0;const t=Object.getPrototypeOf(this);if(t.finalize(),this.elementProperties=new Map(t.elementProperties),this._$Eu=new Map,this.hasOwnProperty("properties")){const t=this.properties,i=[...Object.getOwnPropertyNames(t),...Object.getOwnPropertySymbols(t)];for(const s of i)this.createProperty(s,t[s]);}return this.elementStyles=this.finalizeStyles(this.styles),!0}static finalizeStyles(i){const s=[];if(Array.isArray(i)){const e=new Set(i.flat(1/0).reverse());for(const i of e)s.unshift(i$2(i));}else void 0!==i&&s.push(i$2(i));return s}static _$Eh(t,i){const s=i.attribute;return !1===s?void 0:"string"==typeof s?s:"string"==typeof t?t.toLowerCase():void 0}o(){var t;this._$Ev=new Promise((t=>this.enableUpdating=t)),this._$AL=new Map,this._$Ep(),this.requestUpdate(),null===(t=this.constructor.l)||void 0===t||t.forEach((t=>t(this)));}addController(t){var i,s;(null!==(i=this._$Em)&&void 0!==i?i:this._$Em=[]).push(t),void 0!==this.renderRoot&&this.isConnected&&(null===(s=t.hostConnected)||void 0===s||s.call(t));}removeController(t){var i;null===(i=this._$Em)||void 0===i||i.splice(this._$Em.indexOf(t)>>>0,1);}_$Ep(){this.constructor.elementProperties.forEach(((t,i)=>{this.hasOwnProperty(i)&&(this._$Et.set(i,this[i]),delete this[i]);}));}createRenderRoot(){var t;const s=null!==(t=this.shadowRoot)&&void 0!==t?t:this.attachShadow(this.constructor.shadowRootOptions);return S$2(s,this.constructor.elementStyles),s}connectedCallback(){var t;void 0===this.renderRoot&&(this.renderRoot=this.createRenderRoot()),this.enableUpdating(!0),null===(t=this._$Em)||void 0===t||t.forEach((t=>{var i;return null===(i=t.hostConnected)||void 0===i?void 0:i.call(t)}));}enableUpdating(t){}disconnectedCallback(){var t;null===(t=this._$Em)||void 0===t||t.forEach((t=>{var i;return null===(i=t.hostDisconnected)||void 0===i?void 0:i.call(t)}));}attributeChangedCallback(t,i,s){this._$AK(t,s);}_$Eg(t,i,s=o$5){var e,h;const n=this.constructor._$Eh(t,s);if(void 0!==n&&!0===s.reflect){const o=(null!==(h=null===(e=s.converter)||void 0===e?void 0:e.toAttribute)&&void 0!==h?h:r$4.toAttribute)(i,s.type);this._$Ei=t,null==o?this.removeAttribute(n):this.setAttribute(n,o),this._$Ei=null;}}_$AK(t,i){var s,e,h;const o=this.constructor,n=o._$Eu.get(t);if(void 0!==n&&this._$Ei!==n){const t=o.getPropertyOptions(n),l=t.converter,a=null!==(h=null!==(e=null===(s=l)||void 0===s?void 0:s.fromAttribute)&&void 0!==e?e:"function"==typeof l?l:null)&&void 0!==h?h:r$4.fromAttribute;this._$Ei=n,this[n]=a(i,t.type),this._$Ei=null;}}requestUpdate(t,i,s){let e=!0;void 0!==t&&(((s=s||this.constructor.getPropertyOptions(t)).hasChanged||h$2)(this[t],i)?(this._$AL.has(t)||this._$AL.set(t,i),!0===s.reflect&&this._$Ei!==t&&(void 0===this._$ES&&(this._$ES=new Map),this._$ES.set(t,s))):e=!1),!this.isUpdatePending&&e&&(this._$Ev=this._$EC());}async _$EC(){this.isUpdatePending=!0;try{await this._$Ev;}catch(t){Promise.reject(t);}const t=this.scheduleUpdate();return null!=t&&await t,!this.isUpdatePending}scheduleUpdate(){return this.performUpdate()}performUpdate(){var t;if(!this.isUpdatePending)return;this.hasUpdated,this._$Et&&(this._$Et.forEach(((t,i)=>this[i]=t)),this._$Et=void 0);let i=!1;const s=this._$AL;try{i=this.shouldUpdate(s),i?(this.willUpdate(s),null===(t=this._$Em)||void 0===t||t.forEach((t=>{var i;return null===(i=t.hostUpdate)||void 0===i?void 0:i.call(t)})),this.update(s)):this._$ET();}catch(t){throw i=!1,this._$ET(),t}i&&this._$AE(s);}willUpdate(t){}_$AE(t){var i;null===(i=this._$Em)||void 0===i||i.forEach((t=>{var i;return null===(i=t.hostUpdated)||void 0===i?void 0:i.call(t)})),this.hasUpdated||(this.hasUpdated=!0,this.firstUpdated(t)),this.updated(t);}_$ET(){this._$AL=new Map,this.isUpdatePending=!1;}get updateComplete(){return this.getUpdateComplete()}getUpdateComplete(){return this._$Ev}shouldUpdate(t){return !0}update(t){void 0!==this._$ES&&(this._$ES.forEach(((t,i)=>this._$Eg(i,this[i],t))),this._$ES=void 0),this._$ET();}updated(t){}firstUpdated(t){}}n$5.finalized=!0,n$5.elementProperties=new Map,n$5.elementStyles=[],n$5.shadowRootOptions={mode:"open"},null===(s$4=globalThis.reactiveElementPlatformSupport)||void 0===s$4||s$4.call(globalThis,{ReactiveElement:n$5}),(null!==(e$4=globalThis.reactiveElementVersions)&&void 0!==e$4?e$4:globalThis.reactiveElementVersions=[]).push("1.0.0-rc.4");
+
+// CustomStylesMixin adds a non-standard LitElement property: _customStyles_.
+// Using _customStyles_ allows developers to completely bypass the shadowRoot
+// scope and redefine any part or all of the elements CSS using a stylesheet
+// string or a CSSTemplateResult object. The principle behind this mechanism is
+// that if a new style is added using this property, the adopteStylesheet of the
+// element is updated in realtime. This approach can be costly for performance
+// if abused, but for the main purpose of overriding scoped CSS, it won't have
+// any side effects.
+
+const CustomStylesMixin = (base) => {
+  return class Theme extends base {
+    get customStyles () {
+      return this._customStyles || []
+    }
+
+    set customStyles (cssTemplate) {
+      if (!cssTemplate) return
+      if (typeof cssTemplate === 'string') {
+        cssTemplate = o`${cssTemplate}`;
+      }
+
+      // Always set customStyles as an array, as always redefine the property,
+      // for simplicity in subsequent steps
+      if (!Array.isArray(cssTemplate)) cssTemplate = [cssTemplate];
+      this._customStyles = cssTemplate;
+
+      // If customStyles exists at construction time (usually because it was set
+      // by an attribute), shadowRoot won't be available, which means the
+      // element is not ready for overriding styles. The redefined
+      // `createRenderRoot` below will use the customStyles at the right time 
+      if (!this.shadowRoot) return
+      this.requestUpdate();
+    }
+
+    createRenderRoot () {
+      const renderRoot = this.shadowRoot || this.attachShadow(this.constructor.shadowRootOptions);
+      // Use customStyles along with memoized elementStyles  
+      S$2(renderRoot, [...this.constructor.elementStyles, ...this.customStyles]);
+      return renderRoot;
+    }
+  }
+};
+
+class EeAutocompleteInputSpans extends CustomStylesMixin(SyntheticValidatorMixin(StyleableMixin(LabelsMixin(n$3)))) {
   static get properties () {
     return {
       name: {
@@ -315,6 +386,10 @@ class EeAutocompleteInputSpans extends SyntheticValidatorMixin(StyleableMixin(La
       clearOnSetValue: {
         type: Boolean,
         attribute: 'clear-on-set-value'
+      },
+      pickOnBlur: {
+        type: Boolean,
+        attribute: 'pick-on-blur'
       }
     }
   }
@@ -328,6 +403,7 @@ class EeAutocompleteInputSpans extends SyntheticValidatorMixin(StyleableMixin(La
     this.itemElementConfig = {};
     this.itemElementAttributes = {};
     this.valueSeparator = ',';
+    this.pickOnBlur = false;
   }
 
   static get styles () {
@@ -438,7 +514,7 @@ class EeAutocompleteInputSpans extends SyntheticValidatorMixin(StyleableMixin(La
       ${this.ifLabelBefore}
       ${this.ifValidationMessageBefore}
       <div id="list" @click="${this._listClicked}">
-        <input @keydown="${this._handleKeyEvents}" rows="1" id="ta" spellcheck="false" autocomplete="off" autocapitalize="off" autocorrect="off" dir="ltr" role="combobox" aria-autocomplete="list"/>
+        <input @keydown="${this._handleKeyEvents}" @blur=${this._pickOnBlur} rows="1" id="ta" spellcheck="false" autocomplete="off" autocapitalize="off" autocorrect="off" dir="ltr" role="combobox" aria-autocomplete="list"/>
       </div>
       ${this.ifValidationMessageAfter}
       ${this.ifLabelAfter}
@@ -457,6 +533,9 @@ class EeAutocompleteInputSpans extends SyntheticValidatorMixin(StyleableMixin(La
   }
 
   firstUpdated () {
+    this.list = this.shadowRoot.querySelector('#list');
+    this.ta = this.shadowRoot.querySelector('#ta');
+    this.ni = this.shadowRoot.querySelector('#ni');
     if (this._tempValue) {
       this.value = this._tempValue;
     }
@@ -464,7 +543,7 @@ class EeAutocompleteInputSpans extends SyntheticValidatorMixin(StyleableMixin(La
   }
 
   focus () {
-    this.shadowRoot.querySelector('#ta').focus();
+    this.ta.focus();
   }
 
   _listClicked (e) {
@@ -473,12 +552,10 @@ class EeAutocompleteInputSpans extends SyntheticValidatorMixin(StyleableMixin(La
 
   get value () {
     let r;
-    let list;
     switch (this.valueAs) {
     case 'json':
       r = {};
-      list = this.shadowRoot.querySelector('#list');
-      for (const span of list.children) {
+      for (const span of this.list.children) {
         if (span.id === 'ta') continue
         const idValue = span.firstChild.idValue;
         r[idValue] = span.firstChild.data;
@@ -486,8 +563,7 @@ class EeAutocompleteInputSpans extends SyntheticValidatorMixin(StyleableMixin(La
       return r
     default:
       r = [];
-      list = this.shadowRoot.querySelector('#list');
-      for (const span of list.children) {
+      for (const span of this.list.children) {
         if (span.id === 'ta') continue
         if (this.valueAs === 'text') {
           // Won't push invalid spans to the final value
@@ -501,16 +577,14 @@ class EeAutocompleteInputSpans extends SyntheticValidatorMixin(StyleableMixin(La
   }
 
   set value (v) {
-    const list = this.shadowRoot.querySelector('#list');
-
-    if (!list) {
+    if (!this.list) {
       this._tempValue = v;
       return
     }
     // Remove all children
-    while ((this.clearOnSetValue || v === '' || v === null || v === undefined) && list.firstChild) {
-      if (list.firstChild.id === 'ta') break
-      list.removeChild(list.firstChild);
+    while ((this.clearOnSetValue || v === '' || v === null || v === undefined) && this.list.firstChild) {
+      if (this.list.firstChild.id === 'ta') break
+      this.list.removeChild(this.list.firstChild);
     }
 
     // Assign all children using pickedElement
@@ -542,8 +616,7 @@ class EeAutocompleteInputSpans extends SyntheticValidatorMixin(StyleableMixin(La
   }
 
   get autocompleteValue () {
-    const ta = this.shadowRoot.querySelector('#ta');
-    if (ta) return ta.value
+    if (this.ta) return this.ta.value
     return ''
   }
 
@@ -554,7 +627,7 @@ class EeAutocompleteInputSpans extends SyntheticValidatorMixin(StyleableMixin(La
   // work out a data structure based on the string
   _pickCurrentValue () {
     if (this.valueAs === 'text') {
-      this.pickedElement(this.shadowRoot.querySelector('#ta').value, true);
+      this.pickedElement(this.ta.value, true);
     }
   }
 
@@ -564,8 +637,7 @@ class EeAutocompleteInputSpans extends SyntheticValidatorMixin(StyleableMixin(La
   }
 
   _updateNativeInputValue () {
-    const ni = this.shadowRoot.querySelector('#ni');
-    ni.value = this.value;
+    this.ni.value = this.value;
   }
 
   _removeItem (target, which = 'previous') {
@@ -585,6 +657,18 @@ class EeAutocompleteInputSpans extends SyntheticValidatorMixin(StyleableMixin(La
     el.onclick = this._askToRemove.bind(this);
     el.classList.add('remove');
     return el
+  }
+
+  _pickNow () {
+    if (!this.parentElement.suggestions.length) {
+      this._pickCurrentValue();
+    } else {
+      this.parentElement.pickFirst();
+    }
+  }
+
+  _pickOnBlur () {
+    if (this.pickOnBlur) this._pickNow();
   }
 
   _handleKeyEvents (e) {
@@ -624,13 +708,8 @@ class EeAutocompleteInputSpans extends SyntheticValidatorMixin(StyleableMixin(La
     case 'Tab':
     case 'Enter':
       if (!this.autocompleteValue) break
-      if (!this.parentElement.suggestions.length) {
-        e.preventDefault();
-        this._pickCurrentValue();
-      } else {
-        e.preventDefault();
-        this.parentElement.pickFirst();
-      }
+      e.preventDefault();
+      this._pickNow();
     }
   }
 
@@ -655,12 +734,10 @@ class EeAutocompleteInputSpans extends SyntheticValidatorMixin(StyleableMixin(La
     }
     el.data = data;
 
-    const list = this.shadowRoot.querySelector('#list');
     const span = document.createElement('span');
     // -1 means that it will not in the list of tabs, but
     // it will be focusable (spans aren't by default)
     span.setAttribute('tabindex', -1);
-    const ta = this.shadowRoot.querySelector('#ta');
     const removeBtn = this._createRemoveBtn();
 
     span.onkeydown = this._handleKeyEvents.bind(this);
@@ -671,8 +748,8 @@ class EeAutocompleteInputSpans extends SyntheticValidatorMixin(StyleableMixin(La
     span.appendChild(el);
     span.appendChild(removeBtn);
 
-    list.insertBefore(span, ta);
-    ta.value = '';
+    this.list.insertBefore(span, this.ta);
+    this.ta.value = '';
 
     this._updateNativeInputValue();
 
@@ -1575,7 +1652,7 @@ const FormElementMixin = (base) => {
         return this.internals.form
       }
       let el = this;
-      while ((el = el.parentElement) && (el.tagName !== 'FORM' && el.tagName !== 'NN-FORM' && el.tagName !== 'EN-FORM' && !el.hasAttribute('as-form'))) { } // eslint-disable-line no-empty
+      while ((el = (el.parentElement || el.getRootNode().host)) && (el.tagName !== 'FORM' && el.tagName !== 'NN-FORM' && el.tagName !== 'EN-FORM' && !el.hasAttribute('as-form'))) { } // eslint-disable-line no-empty
       return el
     }
   }
@@ -1672,14 +1749,13 @@ const NativeValidatorMixin = (base) => {
     _runValidator () {
       // Call the validator with a value. Here an element could be a checkbox,
       // a select, an simple text input, etc.
-      // If the containing form has _getElementValueSource, that is used to
-      // figure out what to pass to the validato (as well as _submitObject)
+      // getElementValueSource is used to figure out what to pass to the
+      // validator (as well as _submitObject, if available)
       let value;
       let submitObject;
-      if (this.form && this.form._getElementValueSource) {
-        value = this[this.form._getElementValueSource(this)];
-        submitObject = this.form.submitObject;
-      }
+      value = this[getElementValueSource(this)];
+      submitObject = this.form ? this.form.submitObject : {};
+
       const ownErrorMessage = this.validator(value, submitObject);
       if (ownErrorMessage) this.setCustomValidity(ownErrorMessage);
     }
@@ -1760,7 +1836,7 @@ const NativeValidatorMixin = (base) => {
   }
 };
 
-class NnInputCheckbox extends FormElementMixin(NativeValidatorMixin(LabelsMixin(StyleableMixin(InputMixin(NativeReflectorMixin(n$3)))))) {
+class NnInputCheckbox extends CustomStylesMixin(FormElementMixin(NativeValidatorMixin(LabelsMixin(StyleableMixin(InputMixin(NativeReflectorMixin(n$3))))))) {
   render () {
     
     return y`
@@ -1778,7 +1854,7 @@ class NnInputCheckbox extends FormElementMixin(NativeValidatorMixin(LabelsMixin(
 }
 tpeRegistry.register('nn-input-checkbox', NnInputCheckbox);
 
-class EeAutocompleteItemCountry extends StyleableMixin(n$3) {
+class EeAutocompleteItemCountry extends CustomStylesMixin(StyleableMixin(n$3)) {
   static get styles () {
     return [
       super.styles,
@@ -1880,7 +1956,7 @@ class EeAutocompleteItemCountryView extends EeAutocompleteItemCountry {
 }
 tpeRegistry.register('ee-autocomplete-item-country-view', EeAutocompleteItemCountryView);
 
-class EeAutocompleteItemEmail extends StyleableMixin(n$3) {
+class EeAutocompleteItemEmail extends CustomStylesMixin(StyleableMixin(n$3)) {
   static get styles () {
     return [
       super.styles,
@@ -2017,7 +2093,7 @@ class EeAutocompleteItemEmailView extends EeAutocompleteItemEmail {
 }
 tpeRegistry.register('ee-autocomplete-item-email-view', EeAutocompleteItemEmailView);
 
-class EeAutocompleteItemLi extends StyleableMixin(n$3) {
+class EeAutocompleteItemLi extends CustomStylesMixin(StyleableMixin(n$3)) {
   static get styles () {
     return [
       super.styles,
@@ -2137,7 +2213,7 @@ class EeAutocompleteItemLiView extends EeAutocompleteItemLi {
 }
 tpeRegistry.register('ee-autocomplete-item-li-view', EeAutocompleteItemLiView);
 
-class EeAutocomplete extends StyleableMixin(n$3) {
+class EeAutocomplete extends CustomStylesMixin(StyleableMixin(n$3)) {
   static get styles () {
     return [
       super.styles,
@@ -2344,6 +2420,10 @@ class EeAutocomplete extends StyleableMixin(n$3) {
         const suggestionsDiv = this.shadowRoot.querySelector('#suggestions-elements');
         suggestionsDiv.firstChild.focus();
       }
+    case 'Enter':
+      if (this.suggestions.length) {
+        this.pickFirst(); 
+      }  
     }
   }
 
@@ -2385,6 +2465,12 @@ class EeAutocomplete extends StyleableMixin(n$3) {
   }
 
   _dispatchPickedEvent () {
+    // Dispatch the "picked" event (always true when something is picked, evcne though there is no
+    // pickedData as it was a text autocomplete))
+    const pickedEvent = new CustomEvent('picked', { composed: true, bubbles: true, cancelable: false, detail: { synthetic: true, targetElementValue: this.targetElement.value, data: this.pickedData } });
+    this.targetElement.dispatchEvent(pickedEvent);
+
+    // Only dispatch the "input" event if something is picked and it contained pickedData
     if (!this.picked) return
     const inputEvent = new CustomEvent('input', { composed: true, bubbles: true, cancelable: false, detail: { synthetic: true, data: this.pickedData } });
     this.targetElement.dispatchEvent(inputEvent);
@@ -2427,7 +2513,8 @@ class EeAutocomplete extends StyleableMixin(n$3) {
     if (
       this.suggestions.length === 1 &&
       !this.targetElement.multiInputApi &&
-      typeof this.targetElement.setSelectionRange === 'function'
+      typeof this.targetElement.setSelectionRange === 'function' &&
+      !this.informational 
     ) {
       const firstOption = suggestionsDiv.firstChild;
       const textValue = firstOption.textValue;
@@ -2518,32 +2605,32 @@ class EeAutocomplete extends StyleableMixin(n$3) {
     if (!this.suggestions.length || !target.parentElement) return
 
     switch (e.key) {
-    case 'ArrowUp':
-      e.preventDefault();
-      target.previousElementSibling
-        ? target.previousElementSibling.focus()
-        : target.parentElement.lastElementChild.focus();
-      break
-    case 'ArrowDown':
-      e.preventDefault();
-      target.nextElementSibling
-        ? target.nextElementSibling.focus()
-        : target.parentElement.firstElementChild.focus();
-      break
-    case 'Tab':
-    case 'Enter':
-      this._picked(e);
-      e.preventDefault();
-      this.targetElement.focus();
-      break
-    case 'Escape':
-      this.dismissSuggestions();
-      this.targetElement.focus();
-      break
+      case 'ArrowUp':
+        e.preventDefault();
+        target.previousElementSibling
+          ? target.previousElementSibling.focus()
+          : target.parentElement.lastElementChild.focus();
+        break
+      case 'ArrowDown':
+        e.preventDefault();
+        target.nextElementSibling
+          ? target.nextElementSibling.focus()
+          : target.parentElement.firstElementChild.focus();
+        break
+      case 'Tab':
+      case 'Enter':
+        this._picked(e);
+        e.preventDefault();
+        this.targetElement.focus();
+        break
+      case 'Escape':
+        this.dismissSuggestions();
+        this.targetElement.focus();
+        break
     }
   }
 
-  async _inputEvent (e) {
+  async _inputEvent (e, programmatic = false) {
     console.log(e, this._autocompleteInFlight);
     // This is a synthetic event triggered by autocomplete itself
     // once a selection was made: ignore
@@ -2624,7 +2711,7 @@ class EeAutocomplete extends StyleableMixin(n$3) {
 
       const errs = await response.json();
       // Emit event to make it possible to tell the user via UI about the problem
-      const event = new CustomEvent('autocomplete-error', { detail: { type: 'http', response, errs }, bubbles: true, composed: true });
+      const event = new CustomEvent('autocomplete-error', { detail: { synthetic: true, type: 'http', response, errs }, bubbles: true, composed: true });
       this.dispatchEvent(event);
 
     // CASE #3: NO error. Set fields to their
@@ -2633,10 +2720,16 @@ class EeAutocomplete extends StyleableMixin(n$3) {
       // Convert the result to JSON
       const v = await response.json();
 
-      this.suggestions = v;
+      if (programmatic && v.length) {
+        this.pickedData = v[0];
+        this.picked = true;
+        this._dispatchPickedEvent();   
+      } else {
+        this.suggestions = v;
+      }
 
-      // Emit event to make it possible to tell the user via UI about the problem
-      const event = new CustomEvent('form-ok', { detail: { response }, bubbles: true, composed: true });
+      // All OK event
+      const event = new CustomEvent('form-ok', { detail: { synthetic: true, response }, bubbles: true, composed: true });
       this.dispatchEvent(event);
     }
 
@@ -2644,13 +2737,13 @@ class EeAutocomplete extends StyleableMixin(n$3) {
     if (this._attemptedAutocompleteFlight) {
       const oldE = this._attemptedAutocompleteFlight;
       this._attemptedAutocompleteFlight = false;
-      this._inputEvent(oldE);
+      this._inputEvent(oldE, programmatic);
     }
   }
 }
 tpeRegistry.register('ee-autocomplete', EeAutocomplete);
 
-class EeCell extends StyleableMixin(n$3) {
+class EeCell extends CustomStylesMixin((StyleableMixin(n$3))) {
   static get styles () {
     return [
       r`
@@ -2731,7 +2824,7 @@ tpeRegistry.register('ee-cell', EeCell);
 
 const chevronLeft = y`<svg class="icon" height="24" viewBox="0 0 24 24" width="24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>`;
 
-class EeDrawer extends StyleableMixin(n$3) {
+class EeDrawer extends CustomStylesMixin(StyleableMixin(n$3)) {
   static get styles () {
     return [
       r`
@@ -3022,7 +3115,7 @@ tpeRegistry.register('ee-drawer', EeDrawer);
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-var t$2,i$2;const s$3=globalThis.trustedTypes,e$3=s$3?s$3.createPolicy("lit-html",{createHTML:t=>t}):void 0,o$4=`lit$${(Math.random()+"").slice(9)}$`,n$4="?"+o$4,l$2=`<${n$4}>`,h$2=document,r$4=(t="")=>h$2.createComment(t),d$1=t=>null===t||"object"!=typeof t&&"function"!=typeof t,u$1=Array.isArray,c$1=t=>{var i;return u$1(t)||"function"==typeof(null===(i=t)||void 0===i?void 0:i[Symbol.iterator])},v$1=/<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g,a$1=/-->/g,f$1=/>/g,_$1=/>|[ 	\n\r](?:([^\s"'>=/]+)([ 	\n\r]*=[ 	\n\r]*(?:[^ 	\n\r"'`<>=]|("|')|))|$)/g,g$1=/'/g,m$1=/"/g,$$1=/^(?:script|style|textarea)$/i,T$1=Symbol.for("lit-noChange"),x$1=Symbol.for("lit-nothing"),w$1=new WeakMap,C$1=h$2.createTreeWalker(h$2,129,null,!1),P$1=(t,i)=>{const s=t.length-1,n=[];let h,r=2===i?"<svg>":"",d=v$1;for(let i=0;i<s;i++){const s=t[i];let e,u,c=-1,p=0;for(;p<s.length&&(d.lastIndex=p,u=d.exec(s),null!==u);)p=d.lastIndex,d===v$1?"!--"===u[1]?d=a$1:void 0!==u[1]?d=f$1:void 0!==u[2]?($$1.test(u[2])&&(h=RegExp("</"+u[2],"g")),d=_$1):void 0!==u[3]&&(d=_$1):d===_$1?">"===u[0]?(d=null!=h?h:v$1,c=-1):void 0===u[1]?c=-2:(c=d.lastIndex-u[2].length,e=u[1],d=void 0===u[3]?_$1:'"'===u[3]?m$1:g$1):d===m$1||d===g$1?d=_$1:d===a$1||d===f$1?d=v$1:(d=_$1,h=void 0);const y=d===_$1&&t[i+1].startsWith("/>")?" ":"";r+=d===v$1?s+l$2:c>=0?(n.push(e),s.slice(0,c)+"$lit$"+s.slice(c)+o$4+y):s+o$4+(-2===c?(n.push(void 0),i):y);}const u=r+(t[s]||"<?>")+(2===i?"</svg>":"");return [void 0!==e$3?e$3.createHTML(u):u,n]};class V$1{constructor({strings:t,_$litType$:i},e){let l;this.parts=[];let h=0,d=0;const u=t.length-1,c=this.parts,[v,a]=P$1(t,i);if(this.el=V$1.createElement(v,e),C$1.currentNode=this.el.content,2===i){const t=this.el.content,i=t.firstChild;i.remove(),t.append(...i.childNodes);}for(;null!==(l=C$1.nextNode())&&c.length<u;){if(1===l.nodeType){if(l.hasAttributes()){const t=[];for(const i of l.getAttributeNames())if(i.endsWith("$lit$")||i.startsWith(o$4)){const s=a[d++];if(t.push(i),void 0!==s){const t=l.getAttribute(s.toLowerCase()+"$lit$").split(o$4),i=/([.?@])?(.*)/.exec(s);c.push({type:1,index:h,name:i[2],strings:t,ctor:"."===i[1]?k$1:"?"===i[1]?H$1:"@"===i[1]?I$1:M$1});}else c.push({type:6,index:h});}for(const i of t)l.removeAttribute(i);}if($$1.test(l.tagName)){const t=l.textContent.split(o$4),i=t.length-1;if(i>0){l.textContent=s$3?s$3.emptyScript:"";for(let s=0;s<i;s++)l.append(t[s],r$4()),C$1.nextNode(),c.push({type:2,index:++h});l.append(t[i],r$4());}}}else if(8===l.nodeType)if(l.data===n$4)c.push({type:2,index:h});else {let t=-1;for(;-1!==(t=l.data.indexOf(o$4,t+1));)c.push({type:7,index:h}),t+=o$4.length-1;}h++;}}static createElement(t,i){const s=h$2.createElement("template");return s.innerHTML=t,s}}function E$1(t,i,s=t,e){var o,n,l,h;if(i===T$1)return i;let r=void 0!==e?null===(o=s._$Cl)||void 0===o?void 0:o[e]:s._$Cu;const u=d$1(i)?void 0:i._$litDirective$;return (null==r?void 0:r.constructor)!==u&&(null===(n=null==r?void 0:r._$AO)||void 0===n||n.call(r,!1),void 0===u?r=void 0:(r=new u(t),r._$AT(t,s,e)),void 0!==e?(null!==(l=(h=s)._$Cl)&&void 0!==l?l:h._$Cl=[])[e]=r:s._$Cu=r),void 0!==r&&(i=E$1(t,r._$AS(t,i.values),r,e)),i}class N$1{constructor(t,i){this.v=[],this._$AN=void 0,this._$AD=t,this._$AM=i;}get parentNode(){return this._$AM.parentNode}get _$AU(){return this._$AM._$AU}p(t){var i;const{el:{content:s},parts:e}=this._$AD,o=(null!==(i=null==t?void 0:t.creationScope)&&void 0!==i?i:h$2).importNode(s,!0);C$1.currentNode=o;let n=C$1.nextNode(),l=0,r=0,d=e[0];for(;void 0!==d;){if(l===d.index){let i;2===d.type?i=new S$2(n,n.nextSibling,this,t):1===d.type?i=new d.ctor(n,d.name,d.strings,this,t):6===d.type&&(i=new L$1(n,this,t)),this.v.push(i),d=e[++r];}l!==(null==d?void 0:d.index)&&(n=C$1.nextNode(),l++);}return o}m(t){let i=0;for(const s of this.v)void 0!==s&&(void 0!==s.strings?(s._$AI(t,s,i),i+=s.strings.length-2):s._$AI(t[i])),i++;}}class S$2{constructor(t,i,s,e){var o;this.type=2,this._$AH=x$1,this._$AN=void 0,this._$AA=t,this._$AB=i,this._$AM=s,this.options=e,this._$Cg=null===(o=null==e?void 0:e.isConnected)||void 0===o||o;}get _$AU(){var t,i;return null!==(i=null===(t=this._$AM)||void 0===t?void 0:t._$AU)&&void 0!==i?i:this._$Cg}get parentNode(){let t=this._$AA.parentNode;const i=this._$AM;return void 0!==i&&11===t.nodeType&&(t=i.parentNode),t}get startNode(){return this._$AA}get endNode(){return this._$AB}_$AI(t,i=this){t=E$1(this,t,i),d$1(t)?t===x$1||null==t||""===t?(this._$AH!==x$1&&this._$AR(),this._$AH=x$1):t!==this._$AH&&t!==T$1&&this.$(t):void 0!==t._$litType$?this.T(t):void 0!==t.nodeType?this.S(t):c$1(t)?this.M(t):this.$(t);}A(t,i=this._$AB){return this._$AA.parentNode.insertBefore(t,i)}S(t){this._$AH!==t&&(this._$AR(),this._$AH=this.A(t));}$(t){this._$AH!==x$1&&d$1(this._$AH)?this._$AA.nextSibling.data=t:this.S(h$2.createTextNode(t)),this._$AH=t;}T(t){var i;const{values:s,_$litType$:e}=t,o="number"==typeof e?this._$AC(t):(void 0===e.el&&(e.el=V$1.createElement(e.h,this.options)),e);if((null===(i=this._$AH)||void 0===i?void 0:i._$AD)===o)this._$AH.m(s);else {const t=new N$1(o,this),i=t.p(this.options);t.m(s),this.S(i),this._$AH=t;}}_$AC(t){let i=w$1.get(t.strings);return void 0===i&&w$1.set(t.strings,i=new V$1(t)),i}M(t){u$1(this._$AH)||(this._$AH=[],this._$AR());const i=this._$AH;let s,e=0;for(const o of t)e===i.length?i.push(s=new S$2(this.A(r$4()),this.A(r$4()),this,this.options)):s=i[e],s._$AI(o),e++;e<i.length&&(this._$AR(s&&s._$AB.nextSibling,e),i.length=e);}_$AR(t=this._$AA.nextSibling,i){var s;for(null===(s=this._$AP)||void 0===s||s.call(this,!1,!0,i);t&&t!==this._$AB;){const i=t.nextSibling;t.remove(),t=i;}}setConnected(t){var i;void 0===this._$AM&&(this._$Cg=t,null===(i=this._$AP)||void 0===i||i.call(this,t));}}class M$1{constructor(t,i,s,e,o){this.type=1,this._$AH=x$1,this._$AN=void 0,this.element=t,this.name=i,this._$AM=e,this.options=o,s.length>2||""!==s[0]||""!==s[1]?(this._$AH=Array(s.length-1).fill(new String),this.strings=s):this._$AH=x$1;}get tagName(){return this.element.tagName}get _$AU(){return this._$AM._$AU}_$AI(t,i=this,s,e){const o=this.strings;let n=!1;if(void 0===o)t=E$1(this,t,i,0),n=!d$1(t)||t!==this._$AH&&t!==T$1,n&&(this._$AH=t);else {const e=t;let l,h;for(t=o[0],l=0;l<o.length-1;l++)h=E$1(this,e[s+l],i,l),h===T$1&&(h=this._$AH[l]),n||(n=!d$1(h)||h!==this._$AH[l]),h===x$1?t=x$1:t!==x$1&&(t+=(null!=h?h:"")+o[l+1]),this._$AH[l]=h;}n&&!e&&this.k(t);}k(t){t===x$1?this.element.removeAttribute(this.name):this.element.setAttribute(this.name,null!=t?t:"");}}class k$1 extends M$1{constructor(){super(...arguments),this.type=3;}k(t){this.element[this.name]=t===x$1?void 0:t;}}class H$1 extends M$1{constructor(){super(...arguments),this.type=4;}k(t){t&&t!==x$1?this.element.setAttribute(this.name,""):this.element.removeAttribute(this.name);}}class I$1 extends M$1{constructor(t,i,s,e,o){super(t,i,s,e,o),this.type=5;}_$AI(t,i=this){var s;if((t=null!==(s=E$1(this,t,i,0))&&void 0!==s?s:x$1)===T$1)return;const e=this._$AH,o=t===x$1&&e!==x$1||t.capture!==e.capture||t.once!==e.once||t.passive!==e.passive,n=t!==x$1&&(e===x$1||o);o&&this.element.removeEventListener(this.name,this,e),n&&this.element.addEventListener(this.name,this,t),this._$AH=t;}handleEvent(t){var i,s;"function"==typeof this._$AH?this._$AH.call(null!==(s=null===(i=this.options)||void 0===i?void 0:i.host)&&void 0!==s?s:this.element,t):this._$AH.handleEvent(t);}}class L$1{constructor(t,i,s){this.element=t,this.type=6,this._$AN=void 0,this._$AM=i,this.options=s;}get _$AU(){return this._$AM._$AU}_$AI(t){E$1(this,t);}}null===(t$2=globalThis.litHtmlPlatformSupport)||void 0===t$2||t$2.call(globalThis,V$1,S$2),(null!==(i$2=globalThis.litHtmlVersions)&&void 0!==i$2?i$2:globalThis.litHtmlVersions=[]).push("2.0.0-rc.5");
+var t$3,i$3;const s$5=globalThis.trustedTypes,e$5=s$5?s$5.createPolicy("lit-html",{createHTML:t=>t}):void 0,o$6=`lit$${(Math.random()+"").slice(9)}$`,n$6="?"+o$6,l$2=`<${n$6}>`,h$3=document,r$5=(t="")=>h$3.createComment(t),d$1=t=>null===t||"object"!=typeof t&&"function"!=typeof t,u$1=Array.isArray,c$1=t=>{var i;return u$1(t)||"function"==typeof(null===(i=t)||void 0===i?void 0:i[Symbol.iterator])},v$1=/<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g,a$1=/-->/g,f$1=/>/g,_$1=/>|[ 	\n\r](?:([^\s"'>=/]+)([ 	\n\r]*=[ 	\n\r]*(?:[^ 	\n\r"'`<>=]|("|')|))|$)/g,g$1=/'/g,m$1=/"/g,$$1=/^(?:script|style|textarea)$/i,T$1=Symbol.for("lit-noChange"),x$1=Symbol.for("lit-nothing"),w$1=new WeakMap,C$1=h$3.createTreeWalker(h$3,129,null,!1),P$1=(t,i)=>{const s=t.length-1,n=[];let h,r=2===i?"<svg>":"",d=v$1;for(let i=0;i<s;i++){const s=t[i];let e,u,c=-1,p=0;for(;p<s.length&&(d.lastIndex=p,u=d.exec(s),null!==u);)p=d.lastIndex,d===v$1?"!--"===u[1]?d=a$1:void 0!==u[1]?d=f$1:void 0!==u[2]?($$1.test(u[2])&&(h=RegExp("</"+u[2],"g")),d=_$1):void 0!==u[3]&&(d=_$1):d===_$1?">"===u[0]?(d=null!=h?h:v$1,c=-1):void 0===u[1]?c=-2:(c=d.lastIndex-u[2].length,e=u[1],d=void 0===u[3]?_$1:'"'===u[3]?m$1:g$1):d===m$1||d===g$1?d=_$1:d===a$1||d===f$1?d=v$1:(d=_$1,h=void 0);const y=d===_$1&&t[i+1].startsWith("/>")?" ":"";r+=d===v$1?s+l$2:c>=0?(n.push(e),s.slice(0,c)+"$lit$"+s.slice(c)+o$6+y):s+o$6+(-2===c?(n.push(void 0),i):y);}const u=r+(t[s]||"<?>")+(2===i?"</svg>":"");return [void 0!==e$5?e$5.createHTML(u):u,n]};class V$1{constructor({strings:t,_$litType$:i},e){let l;this.parts=[];let h=0,d=0;const u=t.length-1,c=this.parts,[v,a]=P$1(t,i);if(this.el=V$1.createElement(v,e),C$1.currentNode=this.el.content,2===i){const t=this.el.content,i=t.firstChild;i.remove(),t.append(...i.childNodes);}for(;null!==(l=C$1.nextNode())&&c.length<u;){if(1===l.nodeType){if(l.hasAttributes()){const t=[];for(const i of l.getAttributeNames())if(i.endsWith("$lit$")||i.startsWith(o$6)){const s=a[d++];if(t.push(i),void 0!==s){const t=l.getAttribute(s.toLowerCase()+"$lit$").split(o$6),i=/([.?@])?(.*)/.exec(s);c.push({type:1,index:h,name:i[2],strings:t,ctor:"."===i[1]?k$1:"?"===i[1]?H$1:"@"===i[1]?I$1:M$1});}else c.push({type:6,index:h});}for(const i of t)l.removeAttribute(i);}if($$1.test(l.tagName)){const t=l.textContent.split(o$6),i=t.length-1;if(i>0){l.textContent=s$5?s$5.emptyScript:"";for(let s=0;s<i;s++)l.append(t[s],r$5()),C$1.nextNode(),c.push({type:2,index:++h});l.append(t[i],r$5());}}}else if(8===l.nodeType)if(l.data===n$6)c.push({type:2,index:h});else {let t=-1;for(;-1!==(t=l.data.indexOf(o$6,t+1));)c.push({type:7,index:h}),t+=o$6.length-1;}h++;}}static createElement(t,i){const s=h$3.createElement("template");return s.innerHTML=t,s}}function E$1(t,i,s=t,e){var o,n,l,h;if(i===T$1)return i;let r=void 0!==e?null===(o=s._$Cl)||void 0===o?void 0:o[e]:s._$Cu;const u=d$1(i)?void 0:i._$litDirective$;return (null==r?void 0:r.constructor)!==u&&(null===(n=null==r?void 0:r._$AO)||void 0===n||n.call(r,!1),void 0===u?r=void 0:(r=new u(t),r._$AT(t,s,e)),void 0!==e?(null!==(l=(h=s)._$Cl)&&void 0!==l?l:h._$Cl=[])[e]=r:s._$Cu=r),void 0!==r&&(i=E$1(t,r._$AS(t,i.values),r,e)),i}class N$1{constructor(t,i){this.v=[],this._$AN=void 0,this._$AD=t,this._$AM=i;}get parentNode(){return this._$AM.parentNode}get _$AU(){return this._$AM._$AU}p(t){var i;const{el:{content:s},parts:e}=this._$AD,o=(null!==(i=null==t?void 0:t.creationScope)&&void 0!==i?i:h$3).importNode(s,!0);C$1.currentNode=o;let n=C$1.nextNode(),l=0,r=0,d=e[0];for(;void 0!==d;){if(l===d.index){let i;2===d.type?i=new S$3(n,n.nextSibling,this,t):1===d.type?i=new d.ctor(n,d.name,d.strings,this,t):6===d.type&&(i=new L$1(n,this,t)),this.v.push(i),d=e[++r];}l!==(null==d?void 0:d.index)&&(n=C$1.nextNode(),l++);}return o}m(t){let i=0;for(const s of this.v)void 0!==s&&(void 0!==s.strings?(s._$AI(t,s,i),i+=s.strings.length-2):s._$AI(t[i])),i++;}}class S$3{constructor(t,i,s,e){var o;this.type=2,this._$AH=x$1,this._$AN=void 0,this._$AA=t,this._$AB=i,this._$AM=s,this.options=e,this._$Cg=null===(o=null==e?void 0:e.isConnected)||void 0===o||o;}get _$AU(){var t,i;return null!==(i=null===(t=this._$AM)||void 0===t?void 0:t._$AU)&&void 0!==i?i:this._$Cg}get parentNode(){let t=this._$AA.parentNode;const i=this._$AM;return void 0!==i&&11===t.nodeType&&(t=i.parentNode),t}get startNode(){return this._$AA}get endNode(){return this._$AB}_$AI(t,i=this){t=E$1(this,t,i),d$1(t)?t===x$1||null==t||""===t?(this._$AH!==x$1&&this._$AR(),this._$AH=x$1):t!==this._$AH&&t!==T$1&&this.$(t):void 0!==t._$litType$?this.T(t):void 0!==t.nodeType?this.S(t):c$1(t)?this.M(t):this.$(t);}A(t,i=this._$AB){return this._$AA.parentNode.insertBefore(t,i)}S(t){this._$AH!==t&&(this._$AR(),this._$AH=this.A(t));}$(t){this._$AH!==x$1&&d$1(this._$AH)?this._$AA.nextSibling.data=t:this.S(h$3.createTextNode(t)),this._$AH=t;}T(t){var i;const{values:s,_$litType$:e}=t,o="number"==typeof e?this._$AC(t):(void 0===e.el&&(e.el=V$1.createElement(e.h,this.options)),e);if((null===(i=this._$AH)||void 0===i?void 0:i._$AD)===o)this._$AH.m(s);else {const t=new N$1(o,this),i=t.p(this.options);t.m(s),this.S(i),this._$AH=t;}}_$AC(t){let i=w$1.get(t.strings);return void 0===i&&w$1.set(t.strings,i=new V$1(t)),i}M(t){u$1(this._$AH)||(this._$AH=[],this._$AR());const i=this._$AH;let s,e=0;for(const o of t)e===i.length?i.push(s=new S$3(this.A(r$5()),this.A(r$5()),this,this.options)):s=i[e],s._$AI(o),e++;e<i.length&&(this._$AR(s&&s._$AB.nextSibling,e),i.length=e);}_$AR(t=this._$AA.nextSibling,i){var s;for(null===(s=this._$AP)||void 0===s||s.call(this,!1,!0,i);t&&t!==this._$AB;){const i=t.nextSibling;t.remove(),t=i;}}setConnected(t){var i;void 0===this._$AM&&(this._$Cg=t,null===(i=this._$AP)||void 0===i||i.call(this,t));}}class M$1{constructor(t,i,s,e,o){this.type=1,this._$AH=x$1,this._$AN=void 0,this.element=t,this.name=i,this._$AM=e,this.options=o,s.length>2||""!==s[0]||""!==s[1]?(this._$AH=Array(s.length-1).fill(new String),this.strings=s):this._$AH=x$1;}get tagName(){return this.element.tagName}get _$AU(){return this._$AM._$AU}_$AI(t,i=this,s,e){const o=this.strings;let n=!1;if(void 0===o)t=E$1(this,t,i,0),n=!d$1(t)||t!==this._$AH&&t!==T$1,n&&(this._$AH=t);else {const e=t;let l,h;for(t=o[0],l=0;l<o.length-1;l++)h=E$1(this,e[s+l],i,l),h===T$1&&(h=this._$AH[l]),n||(n=!d$1(h)||h!==this._$AH[l]),h===x$1?t=x$1:t!==x$1&&(t+=(null!=h?h:"")+o[l+1]),this._$AH[l]=h;}n&&!e&&this.k(t);}k(t){t===x$1?this.element.removeAttribute(this.name):this.element.setAttribute(this.name,null!=t?t:"");}}class k$1 extends M$1{constructor(){super(...arguments),this.type=3;}k(t){this.element[this.name]=t===x$1?void 0:t;}}class H$1 extends M$1{constructor(){super(...arguments),this.type=4;}k(t){t&&t!==x$1?this.element.setAttribute(this.name,""):this.element.removeAttribute(this.name);}}class I$1 extends M$1{constructor(t,i,s,e,o){super(t,i,s,e,o),this.type=5;}_$AI(t,i=this){var s;if((t=null!==(s=E$1(this,t,i,0))&&void 0!==s?s:x$1)===T$1)return;const e=this._$AH,o=t===x$1&&e!==x$1||t.capture!==e.capture||t.once!==e.once||t.passive!==e.passive,n=t!==x$1&&(e===x$1||o);o&&this.element.removeEventListener(this.name,this,e),n&&this.element.addEventListener(this.name,this,t),this._$AH=t;}handleEvent(t){var i,s;"function"==typeof this._$AH?this._$AH.call(null!==(s=null===(i=this.options)||void 0===i?void 0:i.host)&&void 0!==s?s:this.element,t):this._$AH.handleEvent(t);}}class L$1{constructor(t,i,s){this.element=t,this.type=6,this._$AN=void 0,this._$AM=i,this.options=s;}get _$AU(){return this._$AM._$AU}_$AI(t){E$1(this,t);}}null===(t$3=globalThis.litHtmlPlatformSupport)||void 0===t$3||t$3.call(globalThis,V$1,S$3),(null!==(i$3=globalThis.litHtmlVersions)&&void 0!==i$3?i$3:globalThis.litHtmlVersions=[]).push("2.0.0-rc.5");
 
 /**
  * @license
@@ -3032,7 +3125,7 @@ var t$2,i$2;const s$3=globalThis.trustedTypes,e$3=s$3?s$3.createPolicy("lit-html
 
 const plusIcon = y`<svg class="icon" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>`;
 
-class EeFab extends StyleableMixin(NativeReflectorMixin(n$3)) {
+class EeFab extends CustomStylesMixin(StyleableMixin(NativeReflectorMixin(n$3))) {
   static get styles () {
     return [
       super.styles,
@@ -3066,7 +3159,7 @@ class EeFab extends StyleableMixin(NativeReflectorMixin(n$3)) {
 }
 tpeRegistry.register('ee-fab', EeFab);
 
-class EeFadeIn extends StyleableMixin(n$3) {
+class EeFadeIn extends CustomStylesMixin(StyleableMixin(n$3)) {
   static get styles () {
     return [
       super.styles,
@@ -3110,7 +3203,7 @@ class EeFadeIn extends StyleableMixin(n$3) {
 }
 tpeRegistry.register('ee-fade-in', EeFadeIn);
 
-class EeToolbar extends StyleableMixin(n$3) {
+class EeToolbar extends CustomStylesMixin(StyleableMixin(n$3)) {
   static get styles () {
     return [
       super.styles,
@@ -3176,7 +3269,7 @@ tpeRegistry.register('ee-toolbar', EeToolbar);
 const arrowback = y`<svg class="icon" height="24" viewBox="0 0 24 24" width="24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path></svg>`;
 const menu = y`<svg class="icon" height="24" viewBox="0 0 24 24" width="24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg>`;
 
-class EeHeader extends StyleableMixin(n$3) {
+class EeHeader extends CustomStylesMixin(StyleableMixin(n$3)) {
   static get styles () {
     return [
       super.styles,
@@ -3207,7 +3300,8 @@ class EeHeader extends StyleableMixin(n$3) {
         }
 
         div[header-title], div[middle] {
-          display: block;
+          display: flex;
+          align-items: center;
         }
 
         div[header-title] h3,
@@ -3358,7 +3452,7 @@ class EeHeader extends StyleableMixin(n$3) {
 }
 tpeRegistry.register('ee-header', EeHeader);
 
-class EeNavBar extends StyleableMixin(n$3) {
+class EeNavBar extends CustomStylesMixin(StyleableMixin(n$3)) {
   static get styles () {
     return [
       super.styles,
@@ -3468,7 +3562,7 @@ class EeNavBar extends StyleableMixin(n$3) {
 }
 tpeRegistry.register('ee-nav-bar', EeNavBar);
 
-class EeNetwork extends StyleableMixin(n$3) {
+class EeNetwork extends CustomStylesMixin(StyleableMixin(n$3)) {
   static get styles () {
     return [
       super.styles,
@@ -3728,7 +3822,50 @@ class EeNetwork extends StyleableMixin(n$3) {
 }
 tpeRegistry.register('ee-network', EeNetwork);
 
-class EeRow extends StyleableMixin(n$3) {
+// DraggableElement
+// ===============
+//
+// This mixin should be applied to LitElement based elements meant to be
+// compatible with _DraggableListMixin_. It will dispatch an event when the
+// enable-dnd attribute is added, which allows for consistent fucntionality of
+// the the _DraggableListMixin_. This is a solution to an issue that can occur
+// if the list children are rendered with a _map_ function or the lit-html
+// _repeat_ directive, which causes _DraggableListMixin_ to not find the
+// children at the right time, because they are not rendered yet. The event
+// makes sure the mixin is able to find and modify the children accordingly to
+// enable drag and drop features.
+//
+const DraggableElementMixin = (base) => {
+  return class Base extends base {
+    // Necessary styles to be added to the litElement based target element:
+    static get styles () {
+      return [
+        super.styles
+      ]
+    }
+
+    // These properties are also added to the target element.
+    static get properties () {
+      return {
+        dragData: { type: Object, attribute: 'drag-data' }
+      }
+    }
+
+    constructor () {
+      super();
+      this.dragData = {};
+    }
+
+    firstUpdated () {
+      super.firstUpdated();
+      if (this.hasAttribute('enable-dnd')) {
+        this.dispatchEvent(new CustomEvent('enable-dnd', { bubbles: true }));
+      }
+    }
+  }
+};
+
+class EeRow extends DraggableElementMixin(CustomStylesMixin(StyleableMixin(n$3))) {
   
   static get styles () {
     return [
@@ -3833,7 +3970,7 @@ class EeRow extends StyleableMixin(n$3) {
 }
 tpeRegistry.register('ee-row', EeRow);
 
-class EeSnackBar extends StyleableMixin(n$3) {
+class EeSnackBar extends CustomStylesMixin(StyleableMixin(n$3)) {
   static get styles () {
     return [
       super.styles,
@@ -3932,13 +4069,292 @@ class EeSnackBar extends StyleableMixin(n$3) {
 
 tpeRegistry.register('ee-snack-bar', EeSnackBar);
 
+// DraggableListMixin
+
+// These are declared outside the mixin to make sure different instances access the same data.
+// This is important in order to support dragging items between separate lists.
+window.moving = null;
+window.originContainer = null;
+window.targetContainer = null;
+const targetRows = [];
+window.lastEntered = null;
+
+const debounce = (callback, wait, immediate = false) => {
+  let timeout = null;
+  return function () {
+    const callNow = immediate && !timeout;
+    const next = () => callback.apply(this, arguments);
+    clearTimeout(timeout);
+    timeout = setTimeout(next, wait);
+    if (callNow) {
+      next();
+    }
+  }
+};
+
+const debouncedPortionOfDragenterListener = debounce(async function (e) {
+  console.log('Debounced dragenter');
+  requestAnimationFrame(() => {
+    // The targetRows array might have previous targets in it. Remove the target class from them
+    targetRows.forEach(element => {
+      element.classList.remove('target');
+    });
+    targetRows.splice(0, targetRows.length);
+    // Add target class and push the current target to the targetRows array
+    window.lastEntered.classList.add('target');
+    targetRows.push(this);
+  });
+  await window.targetContainer.dragenterHook(e, window.moving, this);
+}, 100, true);
+
+const DraggableListMixin = (base) => {
+  return class Base extends base {
+    // Necessary styles to be added to the litElement based target element:
+    static get styles () {
+      return [
+        super.styles,
+        r`
+          @-webkit-keyframes fadeIn {
+            0%   { opacity: 0; }
+            100% { opacity: 1; }
+          }
+          @-moz-keyframes fadeIn {
+            0%   { opacity: 0; }
+            100% { opacity: 1; }
+          }
+          @-o-keyframes fadeIn {
+            0%   { opacity: 0; }
+            100% { opacity: 1; }
+          }
+          @keyframes fadeIn {
+            0%   { opacity: 0; }
+            100% { opacity: 1; }
+          }
+
+          @-webkit-keyframes flash {
+            0%   {opacity: 0}
+            70% {opacity: 0.5;}
+            100% {opacity: 0;}
+          }
+
+          @-moz-keyframes flash {
+            0%   {opacity: 0}
+            70% {opacity: 0.5;}
+            100% {opacity: 0;}
+          }
+
+          @-o-keyframes flash {
+            0%   {opacity: 0}
+            70% {opacity: 0.5;}
+            100% {opacity: 0;}
+          }
+
+          @keyframes flash {
+            0%   {opacity: 0}
+            70% {opacity: 0.5;}
+            100% {opacity: 0;}
+          }
+
+          ::slotted(.success-overlay), ::slotted(.error-overlay) {
+            position: relative;
+          }
+
+          ::slotted(.success-overlay)::after, ::slotted(.error-overlay)::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: green;
+            opacity: 0;
+            animation: flash 0.3s ease;
+          }
+
+          ::slotted(.error-overlay)::after {
+            background-color: red;
+          }
+
+          ::slotted(.target), ::slotted(.moving) {
+            box-sizing: border-box;
+            outline: 6px solid orange;
+            background-color: papayawhip;
+            opacity: 0.2;
+          }
+
+          ::slotted(.target) {
+            position: relative;
+            box-sizing: border-box;
+            background-color: white;
+          }
+        `
+      ]
+    }
+
+    static get properties () {
+      return {
+        dragDrop: { type: Boolean, attribute: 'drag-drop' }
+      }
+    }
+
+    constructor () {
+      super();
+      this.addEventListener('enable-dnd', this._enableDndForElement);
+    }
+
+    _enableDndForElement (e) {
+      const el = e.srcElement;
+      // Do not enable if drag-drop attribute is not present in the list element, if
+      if (!this.dragDrop) return
+      e.stopPropagation();
+      const dndHandle = el.querySelector('#dnd-handle');
+
+      // el.dndContainerElement = this // NOT USED ANYWHERE
+
+      // If element is marked as no-drag, skip this block
+      if (!el.hasAttribute('no-drag')) {
+        // If a DND handle is defined (element with ID dnd-handle), then
+        // use THAT as the only option to move elements around
+        if (dndHandle) {
+          // Hovering the handle will enable dragging the element
+          dndHandle.addEventListener('mouseover', () => {
+            el.setAttribute('draggable', 'true');
+            el.addEventListener('dragstart', this._dragstartListener, false);
+          });
+          dndHandle.addEventListener('mouseout', () => {
+            el.removeAttribute('draggable');
+            el.removeEventListener('dragstart', this._dragstartListener);
+          });
+        } else {
+          el.setAttribute('draggable', 'true');
+          el.addEventListener('dragstart', this._dragstartListener, false);
+        }
+      }
+
+      // Enables drop event, in the element is not marked as no-drop
+      if (!el.hasAttribute('no-drop')) {
+        // Add event listeners to element
+        el.addEventListener('dragenter', this._dragenterListener, false);
+        el.addEventListener('dragend', this._dragendListener, false);
+        el.addEventListener('drop', this._dropListener, false);
+
+        el.addEventListener('dragleave', this._dragleaveListener, false);
+        el.addEventListener('dragexit', this._dragexitListener, false);
+        el.addEventListener('dragover', this._dragoverListener, false);
+      }
+    }
+
+    // HOOKS to be redefined by the mixing class
+
+    async dragstartHook (e, moving) { return true }
+    async dragenterHook (e, moving, target) { return true }
+    async dragendHook (e, moving, target) { return true }
+    async dropHook (e, moving, target) { return true }
+
+    async dragexitHook (e, moving) { return true }
+    async dragleaveHook (e, moving, target) { return true }
+    async dragoverHook (e, moving, target) { return true }
+    validDropHook (e, moving, target) { return true }
+
+    // # Drag and Drop Handlers and hooks
+    //
+    // All the logic used during DnD is defined in these handlers, which are registered as listeners during instantiation.
+    // All listeners are private and not supposed to be modified. They call a hook for each type of event.
+    // The hooks should be redefined to handle any work that's needed during of in response to the drag event.
+    _dragstartListener (e) {
+      window.lastEntered = null;
+      // Start out by assuming the user is moving, and that moving is allowed. This can be changed in the hook.
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.dropEffect = 'move';
+      // The proper way to 'move' data around while dragging is to use the dataTransfer interface. However, webKit based browsers
+      // only make that data accessible in the drop event, so getting anything in dragenter or dragover is impossible.
+      // To make it simpler and fully intereoperable, we store a reference to the parent of the moving item and the item itself
+      // in the Mixin's outer scope
+      window.originContainer = this.parentElement;
+      window.moving = this;
+      // Use requestAnimationFrame API to update styles, toa void performance issues
+      requestAnimationFrame(() => {
+        window.moving.classList.add('moving');
+      });
+      // All handler hooks are called from the list parent, which must implement them.
+      window.originContainer.dragstartHook(e, window.moving);
+    }
+
+    _dragenterListener (e) {
+      if (this === window.lastEntered) return
+
+      // Like in dragstart with the moving item, we store the target's parent reference for later use
+      window.targetContainer = this.parentElement;
+      if (!window.targetContainer.validDropHook(e, window.moving, this)) {
+        return
+      }
+
+      // preventDefault is necessary to ALLOW custom dragenter handling
+      e.preventDefault();
+      window.previousLastEntered = window.lastEntered;
+      window.lastEntered = this;
+
+      debouncedPortionOfDragenterListener.call(this, e);
+    }
+
+    // dragover, dragleave and dragexit listeners are setup and hooks are available, but no work is done here by default
+    _dragoverListener (e) {
+      // preventDefault is necessary to ALLOW custom dragover and dropping handling
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+
+      window.targetContainer.dragoverHook(e, window.moving, this);
+    }
+
+    _dragleaveListener (e) {
+      window.targetContainer.dragleaveHook(e, window.moving, this);
+    }
+
+    _dragexitListener (e) {
+      window.targetContainer.dragexitHook(e, window.moving, this);
+    }
+
+    _dragendListener (e) {
+      // some niche cases might result in this method running when references are empty. Bail to avoid errors
+      if (!window.originContainer || !window.targetContainer) return
+
+      if (!window.originContainer.validDropHook(e, window.moving, window.lastEntered)) return
+
+      // This hook needs to be a promise, so references are not cleared before the hook is done
+      window.originContainer.dragendHook(e, window.moving).then(() => {
+        // only clear styles and references if dropEffect is none, which should be set while validating the target in the hooks
+        // if (e.dataTransfer.dropEffect === 'none') {
+        requestAnimationFrame(() => {
+          this.classList.remove('moving');
+          console.log(targetRows);
+          targetRows.forEach(element => {
+            element.classList.remove('target');
+          });
+          targetRows.splice(0, targetRows.length);
+          window.moving = null;
+          window.originContainer = null;
+          window.targetContainer = null;
+          window.lastEntered = null;
+        });
+        // }
+      });
+    }
+
+    _dropListener (e) {
+      e.preventDefault();
+      // Like with dragend, the hook needs to return a promise to avoid timing issues.
+      window.targetContainer.dropHook(e, window.moving, this);
+    }
+  }
+};
+
 // https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 // https://dev.to/drews256/ridiculously-easy-row-and-column-layouts-with-flexbox-1k01
 
 // https://github.com/Victor-Bernabe/lit-media-query/blob/master/lit-media-query.js
 
 // eslint-disable-next-line new-cap
-class EeTable extends StyleableMixin(n$3) {
+class EeTable extends DraggableListMixin(CustomStylesMixin(StyleableMixin(n$3))) {
   static get styles () {
     return [
       super.styles || [],
@@ -4020,7 +4436,7 @@ class EeTable extends StyleableMixin(n$3) {
 }
 tpeRegistry.register('ee-table', EeTable);
 
-class EeTabs extends StyleableMixin(n$3) {
+class EeTabs extends CustomStylesMixin(StyleableMixin(n$3)) {
   static get styles () {
     return [
       super.styles,
@@ -4145,6 +4561,7 @@ class EeTabs extends StyleableMixin(n$3) {
     this.nameAttribute = 'name';
     this.useHash = false;
     this.passive = false;
+    this.doNotPickDefault = true;
   }
 
   /** Tabs usage
@@ -4164,24 +4581,30 @@ class EeTabs extends StyleableMixin(n$3) {
   }
 
   _allTabs () {
-    return this.shadowRoot.querySelector('slot#tabs').assignedElements()
+    return this.tabsSlot.assignedElements()
   }
 
   _workoutHash () {
     let tab;
-    if (this.useHash) {
-      if (window.location.hash) tab = window.location.hash.substr(1);
-      else if (this.default) tab = this.default;
-      else tab = this._allTabs()[0];
-    }
+    if (this.useHash && window.location.hash) tab = window.location.hash.substr(1);
+    else if (this.default) tab = this.default;
+    else tab = this._allTabs()[0];
     return tab
   }
 
   firstUpdated () {
     super.firstUpdated();
 
-    const tab = this._workoutHash();
-    this.select(tab, false);
+    this.tabsSlot = this.shadowRoot.querySelector('slot#tabs');
+
+    // If there is no hash, select the default one
+    if (!window.location.hash && !this.passive && this.default) {
+      this.select(this.default, true);
+    // If there is a hash, select the tab with the dash
+    } else {
+      const tab = this._workoutHash();
+      if (tab) this.select(tab, false);
+    }
 
     window.addEventListener('popstate', e => {
       const tab = this._workoutHash();
@@ -4196,33 +4619,59 @@ class EeTabs extends StyleableMixin(n$3) {
   }
 
   select (tab, clearAll = true) {
-    let pages;
 
-    // Find the tab. If it can't be found, end of story
-    if (typeof tab === 'string') {
-      tab = this._allTabs().find(i => i.getAttribute(this.nameAttribute) === tab);
-    }
+    let tabName;
+    let tabElement;
+ 
     if (!tab) return
 
-    // If clearAll was passed, clear selection of tabs and (if !passive) pages
-    if (clearAll) {
-      pages = this.shadowRoot.querySelector('slot[name="content"]').assignedElements();
-
-      if (!this.passive) {
-        this._clearAll(this._allTabs(), pages);
-      } else {
-        this._clearAll(this._allTabs());
-      }
+    // Normalise "tab", which could be a string or a tab object
+    // In any case, attempt to create tabName and tabElement
+    if (typeof tab === 'string') {
+      tabName = tab;
+      tabElement = this._allTabs().find(i => i.getAttribute(this.nameAttribute) === tab);
+    } else {
+      tabName = tab.getAttribute(this.nameAttribute);
+      tabElement = tab;
     }
 
-    // Activate the tab
-    tab.toggleAttribute('active', true);
-    tab.active = true;
+    // ***************************************************
+    // First of all, deal with the tabs side of the story
+    // ***************************************************
+    
+    // If there is a tab element (the header at the top), then (maybe) clear it,
+    // and set the currently active element as "active"
 
-    // If !passive, activate the corresponding page
+    // If the requested element is not found, set the default
+    // This will make 
+    if (!tabElement) {
+      tabElement = 
+        this._allTabs().find(i => i.getAttribute(this.nameAttribute) === this.default)  || 
+        this._allTabs()[0];
+      if (tabElement) tabName = tabElement.getAttribute(this.nameAttribute);
+    }
+
+    if (tabElement) {
+
+      // Make every tab unselected
+      if (clearAll) this._clearAll(this._allTabs());
+  
+      // Activate the tab
+      tabElement.toggleAttribute('active', true);
+      tabElement.active = true;
+    }
+
+    // *********************************************************
+    // Then, the pages side of the story (but only if !passive)
+    // *********************************************************
+    
+    // Activate the corresponding page
     if (!this.passive) {
-      const name = tab.getAttribute(this.nameAttribute);
-      const activePage = pages.find(el => el.getAttribute(this.nameAttribute) === name);
+      const pages = this.shadowRoot.querySelector('slot[name="content"]').assignedElements();
+
+      // Clear the page
+      this._clearAll(null, pages);
+      const activePage = pages.find(el => el.getAttribute(this.nameAttribute) === tabName);
       if (activePage) {
         activePage.toggleAttribute('active', true);
         activePage.active = true;
@@ -4233,30 +4682,33 @@ class EeTabs extends StyleableMixin(n$3) {
   // Clear the seletecAttribute from the current active tab and page
   _clearAll (tabs, pages) {
     //
-    const currentTab = tabs.find(this._isActive.bind(this));
-    if (currentTab) {
-      currentTab.toggleAttribute('active', false);
-      currentTab.active = false;
+    if (tabs) {
+      const currentTab = tabs.find(this._isActive.bind(this));
+      if (currentTab) {
+        currentTab.toggleAttribute('active', false);
+        currentTab.active = false;
+      }
     }
 
-    if (!this.passive) {
-      const currentPage = pages.find(this._isActive.bind(this));
-      if (currentPage) {
-        currentPage.toggleAttribute('active', false);
-        currentPage.active = false;
+    if (pages) {
+      if (!this.passive) {
+        const currentPage = pages.find(this._isActive.bind(this));
+        if (currentPage) {
+          currentPage.toggleAttribute('active', false);
+          currentPage.active = false;
+        }
       }
     }
   }
 
   // This adds a click event listener to all slotted children (the tabs)
   _manageSlottedTabs (e) {
+    const tab = this._workoutHash();
+    if (tab) this.select(tab, false);
+
     for (const element of this._allTabs()) {
       element.addEventListener('click', (e) => { this.select.bind(this)(e.currentTarget); });
       element.setAttribute('tabindex', 1);
-    }
-
-    if (!this.passive && this.default) {
-      this.select(this.default, true);
     }
   }
 }
@@ -4265,7 +4717,7 @@ tpeRegistry.register('ee-tabs', EeTabs);
 // # en-form
 
 /* globals customElements CustomEvent */
-class EnForm extends StyleableMixin(n$3) {
+class EnForm extends CustomStylesMixin(StyleableMixin(n$3)) {
   get reflectProperties () {
     return [...super.reflectProperties, ...formElement]
   }
@@ -4536,15 +4988,7 @@ class EnForm extends StyleableMixin(n$3) {
   }
 
   _getElementValueSource (el) {
-    if (
-      el.getAttribute('type') === 'checkbox' ||
-      el.getAttribute('type') === 'radio' ||
-      el.hasAttribute('as-checkbox') ||
-      el.hasAttribute('as-radio')
-    ) return 'checked'
-
-    if (el.getAttribute('value-source')) return el.getAttribute('value-source')
-    return 'value'
+    return getElementValueSource(el)
   }
 
   get elements () {
@@ -4789,6 +5233,29 @@ class EnForm extends StyleableMixin(n$3) {
           else formData.append(k, body[k]);
         }
       }
+
+      // EN-FORM checks for non-standard hash in
+      // `fetchoptions.files`. Devs can create that in the presubmit hook if
+      // files are added to a form in alternative ways, like drag and drop.
+      // Format is as follows:
+      // fetchcOptions.files = { file1: <Array<File> | File>, file2: <Array<File> | File> }
+      // It's still expected that the enctype attribute is set as
+      // `multipart/form-data`
+      if (fetchOptions.files) {
+        for (const k in fetchOptions.files) {
+          const f = fetchOptions.files[k];
+          // For a single file, just append
+          if (f instanceof File) formData.append(k, f);
+          // For multiple files in the same field, loop over and append
+          else if (Array.isArray(f)) {
+            for (const file of f) {
+              formData.append(k, file);
+            }
+          }
+        }
+        delete fetchOptions.files;
+      }
+
       fetchOptions.body = formData;
     }
 
@@ -4994,7 +5461,7 @@ class EnForm extends StyleableMixin(n$3) {
 }
 tpeRegistry.register('ee-form', EnForm);
 
-class EnInputRange extends FormElementMixin(NativeValidatorMixin(StyleableMixin(LabelsMixin(InputMixin(NativeReflectorMixin(n$3)))))) {
+class EnInputRange extends CustomStylesMixin(FormElementMixin(NativeValidatorMixin(StyleableMixin(LabelsMixin(InputMixin(NativeReflectorMixin(n$3))))))) {
   static get styles () {
     return [
       super.styles,
@@ -5067,7 +5534,7 @@ class EnInputRange extends FormElementMixin(NativeValidatorMixin(StyleableMixin(
 }
 tpeRegistry.register('ee-input-range', EnInputRange);
 
-class NnButton extends FormElementMixin(NativeValidatorMixin(StyleableMixin(NativeReflectorMixin(n$3)))) {
+class NnButton extends CustomStylesMixin(FormElementMixin(NativeValidatorMixin(StyleableMixin(NativeReflectorMixin(n$3))))) {
   get skipAttributes () {
     return [...super.skipAttributes, 'form']
   }
@@ -5108,7 +5575,7 @@ class NnButton extends FormElementMixin(NativeValidatorMixin(StyleableMixin(Nati
 }
 tpeRegistry.register('nn-button', NnButton);
 
-class NnInputButton extends FormElementMixin(NativeValidatorMixin(InputMixin(NativeReflectorMixin(n$3)))) {
+class NnInputButton extends CustomStylesMixin(FormElementMixin(NativeValidatorMixin(InputMixin(NativeReflectorMixin(n$3))))) {
   render () {
     return y`
       <input type="button" id="native">
@@ -5125,12 +5592,12 @@ tpeRegistry.register('nn-input-button', NnInputButton);
 
 // This element is a thin wrap to `<input type=text`>.
 
-class NnInputText extends FormElementMixin(NativeValidatorMixin(StyleableMixin(LabelsMixin(InputMixin(NativeReflectorMixin(n$3)))))) {
+class NnInputText extends CustomStylesMixin(FormElementMixin(NativeValidatorMixin(StyleableMixin(LabelsMixin(InputMixin(NativeReflectorMixin(n$3))))))) {
   render () {
     return y`
       ${this.ifLabelBefore}
       ${this.ifValidationMessageBefore}
-      <input type="${this.inputType || 'text'}" id="native" real-time-event="input" >
+      <input type="${this.inputType}" id="native" real-time-event="input" >
       ${this.ifValidationMessageAfter}
       ${this.ifLabelAfter}
       <slot id="datalist-slot" name="datalist"></slot>
@@ -5140,11 +5607,13 @@ class NnInputText extends FormElementMixin(NativeValidatorMixin(StyleableMixin(L
   constructor () {
     super();
     this._boundKeyEventListener = this._eventListener.bind(this);
+    this.inputType = 'text';
   }
 
   static get properties () {
     return {
-      submitOnEnter: { type: Boolean, attribute: 'submit-on-enter' }
+      submitOnEnter: { type: Boolean, attribute: 'submit-on-enter' },
+      inputType: { type: String }
     }
   }
 
@@ -5218,7 +5687,7 @@ class NnInputEmail extends NnInputText {
 }
 tpeRegistry.register('nn-input-email', NnInputEmail);
 
-class NnInputFile extends FormElementMixin(StyleableMixin(InputMixin(NativeReflectorMixin(n$3)))) {
+class NnInputFile extends FormElementMixin(NativeValidatorMixin(StyleableMixin(InputMixin(NativeReflectorMixin(n$3))))) {
   static get styles () {
     return [
       super.styles,
@@ -5262,8 +5731,10 @@ class NnInputFile extends FormElementMixin(StyleableMixin(InputMixin(NativeRefle
     
     // From https://stackoverflow.com/a/25825731/829771
     return y`
+      ${this.ifValidationMessageBefore}
       <input type="file" id="native" @change="${this.fileNameChanged}" ?hidden=${this.hideNative} title=${this.title}>
       ${this.fileName}
+      ${this.ifValidationMessageAfter}
     `
   }
 
@@ -5303,12 +5774,12 @@ tpeRegistry.register('nn-input-number', NnInputNumber);
 class NnInputPassword extends NnInputText {
   constructor () {
     super();
-    this.inputType ='password';
+    this.inputType = 'password';
   }
 }
 tpeRegistry.register('nn-input-password', NnInputPassword);
 
-class NnInputRadio extends FormElementMixin(NativeValidatorMixin(LabelsMixin(StyleableMixin(InputMixin(NativeReflectorMixin(n$3)))))) {
+class NnInputRadio extends CustomStylesMixin(FormElementMixin(NativeValidatorMixin(LabelsMixin(StyleableMixin(InputMixin(NativeReflectorMixin(n$3))))))) {
   render () {
     
     return y`
@@ -5363,7 +5834,7 @@ class NnInputSearch extends NnInputText {
 }
 tpeRegistry.register('nn-input-search', NnInputSearch);
 
-class NnInputSubmit extends FormElementMixin(NativeValidatorMixin(InputMixin(NativeReflectorMixin(n$3)))) {
+class NnInputSubmit extends CustomStylesMixin(FormElementMixin(NativeValidatorMixin(InputMixin(NativeReflectorMixin(n$3))))) {
   render () {
     
     return y`
@@ -5411,7 +5882,7 @@ class NnInputWeek extends NnInputText {
 }
 tpeRegistry.register('nn-input-week', NnInputWeek);
 
-class NnMeter extends StyleableMixin(LabelsMixin(NativeReflectorMixin(n$3))) {
+class NnMeter extends CustomStylesMixin(StyleableMixin(LabelsMixin(NativeReflectorMixin(n$3)))) {
   get reflectProperties () {
     return [...super.reflectProperties, ...meterElement]
   }
@@ -5429,7 +5900,7 @@ class NnMeter extends StyleableMixin(LabelsMixin(NativeReflectorMixin(n$3))) {
 }
 tpeRegistry.register('nn-meter', NnMeter);
 
-class NnProgress extends StyleableMixin(LabelsMixin(NativeReflectorMixin(n$3))) {
+class NnProgress extends CustomStylesMixin(StyleableMixin(LabelsMixin(NativeReflectorMixin(n$3)))) {
   static get properties () {
     return {
     }
@@ -5489,7 +5960,7 @@ class NnProgress extends StyleableMixin(LabelsMixin(NativeReflectorMixin(n$3))) 
 }
 tpeRegistry.register('nn-progress', NnProgress);
 
-class NnSelect extends FormElementMixin(NativeValidatorMixin(LabelsMixin(InputMixin(NativeReflectorMixin(n$3))))) {
+class NnSelect extends CustomStylesMixin(FormElementMixin(NativeValidatorMixin(LabelsMixin(InputMixin(NativeReflectorMixin(n$3)))))) {
   get reflectProperties () {
     return [...super.reflectProperties, ...selectElement]
   }
@@ -5535,7 +6006,7 @@ class NnSelect extends FormElementMixin(NativeValidatorMixin(LabelsMixin(InputMi
 }
 tpeRegistry.register('nn-select', NnSelect);
 
-class NnTextarea extends StyleableMixin(FormElementMixin(NativeValidatorMixin(LabelsMixin(InputMixin(NativeReflectorMixin(n$3)))))) {
+class NnTextarea extends CustomStylesMixin(StyleableMixin(FormElementMixin(NativeValidatorMixin(LabelsMixin(InputMixin(NativeReflectorMixin(n$3))))))) {
   get reflectProperties () {
     return [...super.reflectProperties, ...textareaElement]
   }
