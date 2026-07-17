@@ -26,6 +26,9 @@ export class EeAutocompleteInputSpans extends CustomStylesMixin(SyntheticValidat
       pickOnBlur: {
         type: Boolean,
         attribute: 'pick-on-blur'
+      },
+      preferCurrentValue: {
+        attribute: false
       }
     }
   }
@@ -40,6 +43,8 @@ export class EeAutocompleteInputSpans extends CustomStylesMixin(SyntheticValidat
     this.itemElementAttributes = {}
     this.valueSeparator = ','
     this.pickOnBlur = false
+    this.preferCurrentValue = null
+    this._preferredCurrentValueWasPicked = false
   }
 
   static get styles () {
@@ -296,11 +301,39 @@ export class EeAutocompleteInputSpans extends CustomStylesMixin(SyntheticValidat
   }
 
   _pickNow () {
+    if (this._pickPreferredCurrentValue()) {
+      this.parentElement.dismissSuggestions()
+      return
+    }
+
     if (!this.parentElement.suggestions.length) {
       this._pickCurrentValue()
     } else {
       this.parentElement.pickFirst()
     }
+  }
+
+  _pickPreferredCurrentValue () {
+    const currentValue = this.autocompleteValue
+
+    if (currentValue) {
+      this._preferredCurrentValueWasPicked = false
+      if (typeof this.preferCurrentValue !== 'function') return false
+
+      const preferredValue = this.preferCurrentValue(currentValue)
+      if (typeof preferredValue !== 'string' || !preferredValue) return false
+
+      this.pickedElement(preferredValue, true)
+      this._preferredCurrentValueWasPicked = true
+      return true
+    }
+
+    if (!this._preferredCurrentValueWasPicked) return false
+
+    // Consume the click that follows a blur-triggered pick. Without this, the
+    // clicked suggestion would be added after the preferred value.
+    this._preferredCurrentValueWasPicked = false
+    return true
   }
 
   _pickOnBlur () {

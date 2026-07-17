@@ -390,6 +390,9 @@ class EeAutocompleteInputSpans extends CustomStylesMixin(SyntheticValidatorMixin
       pickOnBlur: {
         type: Boolean,
         attribute: 'pick-on-blur'
+      },
+      preferCurrentValue: {
+        attribute: false
       }
     }
   }
@@ -404,6 +407,8 @@ class EeAutocompleteInputSpans extends CustomStylesMixin(SyntheticValidatorMixin
     this.itemElementAttributes = {};
     this.valueSeparator = ',';
     this.pickOnBlur = false;
+    this.preferCurrentValue = null;
+    this._preferredCurrentValueWasPicked = false;
   }
 
   static get styles () {
@@ -660,11 +665,39 @@ class EeAutocompleteInputSpans extends CustomStylesMixin(SyntheticValidatorMixin
   }
 
   _pickNow () {
+    if (this._pickPreferredCurrentValue()) {
+      this.parentElement.dismissSuggestions();
+      return
+    }
+
     if (!this.parentElement.suggestions.length) {
       this._pickCurrentValue();
     } else {
       this.parentElement.pickFirst();
     }
+  }
+
+  _pickPreferredCurrentValue () {
+    const currentValue = this.autocompleteValue;
+
+    if (currentValue) {
+      this._preferredCurrentValueWasPicked = false;
+      if (typeof this.preferCurrentValue !== 'function') return false
+
+      const preferredValue = this.preferCurrentValue(currentValue);
+      if (typeof preferredValue !== 'string' || !preferredValue) return false
+
+      this.pickedElement(preferredValue, true);
+      this._preferredCurrentValueWasPicked = true;
+      return true
+    }
+
+    if (!this._preferredCurrentValueWasPicked) return false
+
+    // Consume the click that follows a blur-triggered pick. Without this, the
+    // clicked suggestion would be added after the preferred value.
+    this._preferredCurrentValueWasPicked = false;
+    return true
   }
 
   _pickOnBlur () {
@@ -2446,6 +2479,16 @@ class EeAutocomplete extends CustomStylesMixin(StyleableMixin(n$3)) {
   _picked (e) {
     console.log(e.currentTarget, e.target);
     if (this.informational || !this.targetElement || e.target.tagName.toLowerCase() !== this.itemElement) return
+
+    if (
+      this.targetElement.multiInputApi &&
+      typeof this.targetElement._pickPreferredCurrentValue === 'function' &&
+      this.targetElement._pickPreferredCurrentValue()
+    ) {
+      this.dismissSuggestions();
+      this.targetElement.focus();
+      return
+    }
 
     if (this.targetElement.multiInputApi) {
       this.targetElement.pickedElement(e.target.data);

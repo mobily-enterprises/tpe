@@ -239,6 +239,16 @@ export class EeAutocomplete extends CustomStylesMixin(StyleableMixin(LitElement)
     console.log(e.currentTarget, e.target)
     if (this.informational || !this.targetElement || e.target.tagName.toLowerCase() !== this.itemElement) return
 
+    if (
+      this.targetElement.multiInputApi &&
+      typeof this.targetElement._pickPreferredCurrentValue === 'function' &&
+      this.targetElement._pickPreferredCurrentValue()
+    ) {
+      this.dismissSuggestions()
+      this.targetElement.focus()
+      return
+    }
+
     if (this.targetElement.multiInputApi) {
       this.targetElement.pickedElement(e.target.data)
     } else {
